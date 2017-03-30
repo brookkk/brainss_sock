@@ -1,0 +1,4 @@
+services:
+#    brains_platform.example:
+#        class: Brains\PlatformBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
