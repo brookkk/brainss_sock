@@ -14,7 +14,7 @@ class DefaultController extends Controller
 
     public function send_mailAction()
     {
-    	for($i=0;$i<3;$i++){
+    	for($i=0;$i<2;$i++){
     	 $message = \Swift_Message::newInstance()
         ->setSubject('Hello Email')
         ->setFrom('test.rmay.no2@gmail.com')
