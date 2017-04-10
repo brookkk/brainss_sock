@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             //new Cunningsoft\ChatBundle\CunningsoftChatBundle(),
             //new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new Brains\UserBundle\BrainsUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         
