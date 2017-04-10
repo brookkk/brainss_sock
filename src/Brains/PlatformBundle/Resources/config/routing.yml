@@ -4,3 +4,6 @@ brains_platform_homepage:
 brains_platform_mail:
     path:     /mail
     defaults: { _controller: BrainsPlatformBundle:Default:send_mail }
+brains_platform_role:
+    path:     /role
+    defaults: { _controller: BrainsPlatformBundle:Default:test_role }

@@ -1,1 +1,17 @@
-Hello brook!
+ {% extends "BrainsPlatformBundle::layout.html.twig" %}
+ 
+
+
+{% block body %}
+
+ 
+Welcome {{app.user.username | capitalize }}
+ 
+<br/>
+
+{% if is_granted('ROLE_ADMIN') %}
+EDITER UN JEU
+{% elseif is_granted('ROLE_USER') %}
+PARTICIPER DANS UN JEU
+{% endif %}
+{% endblock %}

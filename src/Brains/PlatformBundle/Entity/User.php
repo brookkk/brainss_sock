@@ -9,7 +9,7 @@ use Cunningsoft\ChatBundle\Entity\AuthorInterface;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="old_user")
  * @ORM\Entity(repositoryClass="Brains\PlatformBundle\Repository\UserRepository")
  */
 class User
