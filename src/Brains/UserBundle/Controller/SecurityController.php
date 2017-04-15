@@ -4,6 +4,17 @@ namespace Brains\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+use Brook\UserBundle\Entity\User;
+
 
 class SecurityController extends Controller
 {
@@ -24,4 +35,16 @@ class SecurityController extends Controller
       'error'         => $authenticationUtils->getLastAuthenticationError(),
     ));
   }
+
+  public function profileAction()
+  {
+    //return $this->render('BrainsUserBundle:Security:user.html.twig');
+    return new Response("Hello new User ");
+  }
+
+  public function update_userAction($value='')
+  {
+    $user=new User();
+  }
+
 }

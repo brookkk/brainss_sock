@@ -28,7 +28,7 @@
     <ul class="nav navbar-nav navbar-right">
       
  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
- <li><a href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
+ <li><a href="{{ path('brains_user_profile') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
       <li>
     <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span>  Déconnexion</a>
 </li>

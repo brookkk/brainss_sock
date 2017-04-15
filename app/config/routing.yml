@@ -1,7 +1,9 @@
 brains_platform:
     resource: "@BrainsPlatformBundle/Resources/config/routing.yml"
     prefix:   /
-
+brains_user:
+    resource: "@BrainsUserBundle/Resources/config/routing.yml"
+    prefix:   /
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

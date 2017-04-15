@@ -1,0 +1,6 @@
+brains_user_profile:
+    path:     /user
+    defaults: { _controller: BrainsUserBundle:Security:profile }
+brains_user_profile:
+    path:     /user
+    defaults: { _controller: BrainsUserBundle:Security:profile }
