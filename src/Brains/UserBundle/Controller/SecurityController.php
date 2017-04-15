@@ -12,8 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-use Brook\UserBundle\Entity\User;
+use Brains\UserBundle\Entity\User;
 
 
 class SecurityController extends Controller
@@ -42,9 +43,60 @@ class SecurityController extends Controller
     return new Response("Hello new User ");
   }
 
-  public function update_userAction($value='')
+  public function update_userAction(Request $request)
   {
-    $user=new User();
+//un nouvel utilisateur
+$user= new User();
+
+//associer un new form builder au USER
+    $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user);
+
+//champs du form builder : année et filière (listes déroulantes) + submit
+$formBuilder
+      ->add('annee', ChoiceType::class, array(
+            'choices'=>array(
+                  'tronc_commun'=>false,
+                  '1Bac'=>false,
+                  '2Bac'=>false,
+              ))
+        )
+      ->add('filiere', ChoiceType::class, array(
+            'choices'=>array(
+                  'Science'=>false,
+                  'Sciences_Math'=>false,
+                  'Sciences_Physiques'=>false,
+              ))
+      )
+      ->add('save',      SubmitType::class)      ;
+
+$form= $formBuilder ->getForm();
+
+
+if($request->isMethod('POST')){
+
+    $form->handleRequest($request);
+
+    if($form->isValid()){
+        $em= $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Utilisateur Bien enregistré.');
+
+        return $this->redirectToRoute('brains_platform_homepage');
+    }
+}
+
+
+
+//génération du form
+
+//redirection vers la view qui va afficher le form
+return $this->render('BrainsUserBundle:User:update.html.twig', array(
+ 'form'=>$form->createView(),
+  ));
+
+
   }
 
 }

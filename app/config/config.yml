@@ -8,6 +8,10 @@ imports:
 parameters:
     locale: fr
 
+twig:
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+
 framework:
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
