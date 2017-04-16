@@ -12,6 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Filiere
 {
+
+
+ /**
+   * @ORM\ManyToMany(targetEntity="Brains\PlatformBundle\Entity\Cours", cascade={"persist"})
+   */
+  private $cours;
+
+ /**
+   * @ORM\ManyToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", cascade={"persist"})
+   */
+  private $exercices;
+
     /**
      * @var int
      *
@@ -34,6 +46,47 @@ class Filiere
      * @ORM\Column(name="nome", type="string", length=255)
      */
     private $nome;
+
+
+
+ public function __construct()
+  {
+     $this->cours = new ArrayCollection();
+     $this->exercices = new ArrayCollection();
+
+  }
+
+
+public function addCours(Cours $cours)
+{
+    $this->cours[] = $cours;
+}
+
+public function addExercice(Exercice $exercice)
+{
+    $this->exercices[] = $exercice;
+}
+
+public function removeCours(Cours $cours)
+{
+    $this->cours->removeElement($cours);
+}
+
+public function removeExercice(Exercice $exercice)
+{
+    $this->exercices->removeElement($exercice);
+}
+
+public function getExercices()
+{
+    return $this->exercices;
+}
+
+public function getCours()
+{
+    return $this->cours;
+}
+
 
 
     /**
@@ -93,5 +146,12 @@ class Filiere
     {
         return $this->nome;
     }
+
+
+
+
+
+
+
 }
 
