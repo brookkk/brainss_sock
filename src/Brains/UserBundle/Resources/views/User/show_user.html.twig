@@ -1,0 +1,26 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+<p>
+Login: {{app.user.username}}
+</p>
+
+<p>
+email: {{app.user.email}}
+</p>
+
+
+{% if app.user.annee!="" %}
+<p>
+année: {{app.user.annee}}
+</p>
+<p>
+filière: {{app.user.filiere}}
+</p>
+{% else %}
+<a href="{{ path('brains_user_update') }}">  Indiquer votre année et filière</a>
+{% endif %}
+
+
+{% endblock %}

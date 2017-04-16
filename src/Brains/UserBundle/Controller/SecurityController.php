@@ -40,36 +40,43 @@ class SecurityController extends Controller
   public function profileAction()
   {
     //return $this->render('BrainsUserBundle:Security:user.html.twig');
-    return new Response("Hello new User ");
+    return $this->render('BrainsUserBundle:User:show_user.html.twig');
   }
 
   public function update_userAction(Request $request)
   {
+
+
+
+$user= $this->get('security.token_storage')->getToken()->getUser();
+
+
 //un nouvel utilisateur
-$user= new User();
+//$user= new User();
 
 //associer un new form builder au USER
     $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $user);
 
 //champs du form builder : année et filière (listes déroulantes) + submit
-$formBuilder
+$form=$formBuilder
       ->add('annee', ChoiceType::class, array(
             'choices'=>array(
-                  'tronc_commun'=>false,
-                  '1Bac'=>false,
-                  '2Bac'=>false,
+                  'tronc commun'=>'TC',
+                  '1Bac'=>'1B',
+                  '2Bac'=>'2B',
               ))
         )
       ->add('filiere', ChoiceType::class, array(
             'choices'=>array(
-                  'Science'=>false,
-                  'Sciences_Math'=>false,
-                  'Sciences_Physiques'=>false,
+                  'Science'=>'science',
+                  'Sciences Math'=>'SM',
+                  'Sciences Physiques'=>'SP',
               ))
       )
-      ->add('save',      SubmitType::class)      ;
+      ->add('save',      SubmitType::class)
+      ->getForm()      ;
 
-$form= $formBuilder ->getForm();
+//$form= $formBuilder ->getForm();
 
 
 if($request->isMethod('POST')){
