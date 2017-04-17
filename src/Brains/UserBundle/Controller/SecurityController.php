@@ -73,7 +73,7 @@ $form=$formBuilder
                   'Sciences Physiques'=>'SP',
               ))
       )
-      ->add('save',      SubmitType::class)
+      ->add('Sauvegarder',      SubmitType::class)
       ->getForm()      ;
 
 //$form= $formBuilder ->getForm();

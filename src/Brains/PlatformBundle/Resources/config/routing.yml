@@ -7,3 +7,9 @@ brains_platform_mail:
 brains_platform_role:
     path:     /role
     defaults: { _controller: BrainsPlatformBundle:Default:test_role }
+brains_platform_n_annee:
+    path:     /n_annee
+    defaults: { _controller: BrainsPlatformBundle:Creation:n_annee }
+brains_platform_n_filiere:
+    path:     /n_filiere
+    defaults: { _controller: BrainsPlatformBundle:Creation:n_filiere }
