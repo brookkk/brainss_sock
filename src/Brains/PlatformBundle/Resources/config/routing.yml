@@ -1,5 +1,5 @@
 brains_platform_homepage:
-    path:     /
+    path:     /home
     defaults: { _controller: BrainsPlatformBundle:Default:index }
 brains_platform_mail:
     path:     /mail

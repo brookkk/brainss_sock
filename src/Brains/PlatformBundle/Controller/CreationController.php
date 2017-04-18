@@ -71,7 +71,7 @@ public function n_filiereAction(Request $request)
     {
         
 
-$filiere= new Annee();
+$filiere= new Filiere();
 
 //creation du builder
 $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $filiere);
@@ -93,7 +93,7 @@ if($request->isMethod('POST')){
         $em->persist($filiere);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Année Bien enregistrée.');
+        $request->getSession()->getFlashBag()->add('notice', 'Filiere Bien enregistrée.');
 
         return $this->redirectToRoute('brains_platform_homepage');
     }

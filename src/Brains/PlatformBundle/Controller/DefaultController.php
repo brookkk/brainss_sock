@@ -8,7 +8,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         return $this->render('BrainsPlatformBundle:Default:index.html.twig');
+        else return $this->redirectToRoute('login');
     }
 
 

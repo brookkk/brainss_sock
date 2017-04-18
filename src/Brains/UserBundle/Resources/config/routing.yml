@@ -4,3 +4,6 @@ brains_user_profile:
 brains_user_update:
     path:     /update_user
     defaults: { _controller: BrainsUserBundle:Security:update_user }
+brains_user_homepage:
+    path:     /
+    defaults: { _controller: BrainsUserBundle:Security:login }
