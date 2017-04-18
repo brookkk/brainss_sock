@@ -7,9 +7,10 @@
 
 <div class="well">
   <ul>
-  
+
   {% for filiere in listFilieres %}
-    <li>{{ filiere.short }}hii</li>
+    <li>{{ filiere.short }} &nbsp  <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-pencil"></span> </a>  
+    &nbsp &nbsp <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-trash"></span></a></li>
   {% endfor %}
 </ul>
 </div>

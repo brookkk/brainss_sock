@@ -42,7 +42,13 @@ foreach ($listFilieres as $filiere) {
 
 //print_r($listFilieres);
 
-return $this->render('BrainsPlatformBundle:Show:filiere.html.twig', $listFilieres);
+if (null === $listFilieres) {
+      throw new NotFoundHttpException("Aucune filière na été trouvée");
+    }
+
+return $this->render('BrainsPlatformBundle:Show:filiere.html.twig', array(
+      'listFilieres' => $listFilieres
+    ) );
 
 
 
