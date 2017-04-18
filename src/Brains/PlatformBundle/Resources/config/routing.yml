@@ -13,3 +13,6 @@ brains_platform_n_annee:
 brains_platform_n_filiere:
     path:     /n_filiere
     defaults: { _controller: BrainsPlatformBundle:Creation:n_filiere }
+BP_show_filiere:
+    path:     /show_filiere
+    defaults: { _controller: BrainsPlatformBundle:Show:filiere }

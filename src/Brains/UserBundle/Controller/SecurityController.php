@@ -15,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Brains\UserBundle\Entity\User;
+use Brains\PlatformBundle\Entity\Annee;
+use Brains\PlatformBundle\Entity\Filiere;
 
 
 class SecurityController extends Controller
@@ -62,15 +64,15 @@ $form=$formBuilder
       ->add('annee', ChoiceType::class, array(
             'choices'=>array(
                   'tronc commun'=>'TC',
-                  '1Bac'=>'1B',
-                  '2Bac'=>'2B',
+                  '1Bac'=>'1Bac',
+                  '2Bac'=>'2Bac',
               ))
         )
       ->add('filiere', ChoiceType::class, array(
             'choices'=>array(
                   'Science'=>'science',
-                  'Sciences Math'=>'SM',
-                  'Sciences Physiques'=>'SP',
+                  'Sciences Math'=>'Sciences Math',
+                  'Sciences Physiques'=>'Sciences Physiques',
               ))
       )
       ->add('Sauvegarder',      SubmitType::class)
