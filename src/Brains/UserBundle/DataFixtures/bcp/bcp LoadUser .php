@@ -6,12 +6,12 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Brains\UserBundle\Entity\User;
 
-class LoadUser implements FixtureInterface
+class bcpLoadUserrr implements FixtureInterface
 {
   public function load(ObjectManager $manager)
   {
     // Les noms d'utilisateurs à créer
-    $listNames = array('abdellah', 'brookk', 'grini');
+    $listNames = array('new');
 
     foreach ($listNames as $name) {
       // On crée l'utilisateur
