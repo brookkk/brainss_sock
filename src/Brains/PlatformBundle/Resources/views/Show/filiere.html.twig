@@ -5,7 +5,7 @@
 
 <ul class="breadcrumb">
   <li><a href="{{ path('BP_show_filiere') }}">Filières</a></li>
-  <li><a href="{{ path('BP_show_filiere') }}">Liste</a></li>
+  <li>Liste</li>
  
 </ul>
 
@@ -29,7 +29,7 @@
   <tr>
   <td>   {{ filiere.short }} </td> 
   <td> {{ filiere.nome }} </td>
-   <td> <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+   <td> <a href="{{ path('BP_update_filiere',{'id': filiere.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp <a href="{{ path('brains_user_update', {'id': filiere.id}) }}"><span class="glyphicon glyphicon-trash"></span></a> </td>
 
     <tr>
   {% endfor %}

@@ -18,10 +18,10 @@ class DefaultController extends Controller
     {
     	for($i=0;$i<2;$i++){
     	 $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
+        ->setSubject('Hello Email'.($i+1))
         ->setFrom('test.rmay.no2@gmail.com')
-        ->setTo('grini.abdellah@gmail.com')
-        ->setBody("hello world ".($i+1));
+        ->setTo('abdellah.grini@kindyinfomaroc.com')
+        ->setBody("watta lah yhdik !!");
         $this->get('mailer')->send($message);
 }
 

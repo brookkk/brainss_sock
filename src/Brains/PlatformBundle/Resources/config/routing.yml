@@ -17,5 +17,5 @@ BP_show_filiere:
     path:     /show_filiere
     defaults: { _controller: BrainsPlatformBundle:Show:filiere }
 BP_update_filiere:
-    path:     /show_filiere{id}
+    path:     /show_filiere/{id}
     defaults: { _controller: BrainsPlatformBundle:Show:update_filiere }
