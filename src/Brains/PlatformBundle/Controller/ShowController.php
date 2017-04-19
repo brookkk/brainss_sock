@@ -24,36 +24,42 @@ class ShowController extends Controller
 
 
 //Action pour Afficher toutes les filières existantes
-    public function filiereAction(Request $request)
-    {
+  public function filiereAction(Request $request)
+  {
 
+    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Filiere');
 
-$repository = $this
-  ->getDoctrine()
-  ->getManager()
-  ->getRepository('BrainsPlatformBundle:Filiere')
-;
-
-$listFilieres = $repository->findAll();
-/*
-foreach ($listFilieres as $filiere) {
-  // $advert est une instance de Advert
-  echo $filiere->getNome();*/
-
-//print_r($listFilieres);
-
-if (null === $listFilieres) {
+    $listFilieres = $repository->findAll();
+ 
+    if (null === $listFilieres) {
       throw new NotFoundHttpException("Aucune filière na été trouvée");
+        }
+
+    return $this->render('BrainsPlatformBundle:Show:filiere.html.twig', array(
+      'listFilieres' => $listFilieres    ) );
+  }
+
+
+/*
+       public function update_filiereAction(Request $request, $id)
+    {
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Filiere');
+
+$filiere = $repository->find($id)();
+ 
+
+if (null === $filiere) {
+      throw new NotFoundHttpException("Votre filière na pas été trouvée");
     }
 
 return $this->render('BrainsPlatformBundle:Show:filiere.html.twig', array(
-      'listFilieres' => $listFilieres
+      'filiere' => $filiere
     ) );
 
 
 
 
-    }
+    }*/
 
 
 

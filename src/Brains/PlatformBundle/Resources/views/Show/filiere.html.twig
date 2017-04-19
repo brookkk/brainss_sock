@@ -3,16 +3,40 @@
 
 {% block body %}
 
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_filiere') }}">Filières</a></li>
+  <li><a href="{{ path('BP_show_filiere') }}">Liste</a></li>
+ 
+</ul>
+
 <h3>Liste des Filières</h3>
 
-<div class="well">
-  <ul>
+ 
+  
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom Court</th>
+        <th>Nomenclature</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+    <tbody>
 
   {% for filiere in listFilieres %}
-    <li>{{ filiere.short }} &nbsp  <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-pencil"></span> </a>  
-    &nbsp &nbsp <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-trash"></span></a></li>
+
+  <tr>
+  <td>   {{ filiere.short }} </td> 
+  <td> {{ filiere.nome }} </td>
+   <td> <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp <a href="{{ path('brains_user_update') }}"><span class="glyphicon glyphicon-trash"></span></a> </td>
+
+    <tr>
   {% endfor %}
-</ul>
-</div>
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('brains_platform_n_filiere') }}" role="button">Ajouter une Filière</a>
+
 
 {% endblock %}

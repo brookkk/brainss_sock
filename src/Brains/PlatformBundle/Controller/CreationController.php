@@ -95,7 +95,7 @@ if($request->isMethod('POST')){
 
         $request->getSession()->getFlashBag()->add('notice', 'Filiere Bien enregistrée.');
 
-        return $this->redirectToRoute('brains_platform_homepage');
+        return $this->redirectToRoute('BP_show_filiere');
     }
 }
 
