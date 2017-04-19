@@ -19,3 +19,6 @@ BP_show_filiere:
 BP_update_filiere:
     path:     /show_filiere/{id}
     defaults: { _controller: BrainsPlatformBundle:Show:update_filiere }
+BP_delete_filiere:
+    path:     /delete_filiere/{id}
+    defaults: { _controller: BrainsPlatformBundle:Delete:delete_filiere }

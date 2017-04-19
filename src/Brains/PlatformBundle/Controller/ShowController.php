@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
-//use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
@@ -84,7 +84,7 @@ if($request->isMethod('POST')){
     }
 }
 
-return $this->render('BrainsPlatformBundle:New:year.html.twig', array(
+return $this->render('BrainsPlatformBundle:New:filiere.html.twig', array(
  'form'=>$form->createView(),
   ));
 /*
