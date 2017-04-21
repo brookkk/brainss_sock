@@ -9,7 +9,7 @@ brains_platform_role:
     defaults: { _controller: BrainsPlatformBundle:Default:test_role }
 brains_platform_n_annee:
     path:     /n_annee
-    defaults: { _controller: BrainsPlatformBundle:Creation:n_annee }
+    defaults: { _controller: BrainsPlatformBundle:Annee:n_annee }
 brains_platform_n_filiere:
     path:     /n_filiere
     defaults: { _controller: BrainsPlatformBundle:Filiere:n_filiere }
@@ -22,3 +22,12 @@ BP_update_filiere:
 BP_delete_filiere:
     path:     /delete_filiere/{id}
     defaults: { _controller: BrainsPlatformBundle:Filiere:delete_filiere }
+BP_show_annee:
+    path:     /show_annee
+    defaults: { _controller: BrainsPlatformBundle:Annee:show_annee }
+BP_update_annee:
+    path:     /show_annee/{id}
+    defaults: { _controller: BrainsPlatformBundle:Annee:update_annee }
+BP_delete_annee:
+    path:     /delete_annee/{id}
+    defaults: { _controller: BrainsPlatformBundle:Annee:delete_annee }

@@ -1,0 +1,43 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_annee') }}">Années</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Années</h3>
+
+ 
+  
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom Court</th>
+        <th>Nomenclature</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+    <tbody>
+
+  {% for annee in listAnnees %}
+
+  <tr>
+  <td>   {{ annee.short }} </td> 
+  <td> {{ annee.nome }} </td>
+   <td> <a href="{{ path('BP_update_annee',{'id': annee.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_annee', {'id': annee.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+
+    <tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('brains_platform_n_annee') }}" role="button">Ajouter une Année</a>
+
+
+{% endblock %}
