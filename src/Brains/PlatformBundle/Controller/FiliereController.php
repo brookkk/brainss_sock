@@ -126,6 +126,77 @@ return $this->render('BrainsPlatformBundle:New:filiere.html.twig', array(
 
 
 
+         public function update_filiereAction(Request $request, $id)
+    {
+      
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Filiere');
+
+$filiere = $repository->find($id);
+
+ 
+
+if (null === $filiere) {
+      throw new NotFoundHttpException("Votre filière na pas été trouvée");
+    }
+
+
+
+$formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $filiere);
+
+$form=$formBuilder
+      ->add('short',   TextType::class)
+      ->add('nome',   TextType::class)
+      ->add('Sauvegarder',      SubmitType::class)
+      ->getForm()      ;
+
+if($request->isMethod('POST')){
+
+    $form->handleRequest($request);
+
+    if($form->isValid()){
+        $em= $this->getDoctrine()->getManager();
+        $em->persist($filiere);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Filière Bien enregistrée.');
+
+        return $this->redirectToRoute('BP_show_filiere');
+    }
+}
+
+return $this->render('BrainsPlatformBundle:New:filiere.html.twig', array(
+ 'form'=>$form->createView(),
+  ));
+ 
+
+    }
+
+
+
+         public function delete_filiereAction(Request $request, $id)
+    {
+      
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Filiere');
+
+$filiere = $repository->find($id);
+ 
+if (null === $filiere) {
+      throw new NotFoundHttpException("Votre filière na pas été trouvée");
+    }
+ 
+        $em= $this->getDoctrine()->getManager();
+        $em->remove($filiere);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Filière a été supprimée');
+
+        return $this->redirectToRoute('BP_show_filiere');
+ 
+ 
+    }
+
+
+
  }
 
 
