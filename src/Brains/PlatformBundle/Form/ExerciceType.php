@@ -38,13 +38,13 @@ class ExerciceType extends AbstractType
             /*->add('filiere',   FiliereType::class)*/
             ->add('annee', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Annee',
-                'choice_label' => 'short',
-                'multiple'     => true,
+                'choice_label' => 'nome',
+                'multiple'     => false,
                 ))
             ->add('filiere', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Filiere',
-                'choice_label' => 'short',
-                'multiple'     => true,
+                'choice_label' => 'nome',
+                'multiple'     => false,
                 ))
             ->add('Sauvegarder',      SubmitType::class);
             /*->add('annee')
