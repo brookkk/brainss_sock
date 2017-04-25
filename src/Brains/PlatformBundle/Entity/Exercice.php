@@ -66,19 +66,14 @@ class Exercice
      */
     private $auteur;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="contenu", type="text")
-     */
-    private $contenu;
+  
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetimetz")
      */
-    private $dateCreation;
+    private $date_creation;
 
     /**
      * @var \DateTime
@@ -92,6 +87,7 @@ class Exercice
 public function __construct()
   {
     $this->date_creation = new \Datetime();
+    $this->dateMaj = new \Datetime();
   }
 
 
@@ -225,30 +221,8 @@ public function __construct()
         return $this->auteur;
     }
 
-    /**
-     * Set contenu
-     *
-     * @param string $contenu
-     *
-     * @return Exercice
-     */
-    public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
-
-        return $this;
-    }
-
-    /**
-     * Get contenu
-     *
-     * @return string
-     */
-    public function getContenu()
-    {
-        return $this->contenu;
-    }
-
+     
+    
     /**
      * Set dateCreation
      *

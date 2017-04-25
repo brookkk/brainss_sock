@@ -1,0 +1,18 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_filiere') }}">Exercices</a></li>
+  <li><a href="{{ path('BP_show_filiere') }}">MAJ</a></li>
+ 
+</ul>
+
+<h3>Exercice</h3>
+
+<div class="well">
+  {{ form(form) }}
+</div>
+
+{% endblock %}

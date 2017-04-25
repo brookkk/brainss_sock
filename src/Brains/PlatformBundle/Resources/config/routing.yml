@@ -31,3 +31,6 @@ BP_update_annee:
 BP_delete_annee:
     path:     /delete_annee/{id}
     defaults: { _controller: BrainsPlatformBundle:Annee:delete_annee }
+BP_n_exercice:
+    path:     /n_exercice
+    defaults: { _controller: BrainsPlatformBundle:Exercice:n_exercice }
