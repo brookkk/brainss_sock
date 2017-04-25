@@ -2,6 +2,9 @@
 
 namespace Brains\PlatformBundle\Controller;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,6 +46,10 @@ if($request->isMethod('POST')){
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+
+/*
+        $fs = new Filesystem();
+        $fs->mkdir('./test/test');*/
 
         return $this->redirectToRoute('BP_show_annee');
     }
