@@ -34,3 +34,6 @@ BP_delete_annee:
 BP_n_exercice:
     path:     /n_exercice
     defaults: { _controller: BrainsPlatformBundle:Exercice:n_exercice }
+BP_show_exercice:
+    path:     /show_exercice
+    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }

@@ -64,19 +64,29 @@ return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
 
 
     //Action pour Afficher toutes les filières existantes
-  public function show_anneeAction(Request $request)
+  public function show_exerciceAction(Request $request)
   {
 
-    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Annee');
+    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+    $repository2 = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+    $repository3 = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
 
-    $listAnnees = $repository->findAll();
+
+    $listExercices = $repository->findAll();
  
-    if (null === $listAnnees) {
-      throw new NotFoundHttpException("Aucune année na été trouvée");
+    if (null === $listExercices) {
+      throw new NotFoundHttpException("Aucun Exercice na été trouvé");
         }
 
-    return $this->render('BrainsPlatformBundle:Show:annee.html.twig', array(
-      'listAnnees' => $listAnnees    ) );
+     /*   $annees=array();
+
+        foreach ($listExercices as $exercice){
+          $annee[]=$repository2->find($exercice->annee);
+        }*/
+
+
+    return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
+      'listExercices' => $listExercices    ) );
   }
 
 

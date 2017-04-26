@@ -1,0 +1,52 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_exercice') }}">Exercices</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Exercices</h3>
+
+ 
+  
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Public</th>
+        <th>Auteur</th>
+        <th>Creation</th>
+        <th>Annee</th>
+        <th>Filiere</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+    <tbody>
+
+  {% for exercice in listExercices %}
+
+  <tr>
+  <td>   {{ exercice.nom }} </td> 
+  <td> {{ exercice.public }} </td>
+  <td> {{ exercice.auteur }} </td>
+  <td> {{      exercice.date_creation|date('Y-m-d')   }} </td>
+  <td> {{ exercice.filiere_id }} </td>
+  <td> {{ exercice.annee_id }} </td>
+
+   <td> <a href="{{ path('BP_update_filiere',{'id': exercice.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_filiere', {'id': exercice.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+
+    <tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('brains_platform_n_filiere') }}" role="button">Ajouter une Filière</a>
+
+
+{% endblock %}
