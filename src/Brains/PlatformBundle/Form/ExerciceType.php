@@ -34,8 +34,6 @@ class ExerciceType extends AbstractType
             ->add('nom',   TextType::class)
             ->add('public',   TextType::class)
             ->add('auteur',   TextType::class)
-            /*->add('annee',   AnneeType::class)*/
-            /*->add('filiere',   FiliereType::class)*/
             ->add('annee', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Annee',
                 'choice_label' => 'nome',

@@ -10,29 +10,29 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-use Brains\PlatformBundle\Form\ExerciceType;
+use Brains\PlatformBundle\Form\CoursType;
 
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
-use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Cours;
 
 
-class ExerciceController extends Controller
+class CoursController extends Controller
 {
     public function indexAction()
     {
         return $this->render('BrainsPlatformBundle:Default:index.html.twig');
     }
 
-    public function n_exerciceAction(Request $request)
+    public function n_coursAction(Request $request)
     {
 //nouvelle instance de l'entité Année
-$exercice= new Exercice();
+$cours= new Cours();
 
  //too old too long
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
-$form = $this->createForm(ExerciceType::class, $exercice);
+$form = $this->createForm(CoursType::class, $cours);
  
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
@@ -42,10 +42,10 @@ if($request->isMethod('POST')){
 
     if($form->isValid()){
         $em= $this->getDoctrine()->getManager();
-        $em->persist($exercice);
+        $em->persist($cours);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+        $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
 /*
         $fs = new Filesystem();
@@ -56,7 +56,7 @@ if($request->isMethod('POST')){
 }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
+return $this->render('BrainsPlatformBundle:New:cours.html.twig', array(
  'form'=>$form->createView(),
   ));
 

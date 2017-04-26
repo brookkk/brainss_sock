@@ -45,7 +45,7 @@ BP_delete_exercice:
     defaults: { _controller: BrainsPlatformBundle:Exercice:delete_exercice }
 BP_n_cours:
     path:     /n_cours
-    defaults: { _controller: BrainsPlatformBundle:Exercice:n_exercice }
+    defaults: { _controller: BrainsPlatformBundle:Cours:n_cours }
 BP_show_cours:
     path:     /show_cours
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
