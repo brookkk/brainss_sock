@@ -51,7 +51,7 @@ if($request->isMethod('POST')){
         $fs = new Filesystem();
         $fs->mkdir('./test/test');*/
 
-        return $this->redirectToRoute('BP_show_exercice');
+        return $this->redirectToRoute('BP_show_cours');
     }
 }
 
@@ -64,23 +64,23 @@ return $this->render('BrainsPlatformBundle:New:cours.html.twig', array(
 
 
     //Action pour Afficher toutes les filières existantes
-  public function show_exerciceAction(Request $request)
+  public function show_coursAction(Request $request)
   {
 $em= $this  ->getDoctrine()  ->getManager();
 
-    $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+    $repository = $em  ->getRepository('BrainsPlatformBundle:Cours');
     
 
-    $listExercices = $repository->findAll();
+    $listCours = $repository->findAll();
  
-    if (null === $listExercices) {
-      throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+    if (null === $listCours) {
+      throw new NotFoundHttpException("Aucun Cours na été trouvé");
         }
 
 
 
-    return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-      'listExercices' => $listExercices  ) );
+    return $this->render('BrainsPlatformBundle:Show:cours.html.twig', array(
+      'listCours' => $listCours  ) );
   }
 
 

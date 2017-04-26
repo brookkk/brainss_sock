@@ -48,7 +48,7 @@ BP_n_cours:
     defaults: { _controller: BrainsPlatformBundle:Cours:n_cours }
 BP_show_cours:
     path:     /show_cours
-    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+    defaults: { _controller: BrainsPlatformBundle:Cours:show_cours }
 BP_update_cours:
     path:     /update_cours
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }

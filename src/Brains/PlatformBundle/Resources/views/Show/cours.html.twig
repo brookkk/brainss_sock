@@ -1,0 +1,52 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_cours') }}">Cours</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Cours</h3>
+
+ 
+  
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Public</th>
+        <th>Auteur</th>
+        <th>Creation</th>
+        <th>Annee</th>
+        <th>Filiere</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+    <tbody>
+
+  {% for cours in listCours %}
+
+  <tr>
+  <td>   {{ cours.nom }} </td> 
+  <td> {{ cours.public }} </td>
+  <td> {{ cours.auteur }} </td>
+  <td> Le {{ cours.dateMaj|date("d/m/Y, à h:i a")   }} </td>
+  <td> {{ cours.annee.short }} </td>
+  <td> {{ cours.filiere.short }} </td>
+
+   <td> <a href="{{ path('BP_update_cours',{'id': cours.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_cours', {'id': cours.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer le cours?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+
+    <tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('BP_n_cours') }}" role="button">Ajouter un Cours</a>
+
+
+{% endblock %}
