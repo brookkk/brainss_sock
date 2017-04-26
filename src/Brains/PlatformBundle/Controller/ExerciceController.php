@@ -78,8 +78,8 @@ return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
       throw new NotFoundHttpException("Aucun Exercice na été trouvé");
         }
 
-     /*   $annees=array();
-
+        $annees=array();
+/*
         foreach ($listExercices as $exercice){
           $annee[]=$repository2->find($exercice->annee);
         }*/

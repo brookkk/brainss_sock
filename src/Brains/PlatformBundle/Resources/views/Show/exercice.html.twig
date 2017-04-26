@@ -34,7 +34,7 @@
   <td>   {{ exercice.nom }} </td> 
   <td> {{ exercice.public }} </td>
   <td> {{ exercice.auteur }} </td>
-  <td> {{      exercice.date_creation|date('Y-m-d')   }} </td>
+  <td> le {{ exercice.dateMaj|date("d/m/Y, à h:s")   }} </td>
   <td> {{ exercice.filiere_id }} </td>
   <td> {{ exercice.annee_id }} </td>
 
@@ -46,7 +46,7 @@
  
  </tbody>
  </table>
-  <a class="btn btn btn-success" href="{{ path('brains_platform_n_filiere') }}" role="button">Ajouter une Filière</a>
+  <a class="btn btn btn-success" href="{{ path('BP_n_exercice') }}" role="button">Ajouter un Exercice</a>
 
 
 {% endblock %}

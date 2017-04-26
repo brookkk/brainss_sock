@@ -37,3 +37,9 @@ BP_n_exercice:
 BP_show_exercice:
     path:     /show_exercice
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+BP_update_exercice:
+    path:     /update_exercice
+    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+BP_delete_exercice:
+    path:     /delete_exercice
+    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
