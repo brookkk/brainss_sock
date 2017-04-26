@@ -85,21 +85,21 @@ $em= $this  ->getDoctrine()  ->getManager();
 
 
 
-         public function update_exerciceAction(Request $request, $id)
+         public function update_coursAction(Request $request, $id)
     {
       
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Cours');
 
-$exercice = $repository->find($id);
+$cours = $repository->find($id);
 
  
 
-if (null === $exercice) {
-      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+if (null === $cours) {
+      throw new NotFoundHttpException("Votre cours na pas été trouvé");
     }
 
 
-$form = $this->createForm(ExerciceType::class, $exercice);
+$form = $this->createForm(CoursType::class, $cours);
 
 
 
@@ -109,14 +109,14 @@ if($request->isMethod('POST')){
 
     if($form->isValid()){
         $em= $this->getDoctrine()->getManager();
-        $em->persist($exercice);
+        $em->persist($cours);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+        $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
 
 
-        return $this->redirectToRoute('BP_show_exercice');
+        return $this->redirectToRoute('BP_show_cours');
     }
 
 

@@ -50,8 +50,8 @@ BP_show_cours:
     path:     /show_cours
     defaults: { _controller: BrainsPlatformBundle:Cours:show_cours }
 BP_update_cours:
-    path:     /update_cours
-    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+    path:     /update_cours/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours:update_cours }
 BP_delete_cours:
     path:     /delete_cours
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
