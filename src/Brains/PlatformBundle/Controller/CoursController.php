@@ -124,7 +124,7 @@ if($request->isMethod('POST')){
  
 }
 
-return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
+return $this->render('BrainsPlatformBundle:New:cours.html.twig', array(
  'form'=>$form->createView(),
   ));
  
@@ -133,25 +133,25 @@ return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
 
 
 
-         public function delete_exerciceAction(Request $request, $id)
+         public function delete_coursAction(Request $request, $id)
     {
       $em= $this->getDoctrine()->getManager();
       
-$repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+$repository = $em  ->getRepository('BrainsPlatformBundle:Cours');
 
-$exercice = $repository->find($id);
+$cours = $repository->find($id);
  
-if (null === $exercice) {
-      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+if (null === $cours) {
+      throw new NotFoundHttpException("Votre Cours na pas été trouvé");
     }
  
         
-        $em->remove($exercice);
+        $em->remove($cours);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
+        $request->getSession()->getFlashBag()->add('notice', 'Cours a été supprimée');
 
-        return $this->redirectToRoute('BP_show_exercice');
+        return $this->redirectToRoute('BP_show_cours');
  
  
     }

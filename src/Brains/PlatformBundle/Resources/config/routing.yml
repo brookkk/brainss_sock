@@ -53,5 +53,5 @@ BP_update_cours:
     path:     /update_cours/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours:update_cours }
 BP_delete_cours:
-    path:     /delete_cours
-    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+    path:     /delete_cours/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }
