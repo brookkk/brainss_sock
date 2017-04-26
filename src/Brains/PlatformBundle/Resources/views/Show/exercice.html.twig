@@ -34,12 +34,12 @@
   <td>   {{ exercice.nom }} </td> 
   <td> {{ exercice.public }} </td>
   <td> {{ exercice.auteur }} </td>
-  <td> le {{ exercice.dateMaj|date("d/m/Y, à h:s")   }} </td>
-  <td> {{ exercice.filiere_id }} </td>
-  <td> {{ exercice.annee_id }} </td>
+  <td> Le {{ exercice.dateMaj|date("d/m/Y, à h:i a")   }} </td>
+  <td> {{ exercice.annee.short }} </td>
+  <td> {{ exercice.filiere.short }} </td>
 
-   <td> <a href="{{ path('BP_update_filiere',{'id': exercice.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
-        <a href="{{ path('BP_delete_filiere', {'id': exercice.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+   <td> <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_exercice', {'id': exercice.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
 
     <tr>
   {% endfor %}

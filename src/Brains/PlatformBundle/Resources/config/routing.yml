@@ -38,8 +38,20 @@ BP_show_exercice:
     path:     /show_exercice
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
 BP_update_exercice:
-    path:     /update_exercice
-    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+    path:     /show_exercice/{id}
+    defaults: { _controller: BrainsPlatformBundle:Exercice:update_exercice }
 BP_delete_exercice:
-    path:     /delete_exercice
+    path:     /delete_exercice/{id}
+    defaults: { _controller: BrainsPlatformBundle:Exercice:delete_exercice }
+BP_n_cours:
+    path:     /n_cours
+    defaults: { _controller: BrainsPlatformBundle:Exercice:n_exercice }
+BP_show_cours:
+    path:     /show_cours
+    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+BP_update_cours:
+    path:     /update_cours
+    defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }
+BP_delete_cours:
+    path:     /delete_cours
     defaults: { _controller: BrainsPlatformBundle:Exercice:show_exercice }

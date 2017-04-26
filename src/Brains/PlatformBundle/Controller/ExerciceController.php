@@ -51,7 +51,7 @@ if($request->isMethod('POST')){
         $fs = new Filesystem();
         $fs->mkdir('./test/test');*/
 
-        return $this->redirectToRoute('BP_show_annee');
+        return $this->redirectToRoute('BP_show_exercice');
     }
 }
 
@@ -66,11 +66,10 @@ return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
     //Action pour Afficher toutes les filières existantes
   public function show_exerciceAction(Request $request)
   {
+$em= $this  ->getDoctrine()  ->getManager();
 
-    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
-    $repository2 = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
-    $repository3 = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
-
+    $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+    
 
     $listExercices = $repository->findAll();
  
@@ -78,41 +77,31 @@ return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
       throw new NotFoundHttpException("Aucun Exercice na été trouvé");
         }
 
-        $annees=array();
-/*
-        foreach ($listExercices as $exercice){
-          $annee[]=$repository2->find($exercice->annee);
-        }*/
 
 
     return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-      'listExercices' => $listExercices    ) );
+      'listExercices' => $listExercices  ) );
   }
 
 
 
-         public function update_anneeAction(Request $request, $id)
+         public function update_exerciceAction(Request $request, $id)
     {
       
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Annee');
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
 
-$annee = $repository->find($id);
+$exercice = $repository->find($id);
 
  
 
-if (null === $annee) {
-      throw new NotFoundHttpException("Votre année na pas été trouvée");
+if (null === $exercice) {
+      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
     }
 
 
+$form = $this->createForm(ExerciceType::class, $exercice);
 
-$formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $annee);
 
-$form=$formBuilder
-      ->add('short',   TextType::class)
-      ->add('nome',   TextType::class)
-      ->add('Sauvegarder',      SubmitType::class)
-      ->getForm()      ;
 
 if($request->isMethod('POST')){
 
@@ -120,13 +109,19 @@ if($request->isMethod('POST')){
 
     if($form->isValid()){
         $em= $this->getDoctrine()->getManager();
-        $em->persist($annee);
+        $em->persist($exercice);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Année Bien enregistrée.');
+        $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
-        return $this->redirectToRoute('BP_show_annee');
+
+
+        return $this->redirectToRoute('BP_show_exercice');
     }
+
+
+
+ 
 }
 
 return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
@@ -138,24 +133,25 @@ return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
 
 
 
-         public function delete_anneeAction(Request $request, $id)
+         public function delete_exerciceAction(Request $request, $id)
     {
+      $em= $this->getDoctrine()->getManager();
       
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Annee');
+$repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
 
-$annee = $repository->find($id);
+$exercice = $repository->find($id);
  
-if (null === $annee) {
-      throw new NotFoundHttpException("Votre année na pas été trouvée");
+if (null === $exercice) {
+      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
     }
  
-        $em= $this->getDoctrine()->getManager();
-        $em->remove($annee);
+        
+        $em->remove($exercice);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Année a été supprimée');
+        $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
 
-        return $this->redirectToRoute('BP_show_annee');
+        return $this->redirectToRoute('BP_show_exercice');
  
  
     }
