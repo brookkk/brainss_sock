@@ -10,6 +10,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Brains\PlatformBundle\Form\AnneeType;
+use Brains\PlatformBundle\Form\FiliereType;
+
+use Brains\PlatformBundle\Entity\Annee;
+use Brains\PlatformBundle\Entity\Filiere;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

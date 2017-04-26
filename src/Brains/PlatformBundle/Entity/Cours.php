@@ -36,17 +36,15 @@ class Cours
     private $public;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="annee", type="string", length=255)
-     */
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
+   * @ORM\JoinColumn(nullable=false)
+   */
     private $annee;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="filiere", type="string", length=255)
-     */
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
+   * @ORM\JoinColumn(nullable=false)
+   */
     private $filiere;
 
     /**
@@ -56,12 +54,7 @@ class Cours
      */
     private $auteur;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="contenu", type="text")
-     */
-    private $contenu;
+  
 
     /**
      * @var \DateTime
@@ -82,7 +75,8 @@ class Cours
 //Date par défaut lors de la creation d'un new cours
 public function __construct()
   {
-    $this->date_creation = new \Datetime();
+    $this->dateCreation = new \Datetime();
+    $this->dateMaj = new \Datetime();
   }
 
     /**
