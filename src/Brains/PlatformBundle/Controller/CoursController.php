@@ -16,6 +16,9 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Cours;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 
 class CoursController extends Controller
 {
@@ -156,7 +159,24 @@ if (null === $cours) {
  
     }
 
+    public function fileAction(Request $request)
+    {
+      
 
+    
+ $fs = new Filesystem();
+
+try {
+    $fs->mkdir('/test/file/'.mt_rand());
+} catch (IOExceptionInterface $e) {
+    echo "An error occurred while creating your directory at ".$e->getPath();
+}
+
+
+        return $this->redirectToRoute('BP_show_cours');
+ 
+ 
+    }
 
  }
 
