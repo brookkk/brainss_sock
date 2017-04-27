@@ -165,7 +165,7 @@ $fs = new Filesystem();
 
 //try {
     //$fs->mkdir('/hahahoho/');
-    $fs->mkdir('/hahahoho/photos', 0700);
+    $fs->mkdir('./hahahoho', 0700);
     $fs->touch('hahahoho.txt');
       return $this->render('BrainsPlatformBundle:Default:index.html.twig');
     /*
