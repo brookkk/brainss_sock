@@ -16,6 +16,9 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 
+//use Symfony\Component\Filesystem\Filesystem;
+//use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 
 class ExerciceController extends Controller
 {
@@ -154,6 +157,28 @@ if (null === $exercice) {
         return $this->redirectToRoute('BP_show_exercice');
  
  
+    }
+
+     public function fileAction()
+    {
+$fs = new Filesystem();
+
+//try {
+    //$fs->mkdir('/hahahoho/');
+    $fs->mkdir('/hahahoho/photos', 0700);
+    $fs->touch('hahahoho.txt');
+      return $this->render('BrainsPlatformBundle:Default:index.html.twig');
+    /*
+} catch (IOExceptionInterface $e) {
+    echo "An error occurred while creating your directory at ".$e->getPath();
+}
+
+
+        return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
+
+
+
+
     }
 
 
