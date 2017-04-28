@@ -26,6 +26,13 @@ class Filiere
    */
   private $exercices;
 
+  /**
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  
+    private $annee;
+
     /**
      * @var int
      *
