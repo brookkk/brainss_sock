@@ -45,7 +45,7 @@ class Filiere
     /**
      * @var string
      *
-     * @ORM\Column(name="short", type="string", length=255, unique=true)
+     * @ORM\Column(name="short", type="string", length=255, unique=false)
      */
     private $short;
 
@@ -121,6 +121,18 @@ public function getCours()
 
         return $this;
     }
+
+      public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+ public function getAnnee()
+    {
+        return $this->annee;
+    }
+
 
     /**
      * Get short

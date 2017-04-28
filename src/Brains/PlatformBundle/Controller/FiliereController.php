@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -17,6 +19,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 class FiliereController extends Controller
 {
@@ -42,6 +47,11 @@ $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $filie
 $form=$formBuilder
       ->add('short',   TextType::class)
       ->add('nome',   TextType::class)
+      ->add('annee', EntityType::class, array(
+                'class'        => 'BrainsPlatformBundle:Annee',
+                'choice_label' => 'nome',
+                'multiple'     => false,
+                ))
       ->add('Sauvegarder',      SubmitType::class)
       ->getForm()      ;
 
@@ -56,6 +66,11 @@ if($request->isMethod('POST')){
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Filiere Bien enregistrée.');
+
+$fs = new Filesystem();
+//$ff=$filiere->getshort();
+   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$filiere->getAnnee()->getShort().'/'.$filiere->getShort(), 0700);
+
 
         return $this->redirectToRoute('BP_show_filiere');
     }

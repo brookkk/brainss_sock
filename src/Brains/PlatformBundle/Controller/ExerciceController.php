@@ -165,7 +165,7 @@ $fs = new Filesystem();
 
 //try {
     //$fs->mkdir('/hahahoho/');
-    $fs->mkdir('../src/Brains/views', 0700);
+    $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
     //$fs->touch('test_file.txt');
       return $this->render('BrainsPlatformBundle:Default:index.html.twig');
     /*
