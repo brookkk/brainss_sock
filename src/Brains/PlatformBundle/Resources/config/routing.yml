@@ -57,4 +57,4 @@ BP_delete_cours:
     defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }
 BP_file:
     path:     /file
-    defaults: { _controller: BrainsPlatformBundle:Cours:file }
+    defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }

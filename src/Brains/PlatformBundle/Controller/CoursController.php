@@ -16,8 +16,6 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Cours;
 
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 
 class CoursController extends Controller
