@@ -50,9 +50,16 @@ if($request->isMethod('POST')){
 
         $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
-/*
-        $fs = new Filesystem();
-        $fs->mkdir('./test/test');*/
+
+
+$fs = new Filesystem();
+ /*  $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+ .$exercice->getFiliere()->getShort() .'/'.$exercice->getShort().'.html');
+*/
+
+$fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+ .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
+ // 'file.html');
 
         return $this->redirectToRoute('BP_show_exercice');
     }

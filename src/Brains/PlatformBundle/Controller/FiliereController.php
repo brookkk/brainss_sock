@@ -68,7 +68,6 @@ if($request->isMethod('POST')){
         $request->getSession()->getFlashBag()->add('notice', 'Filiere Bien enregistrée.');
 
 $fs = new Filesystem();
-//$ff=$filiere->getshort();
    $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$filiere->getAnnee()->getShort().'/'.$filiere->getShort(), 0700);
 
 

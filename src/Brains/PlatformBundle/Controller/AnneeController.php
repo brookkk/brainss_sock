@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -52,6 +54,11 @@ if($request->isMethod('POST')){
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Année Bien enregistrée.');
+
+
+$fs = new Filesystem();
+   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$annee->getShort(), 0700);
+
 
         return $this->redirectToRoute('BP_show_annee');
     }
