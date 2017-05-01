@@ -19,8 +19,16 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 
+//use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+//use kms\froala-editor-bundle\Form\FroalaEditorType;
+
+//use Kms\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 
+
+//C:\wamp64\www\brainss\vendor\kms\froala-editor-bundle\Form\Type
 
 
 class ExerciceType extends AbstractType
@@ -44,6 +52,7 @@ class ExerciceType extends AbstractType
                 'choice_label' => 'nome',
                 'multiple'     => false,
                 ))
+            ->add( 'contenu', FroalaEditorType::class )
             ->add('Sauvegarder',      SubmitType::class);
             /*->add('annee')
             ->add('filiere');*/

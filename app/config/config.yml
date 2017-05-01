@@ -83,3 +83,8 @@ fos_user:
     from_email:
         address:        noreply@brook.com
         sender_name:    brook
+kms_froala_editor:
+    language: "fr"
+    toolbarInline: true
+    tableColors: [ "#FFFFFF", "#FF0000" ]
+    saveParams: { "id" : "myEditorField" }

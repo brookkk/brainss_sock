@@ -60,6 +60,14 @@ public function is_good_annee_filiere(){
      */
     private $nom;
 
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string", length=255)
+     */
+    private $contenu;
+
     /**
      * @var string
      *
@@ -114,6 +122,39 @@ public function is_good_annee_filiere(){
     {
         return $this->id;
     }
+
+
+
+
+ /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Exercice
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+
+
+
+
+
 
     /**
      * Set nom

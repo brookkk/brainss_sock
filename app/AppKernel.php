@@ -17,10 +17,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Brains\PlatformBundle\BrainsPlatformBundle(),
-            //new Cunningsoft\ChatBundle\CunningsoftChatBundle(),
-            //new Knp\Bundle\TimeBundle\KnpTimeBundle(),
             new Brains\UserBundle\BrainsUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new KMS\FroalaEditorBundle\KMSFroalaEditorBundle(),
         ];
 
         
