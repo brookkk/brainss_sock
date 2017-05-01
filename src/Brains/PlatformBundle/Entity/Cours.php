@@ -3,6 +3,8 @@
 namespace Brains\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Cours
@@ -47,6 +49,17 @@ class Cours
    */
     private $filiere;
 
+/**
+* @Assert\IsTrue(message="Il faut choisir la bonne année/filière")
+*/
+public function is_good_annee_filiere(){
+    if($this->filiere->getAnnee()->getShort() == $this->annee->getShort())
+        return true;
+    else return false;    
+}
+
+
+
     /**
      * @var string
      *
@@ -54,7 +67,7 @@ class Cours
      */
     private $auteur;
 
-  
+
 
     /**
      * @var \DateTime
@@ -73,11 +86,11 @@ class Cours
 
 
 //Date par défaut lors de la creation d'un new cours
-public function __construct()
-  {
-    $this->dateCreation = new \Datetime();
-    $this->dateMaj = new \Datetime();
-  }
+    public function __construct()
+    {
+        $this->dateCreation = new \Datetime();
+        $this->dateMaj = new \Datetime();
+    }
 
     /**
      * Get id

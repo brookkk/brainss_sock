@@ -57,12 +57,6 @@ class ExerciceController extends Controller
       $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
 
-
-
-
-
-
-
       $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
         .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
 

@@ -36,7 +36,7 @@ private $annee;
 
 
 /**
-* @Assert\IsTrue(message="Il faut choisir la bonne filière")
+* @Assert\IsTrue(message="Il faut choisir la bonne année/filière")
 */
 public function is_good_annee_filiere(){
     if($this->filiere->getAnnee()->getShort() == $this->annee->getShort())
