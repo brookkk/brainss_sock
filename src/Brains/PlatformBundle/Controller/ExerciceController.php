@@ -128,7 +128,7 @@ public function update_exerciceAction(Request $request, $id)
       $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
       $new=$exercice->getNom().'.html';
-
+if($old!=$new)
       $fs->rename($first_part.$old, $first_part.$new);
 
       return $this->redirectToRoute('BP_show_exercice');

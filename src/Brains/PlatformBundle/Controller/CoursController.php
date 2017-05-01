@@ -53,8 +53,13 @@ class CoursController extends Controller
 
       $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
- $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-        .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html');
+
+$file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
+        .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html';
+ $fs->touch($file);
+
+//fwrite($file, "heyy file");
+
 
         return $this->redirectToRoute('BP_show_cours');
       }
@@ -125,7 +130,7 @@ class CoursController extends Controller
         $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
         $new=$cours->getNom().'.html';
-
+if($old!=$new)
       $fs->rename($first_part.$old, $first_part.$new);
 
 
