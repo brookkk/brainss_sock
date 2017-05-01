@@ -68,7 +68,9 @@ if($request->isMethod('POST')){
         $request->getSession()->getFlashBag()->add('notice', 'Filiere Bien enregistrée.');
 
 $fs = new Filesystem();
-   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$filiere->getAnnee()->getShort().'/'.$filiere->getShort(), 0700);
+   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$filiere->getAnnee()->getShort().'/'.$filiere->getShort().'/exercices', 0700);
+   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$filiere->getAnnee()->getShort().'/'.$filiere->getShort().'/cours', 0700);
+
 
 
         return $this->redirectToRoute('BP_show_filiere');

@@ -36,7 +36,7 @@ class ExerciceController extends Controller
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
     $form = $this->createForm(ExerciceType::class, $exercice);
-    
+
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
     if($request->isMethod('POST')){
@@ -48,7 +48,7 @@ class ExerciceController extends Controller
       $fs = new Filesystem();
       if($form->isValid()   &&     
         $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort() )  
+         .$exercice->getFiliere()->getShort().'/exercices' )  
         ){
         $em= $this->getDoctrine()->getManager();
       $em->persist($exercice);
@@ -64,7 +64,7 @@ class ExerciceController extends Controller
 
 
       $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-       .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
+        .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
 
 
       return $this->redirectToRoute('BP_show_exercice');
@@ -85,10 +85,10 @@ public function show_exerciceAction(Request $request)
   $em= $this  ->getDoctrine()  ->getManager();
 
   $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
-  
+
 
   $listExercices = $repository->findAll();
-  
+
   if (null === $listExercices) {
     throw new NotFoundHttpException("Aucun Exercice na été trouvé");
   }
@@ -103,14 +103,14 @@ public function show_exerciceAction(Request $request)
 
 public function update_exerciceAction(Request $request, $id)
 {
-  
+
   $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
 
   $exercice = $repository->find($id);
 
   $fs = new Filesystem();
   $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-  .$exercice->getFiliere()->getShort() .'/';
+  .$exercice->getFiliere()->getShort() .'/exercices/';
   $old=$exercice->getNom().'.html';
 
   if (null === $exercice) {
@@ -142,13 +142,13 @@ public function update_exerciceAction(Request $request, $id)
 
 
 
-    
+
   }
 
   return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
    'form'=>$form->createView(),
    ));
-  
+
 
 }
 
@@ -157,16 +157,16 @@ public function update_exerciceAction(Request $request, $id)
 public function delete_exerciceAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
-  
+
   $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
 
   $exercice = $repository->find($id);
-  
+
   if (null === $exercice) {
     throw new NotFoundHttpException("Votre exercice na pas été trouvé");
   }
-  
-  
+
+
   $em->remove($exercice);
   $em->flush();
 
@@ -175,12 +175,12 @@ public function delete_exerciceAction(Request $request, $id)
   $fs = new Filesystem();
 
   $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-    .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
+    .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
 
 
   return $this->redirectToRoute('BP_show_exercice');
-  
-  
+
+
 }
 
 public function fileAction()
