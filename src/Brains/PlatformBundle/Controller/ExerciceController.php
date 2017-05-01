@@ -22,184 +22,192 @@ use Brains\PlatformBundle\Entity\Exercice;
 
 class ExerciceController extends Controller
 {
-    public function indexAction()
-    {
-        return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-    }
+  public function indexAction()
+  {
+    return $this->render('BrainsPlatformBundle:Default:index.html.twig');
+  }
 
-    public function n_exerciceAction(Request $request)
-    {
+  public function n_exerciceAction(Request $request)
+  {
 //nouvelle instance de l'entité Année
-$exercice= new Exercice();
+    $exercice= new Exercice();
 
  //too old too long
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
-$form = $this->createForm(ExerciceType::class, $exercice);
- 
+    $form = $this->createForm(ExerciceType::class, $exercice);
+    
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
-if($request->isMethod('POST')){
+    if($request->isMethod('POST')){
 
-    $form->handleRequest($request);
+      $form->handleRequest($request);
 
-    if($form->isValid()){
+
+
+      $fs = new Filesystem();
+      if($form->isValid()   &&     
+        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+         .$exercice->getFiliere()->getShort() )  
+        ){
         $em= $this->getDoctrine()->getManager();
-        $em->persist($exercice);
-        $em->flush();
+      $em->persist($exercice);
+      $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
-
-
-
-$fs = new Filesystem();
+      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
 
-$fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
- .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
 
 
-        return $this->redirectToRoute('BP_show_exercice');
+
+
+
+
+      $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+       .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
+
+
+      return $this->redirectToRoute('BP_show_exercice');
     }
-}
+  }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
- 'form'=>$form->createView(),
-  ));
+  return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
+   'form'=>$form->createView(),
+   ));
 
-    }
+}
 
 
     //Action pour Afficher toutes les filières existantes
-  public function show_exerciceAction(Request $request)
-  {
-$em= $this  ->getDoctrine()  ->getManager();
+public function show_exerciceAction(Request $request)
+{
+  $em= $this  ->getDoctrine()  ->getManager();
 
-    $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
-    
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+  
 
-    $listExercices = $repository->findAll();
- 
-    if (null === $listExercices) {
-      throw new NotFoundHttpException("Aucun Exercice na été trouvé");
-        }
-
-
-
-    return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-      'listExercices' => $listExercices  ) );
+  $listExercices = $repository->findAll();
+  
+  if (null === $listExercices) {
+    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
   }
 
 
 
-         public function update_exerciceAction(Request $request, $id)
-    {
-      
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
-
-$exercice = $repository->find($id);
-
- $fs = new Filesystem();
-$first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-    .$exercice->getFiliere()->getShort() .'/';
-    $old=$exercice->getNom().'.html';
-
-if (null === $exercice) {
-      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
-    }
-
-
-$form = $this->createForm(ExerciceType::class, $exercice);
+  return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
+    'listExercices' => $listExercices  ) );
+}
 
 
 
-if($request->isMethod('POST')){
+public function update_exerciceAction(Request $request, $id)
+{
+  
+  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+
+  $exercice = $repository->find($id);
+
+  $fs = new Filesystem();
+  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+  .$exercice->getFiliere()->getShort() .'/';
+  $old=$exercice->getNom().'.html';
+
+  if (null === $exercice) {
+    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+  }
+
+
+  $form = $this->createForm(ExerciceType::class, $exercice);
+
+
+
+  if($request->isMethod('POST')){
 
     $form->handleRequest($request);
 
     if($form->isValid()){
-        $em= $this->getDoctrine()->getManager();
-        $em->persist($exercice);
-        $em->flush();
+      $em= $this->getDoctrine()->getManager();
+      $em->persist($exercice);
+      $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
-$new=$exercice->getNom().'.html';
+      $new=$exercice->getNom().'.html';
 
-$fs->rename($first_part.$old, $first_part.$new);
+      $fs->rename($first_part.$old, $first_part.$new);
 
-        return $this->redirectToRoute('BP_show_exercice');
+      return $this->redirectToRoute('BP_show_exercice');
     }
 
 
 
- 
+    
+  }
+
+  return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
+   'form'=>$form->createView(),
+   ));
+  
+
 }
 
-return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
- 'form'=>$form->createView(),
-  ));
- 
-
-    }
 
 
+public function delete_exerciceAction(Request $request, $id)
+{
+  $em= $this->getDoctrine()->getManager();
+  
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
 
-         public function delete_exerciceAction(Request $request, $id)
-    {
-      $em= $this->getDoctrine()->getManager();
-      
-$repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+  $exercice = $repository->find($id);
+  
+  if (null === $exercice) {
+    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+  }
+  
+  
+  $em->remove($exercice);
+  $em->flush();
 
-$exercice = $repository->find($id);
- 
-if (null === $exercice) {
-      throw new NotFoundHttpException("Votre exercice na pas été trouvé");
-    }
- 
-        
-        $em->remove($exercice);
-        $em->flush();
+  $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
 
-        $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
+  $fs = new Filesystem();
 
-        $fs = new Filesystem();
-
-$fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+  $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
     .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
 
 
-        return $this->redirectToRoute('BP_show_exercice');
- 
- 
-    }
+  return $this->redirectToRoute('BP_show_exercice');
+  
+  
+}
 
-     public function fileAction()
-    {
-$fs = new Filesystem();
+public function fileAction()
+{
+  $fs = new Filesystem();
 
 //try {
     //$fs->mkdir('/hahahoho/');
-    $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
+  $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
     //$fs->touch('test_file.txt');
-      return $this->render('BrainsPlatformBundle:Default:index.html.twig');
+  return $this->render('BrainsPlatformBundle:Default:index.html.twig');
     /*
 } catch (IOExceptionInterface $e) {
     echo "An error occurred while creating your directory at ".$e->getPath();
 }
 
 
-        return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
+return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
 
 
 
 
-    }
+}
 
 
 
- }
+}
 
 
 

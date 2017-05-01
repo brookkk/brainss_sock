@@ -1,8 +1,11 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
+use Brains\PlatformBundle\Entity\Annee;
+
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Exercice
@@ -17,18 +20,29 @@ class Exercice
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
    * @ORM\JoinColumn(nullable=false)
    */
-  
-    private $annee;
+
+private $annee;
+
+
 
 
  /**
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
    * @ORM\JoinColumn(nullable=false)
    */
-  
-    private $filiere;
+
+ private $filiere;
 
 
+
+/**
+* @Assert\IsTrue(message="Il faut choisir la bonne filière")
+*/
+public function is_good_annee_filiere(){
+    if($this->filiere->getAnnee()->getShort() == $this->annee->getShort())
+        return true;
+    else return false;    
+}
 
     /**
      * @var int
@@ -53,11 +67,11 @@ class Exercice
      */
     private $public;
 
- 
 
 
 
-   
+
+
 
     /**
      * @var string
@@ -66,7 +80,7 @@ class Exercice
      */
     private $auteur;
 
-  
+
 
     /**
      * @var \DateTime
@@ -84,11 +98,11 @@ class Exercice
 
 
 //Date par défaut lors de la creation d'un new Exo
-public function __construct()
-  {
-    $this->date_creation = new \Datetime();
-    $this->dateMaj = new \Datetime();
-  }
+    public function __construct()
+    {
+        $this->date_creation = new \Datetime();
+        $this->dateMaj = new \Datetime();
+    }
 
 
     /**
@@ -221,7 +235,7 @@ public function __construct()
         return $this->auteur;
     }
 
-     
+
     
     /**
      * Set dateCreation
