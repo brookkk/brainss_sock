@@ -53,13 +53,11 @@ if($request->isMethod('POST')){
 
 
 $fs = new Filesystem();
- /*  $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
- .$exercice->getFiliere()->getShort() .'/'.$exercice->getShort().'.html');
-*/
+
 
 $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
  .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
- // 'file.html');
+
 
         return $this->redirectToRoute('BP_show_exercice');
     }
@@ -102,7 +100,10 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 $exercice = $repository->find($id);
 
- 
+ $fs = new Filesystem();
+$first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+    .$exercice->getFiliere()->getShort() .'/';
+    $old=$exercice->getNom().'.html';
 
 if (null === $exercice) {
       throw new NotFoundHttpException("Votre exercice na pas été trouvé");
@@ -124,7 +125,9 @@ if($request->isMethod('POST')){
 
         $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
+$new=$exercice->getNom().'.html';
 
+$fs->rename($first_part.$old, $first_part.$new);
 
         return $this->redirectToRoute('BP_show_exercice');
     }
@@ -160,6 +163,12 @@ if (null === $exercice) {
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
+
+        $fs = new Filesystem();
+
+$fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+    .$exercice->getFiliere()->getShort() .'/'.$exercice->getNom().'.html');
+
 
         return $this->redirectToRoute('BP_show_exercice');
  
