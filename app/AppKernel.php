@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Brains\UserBundle\BrainsUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new KMS\FroalaEditorBundle\KMSFroalaEditorBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         ];
 
         
