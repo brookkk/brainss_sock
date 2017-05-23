@@ -23,6 +23,8 @@ framework:
     csrf_protection: ~
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
+    serializer:
+        enabled: true
     templating:
         engines: ['twig']
     default_locale: '%locale%'
@@ -88,3 +90,19 @@ kms_froala_editor:
     toolbarInline: true
     tableColors: [ "#FFFFFF", "#FF0000" ]
     saveParams: { "id" : "myEditorField" }
+
+fos_rest:
+    routing_loader:
+        default_format: json
+    format_listener: true
+    body_converter:
+        enabled: true
+    view:
+        formats: { json: true, xml: false, rss: false }
+        view_response_listener: force
+    serializer:
+        serialize_null: true
+
+sensio_framework_extra:
+    view: { annotations: true }
+    request: { converters: true }
