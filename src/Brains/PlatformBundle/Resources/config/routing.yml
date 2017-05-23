@@ -58,3 +58,8 @@ BP_delete_cours:
 BP_file:
     path:     /file
     defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }
+BP_api:    
+    resource: "@BrainsPlatformBundle/Controller/ApiController.php"
+    prefix:    /api/
+    defaults: {_format: json}
+    type:     annotation
