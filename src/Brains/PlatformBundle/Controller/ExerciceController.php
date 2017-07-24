@@ -56,12 +56,16 @@ class ExerciceController extends Controller
 
       $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
+  $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
+      $fs->touch($new_file_path);
 
-      $fs->touch($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-        .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
+          $file = fopen($new_file_path, 'a+');
+          fputs($file, $exercice->getContenu() );
 
 
-      return $this->redirectToRoute('BP_show_exercice');
+
+          return $this->redirectToRoute('BP_show_exercice');
     }
   }
 
