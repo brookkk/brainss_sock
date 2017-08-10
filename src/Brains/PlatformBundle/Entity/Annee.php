@@ -1,6 +1,9 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
+use Brains\PlatformBundle\Entity\Exercice;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,6 +15,27 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Annee
 {
+
+
+
+    /**
+    * @var Collection $exercices
+   * @ORM\ORMOneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee")
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+private $exercices;
+
+   /**
+     * Get exercices
+     *
+     * @return string
+     */
+    public function getExercices()
+    {
+        return $this->exercices;
+    }
+
     /**
      * @var int
      *

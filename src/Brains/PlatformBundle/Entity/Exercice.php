@@ -17,7 +17,7 @@ class Exercice
 {
 
 /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="exercices")
    * @ORM\JoinColumn(nullable=false)
    */
 

@@ -84,10 +84,31 @@ class ApiController extends Controller
 
 
 
+    /**
+     * @Rest\Get("/annees", name="annees_list")
+     * @Rest\View()
+     */
+    public function anneesListAction()
+    {
+        $annees = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Annee')->findAll();
+
+        return $annees;
+    }
 
 
+    /**
+     * @Rest\Get(
+     *     path = "/annees/{id}",
+     *     name = "annee_show",
+     *     requirements = {"id"="\d+"}
+     * )
+     * @Rest\View
+     */
 
-
+    public function anneeShowAction(Annee $annee)
+    {
+        return $annee;
+    }
 
 
 
