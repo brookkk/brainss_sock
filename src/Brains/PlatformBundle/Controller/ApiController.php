@@ -112,6 +112,34 @@ class ApiController extends Controller
 
 
 
+      /**
+     * @Rest\Get("/filieres", name="filieres_list")
+     * @Rest\View()
+     */
+    public function fiflieresListAction()
+    {
+        $filieres = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Filiere')->findAll();
+
+        return $filieres;
+    }
+
+
+    /**
+     * @Rest\Get(
+     *     path = "/filieres/{id}",
+     *     name = "filiere_show",
+     *     requirements = {"id"="\d+"}
+     * )
+     * @Rest\View
+     */
+
+    public function filiereShowAction(Filiere $filiere)
+    {
+        return $filiere;
+    }
+
+
+
 
 
 }

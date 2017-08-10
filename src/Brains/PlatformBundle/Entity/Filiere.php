@@ -1,7 +1,7 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
-
+use Brains\PlatformBundle\Entity\Exercice;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
