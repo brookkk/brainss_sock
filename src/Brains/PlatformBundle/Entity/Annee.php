@@ -19,18 +19,31 @@ class Annee
 
 
     /**
-    * @var Collection $exercices
-   * @ORM\ORMOneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee")
-   * @ORM\JoinColumn(nullable=false)
+    * 
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee")
+   * 
    */
 
 private $exercices;
 
-   /**
-     * Get exercices
-     *
-     * @return string
-     */
+ 
+  public function __construct()
+  {
+    $this->exercices = new ArrayCollection();
+    // ...
+  }
+
+ public function addExercices(Exercice $exercice)
+  {
+    $this->exercices[] = $exercice;
+  }
+
+  public function removeExercices(Exercice $exercice)
+  {
+    $this->exercices->removeElement($exercice);
+  }
+
+
     public function getExercices()
     {
         return $this->exercices;

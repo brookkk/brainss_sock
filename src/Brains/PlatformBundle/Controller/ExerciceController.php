@@ -43,7 +43,7 @@ class ExerciceController extends Controller
 
       $form->handleRequest($request);
 
-
+      $exercice->getAnnee()->addExercices($exercice);
 
       $fs = new Filesystem();
       if($form->isValid()   &&     
