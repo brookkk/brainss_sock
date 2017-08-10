@@ -61,6 +61,9 @@ if($request->isMethod('POST')){
     $form->handleRequest($request);
 
     if($form->isValid()){
+
+      $filiere->getAnnee()->addFiliere($filiere);
+      $filiere->setAnnee($filiere->getAnnee());
         $em= $this->getDoctrine()->getManager();
         $em->persist($filiere);
         $em->flush();

@@ -2,6 +2,7 @@
 
 namespace Brains\PlatformBundle\Entity;
 use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Filiere;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
@@ -30,6 +31,7 @@ private $exercices;
   public function __construct()
   {
     $this->exercices = new ArrayCollection();
+    $this->filieres = new ArrayCollection();
     // ...
   }
 
@@ -48,6 +50,33 @@ private $exercices;
     {
         return $this->exercices;
     }
+
+
+/**
+    * 
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Filiere", mappedBy="annee")
+   * 
+   */
+
+private $filieres;
+
+
+ public function addFiliere(Filiere $filiere)
+  {
+    $this->filieres[] = $filiere;
+  }
+
+  public function removeFiliere(Filiere $filiere)
+  {
+    $this->filieres->removeElement($filiere);
+  }
+
+
+    public function getFilieres()
+    {
+        return $this->filieres;
+    }
+
 
     /**
      * @var int
