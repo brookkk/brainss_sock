@@ -26,6 +26,19 @@ class Filiere
    */
   private $exercices;
 
+
+ public function addExercices(Exercice $exercice)
+  {
+    $this->exercices[] = $exercice;
+  }
+
+  public function removeExercices(Exercice $exercice)
+  {
+    $this->exercices->removeElement($exercice);
+  }
+
+
+
   /**
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
    * @ORM\JoinColumn(nullable=false)
