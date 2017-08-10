@@ -40,7 +40,7 @@ class Filiere
 
 
   /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
+   * @ORM\oneToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
    * @ORM\JoinColumn(nullable=false)
    */
   

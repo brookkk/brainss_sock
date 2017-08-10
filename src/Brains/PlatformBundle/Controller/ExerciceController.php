@@ -32,6 +32,7 @@ class ExerciceController extends Controller
 //nouvelle instance de l'entité Année
     $exercice= new Exercice();
 
+
  //too old too long
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
@@ -45,6 +46,10 @@ class ExerciceController extends Controller
 
       $exercice->getAnnee()->addExercices($exercice);
       $exercice->getFiliere()->addExercices($exercice);
+
+      $exercice->setAnnee($exercice->getAnnee());
+      $exercice->setFiliere($exercice->getFiliere());
+
 
 
       $fs = new Filesystem();
