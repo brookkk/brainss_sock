@@ -86,7 +86,7 @@ public function show_contributionAction(Request $request)
 
 
   return $this->render('BrainsPlatformBundle:Show:contribution.html.twig', array(
-    'listExercices' => $listContributions  ) );
+    'listContributions' => $listContributions  ) );
 }
 
 

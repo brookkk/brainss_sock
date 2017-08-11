@@ -1,0 +1,52 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_contribution') }}">Contributions</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Contributions</h3>
+
+ 
+  
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Public</th>
+        <th>Auteur</th>
+        <th>Creation</th>
+        <th>Annee</th>
+        <th>Filiere</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+    <tbody>
+
+  {% for contributions in listContributions %}
+
+  <tr>
+  <td>   {{ contributions.nom }} </td> 
+  <td> {{ contributions.public }} </td>
+  <td> {{ contributions.auteur }} </td>
+  <td> {{ contributions.validateur }} </td>
+    <td> Le {{ contributions.date_creation|date("d/m/Y, à h:i a")   }} </td>
+  <td> {{ contributions.filiere.short }} </td>
+
+   <td> <a href="{{ path('BP_update_exercice',{'id': contributions.id}) }}"><span class="glyphicon glyphicon-check"></span> </a> &nbsp 
+         </td>
+
+    <tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('BP_n_contribution') }}" role="button">Ajouter une Contribution</a>
+
+
+{% endblock %}
