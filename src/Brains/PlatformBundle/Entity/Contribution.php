@@ -75,7 +75,7 @@ class Contribution
      *
      * @ORM\Column(name="date_creation", type="datetimetz")
      */
-    private $dateCreation;
+    private $date_creation;
 
 
     /**

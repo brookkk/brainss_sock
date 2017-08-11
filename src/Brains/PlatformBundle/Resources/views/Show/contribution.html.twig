@@ -35,7 +35,7 @@
   <td> {{ contributions.public }} </td>
   <td> {{ contributions.auteur }} </td>
   <td> {{ contributions.validateur }} </td>
-    <td> Le {{ contributions.date_creation|date("d/m/Y, à h:i a")   }} </td>
+    <td> Le {{ contributions.dateCreation|date("d/m/Y, à h:i a")   }} </td>
   <td> {{ contributions.filiere.short }} </td>
 
    <td> <a href="{{ path('BP_update_exercice',{'id': contributions.id}) }}"><span class="glyphicon glyphicon-check"></span> </a> &nbsp 
