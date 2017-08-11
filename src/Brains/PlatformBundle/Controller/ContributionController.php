@@ -29,12 +29,9 @@ class ContributionController extends Controller
 
   public function n_contributionAction(Request $request)
   {
-//nouvelle instance de l'entité Année
-    $contribution= new Contribution();
+     $contribution= new Contribution();
 
 
- //too old too long
-//$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
     $form = $this->createForm(ContributionType::class, $contribution);
 
@@ -51,23 +48,13 @@ class ContributionController extends Controller
 
 
       //$fs = new Filesystem();
-      if($form->isValid()  /* &&     
-        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices'*/
-        ){
+      if($form->isValid()   ){
         $em= $this->getDoctrine()->getManager();
       $em->persist($contribution);
       $em->flush();
 
       $request->getSession()->getFlashBag()->add('notice', 'Contribution Bien enregistré.');
 
-  /*$new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
-      $fs->touch($new_file_path);
-
-          $file = fopen($new_file_path, 'a+');
-          fputs($file, $exercice->getContenu() );
-*/
 
 
           return $this->redirectToRoute('BP_show_exercice');
@@ -83,23 +70,23 @@ class ContributionController extends Controller
 
 
     //Action pour Afficher toutes les filières existantes
-public function show_exerciceAction(Request $request)
+public function show_contributionAction(Request $request)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Contribution');
 
 
-  $listExercices = $repository->findAll();
+  $listContributions = $repository->findAll();
 
-  if (null === $listExercices) {
-    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+  if (null === $listContributions) {
+    throw new NotFoundHttpException("Aucune Contribution na été trouvée");
   }
 
 
 
-  return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-    'listExercices' => $listExercices  ) );
+  return $this->render('BrainsPlatformBundle:Show:contribution.html.twig', array(
+    'listExercices' => $listContributions  ) );
 }
 
 
