@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-use Brains\PlatformBundle\Form\ExerciceType;
+use Brains\PlatformBundle\Form\ContributionType;
 
-use Brains\PlatformBundle\Entity\Annee;
+
 use Brains\PlatformBundle\Entity\Filiere;
-use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Contribution;
 
 //use Symfony\Component\Filesystem\Filesystem;
 //use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
