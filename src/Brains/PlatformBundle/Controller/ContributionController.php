@@ -27,16 +27,16 @@ class ContributionController extends Controller
     return $this->render('BrainsPlatformBundle:Default:index.html.twig');
   }
 
-  public function n_exerciceAction(Request $request)
+  public function n_contributionAction(Request $request)
   {
 //nouvelle instance de l'entité Année
-    $exercice= new Exercice();
+    $contribution= new Contribution();
 
 
  //too old too long
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
-    $form = $this->createForm(ExerciceType::class, $exercice);
+    $form = $this->createForm(ContributionType::class, $contribution);
 
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
@@ -44,32 +44,30 @@ class ContributionController extends Controller
 
       $form->handleRequest($request);
 
-      $exercice->getAnnee()->addExercices($exercice);
-      $exercice->getFiliere()->addExercices($exercice);
+      // $contribution->getFiliere()->addExercices($exercice);
 
-      $exercice->setAnnee($exercice->getAnnee());
-      $exercice->setFiliere($exercice->getFiliere());
+       //$exercice->setFiliere($exercice->getFiliere());
 
 
 
-      $fs = new Filesystem();
-      if($form->isValid()   &&     
+      //$fs = new Filesystem();
+      if($form->isValid()  /* &&     
         $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices' )  
+         .$exercice->getFiliere()->getShort().'/exercices'*/ )  
         ){
         $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
+      $em->persist($contribution);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+      $request->getSession()->getFlashBag()->add('notice', 'Contribution Bien enregistré.');
 
-  $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+  /*$new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
       .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
       $fs->touch($new_file_path);
 
           $file = fopen($new_file_path, 'a+');
           fputs($file, $exercice->getContenu() );
-
+*/
 
 
           return $this->redirectToRoute('BP_show_exercice');
@@ -77,7 +75,7 @@ class ContributionController extends Controller
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:contribution.html.twig', array(
    'form'=>$form->createView(),
    ));
 
