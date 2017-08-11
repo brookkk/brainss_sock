@@ -57,7 +57,7 @@ class ContributionController extends Controller
 
 
 
-          return $this->redirectToRoute('BP_show_exercice');
+          return $this->redirectToRoute('BP_show_contribution');
     }
   }
 
