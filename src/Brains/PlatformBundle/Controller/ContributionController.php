@@ -53,7 +53,7 @@ class ContributionController extends Controller
       //$fs = new Filesystem();
       if($form->isValid()  /* &&     
         $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices'*/ )  
+         .$exercice->getFiliere()->getShort().'/exercices'*/
         ){
         $em= $this->getDoctrine()->getManager();
       $em->persist($contribution);
