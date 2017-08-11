@@ -2,6 +2,7 @@
 
 namespace Brains\PlatformBundle\Entity;
 use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Contribution;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -27,6 +28,9 @@ class Filiere
   private $exercices;
 
 
+
+
+
  public function addExercices(Exercice $exercice)
   {
     $this->exercices[] = $exercice;
@@ -38,6 +42,10 @@ class Filiere
   }
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Brains\PlatformBundle\Entity\Contribution", cascade={"persist"})
+     */
+    private $contributions;
 
   /**
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
@@ -75,6 +83,8 @@ class Filiere
   {
      $this->cours = new ArrayCollection();
      $this->exercices = new ArrayCollection();
+      $this->contributions = new ArrayCollection();
+
 
   }
 

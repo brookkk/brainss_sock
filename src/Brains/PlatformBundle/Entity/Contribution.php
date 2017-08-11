@@ -1,6 +1,8 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
+use Brains\PlatformBundle\Entity\Filiere;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,6 +14,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contribution
 {
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    private $filiere;
+
+
+
     /**
      * @var int
      *
@@ -216,6 +230,32 @@ class Contribution
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+
+
+    /**
+     * Set filiere
+     *
+     * @param string $filiere
+     *
+     * @return Exercice
+     */
+    public function setFiliere(Filiere $filiere)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+    /**
+     * Get filiere
+     *
+     * @return string
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
     }
 }
 
