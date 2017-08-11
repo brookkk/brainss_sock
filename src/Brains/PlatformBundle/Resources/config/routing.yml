@@ -63,3 +63,6 @@ BP_api:
     prefix:    /api/
     defaults: {_format: json}
     type:     annotation
+BP_n_contribution:
+    path:     /n_contribution
+    defaults: { _controller: BrainsPlatformBundle:Contribution:n_contribution }
