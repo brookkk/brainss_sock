@@ -257,5 +257,12 @@ class Contribution
     {
         return $this->filiere;
     }
+
+
+    //Date par défaut lors de la creation d'un new Exo
+    public function __construct()
+    {
+        $this->dateCreation = new \Datetime();
+    }
 }
 
