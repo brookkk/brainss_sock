@@ -6,6 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
+use Brains\PlatformBundle\Entity\Filiere;
+
+
+
 class ContributionType extends AbstractType
 {
     /**
@@ -13,8 +18,16 @@ class ContributionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('contenu')->add('public')->add('auteur')->add('validateur')->add('dateCreation');
-    }
+        $builder->add('nom')->add('public')->add('auteur')->add('validateur')->add('filiere', EntityType::class, array(
+                'class'        => 'BrainsPlatformBundle:Filiere',
+                'choice_label' => 'nome',
+                'multiple'     => false,
+                ))->add('contenu', FroalaEditorType::class)->add('Sauvegarder',      SubmitType::class);
+
+
+            
+             
+     }
     
     /**
      * {@inheritdoc}
