@@ -61,6 +61,14 @@ public function is_good_annee_filiere(){
     private $nom;
 
 
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255)
+     */
+    private $link;
+
+
      /**
      * @var string
      *
@@ -170,6 +178,13 @@ public function is_good_annee_filiere(){
         return $this;
     }
 
+      public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $link;
+    }
+
     /**
      * Get nom
      *
@@ -178,6 +193,11 @@ public function is_good_annee_filiere(){
     public function getNom()
     {
         return $this->nom;
+    }
+
+     public function getLink()
+    {
+        return $this->link;
     }
 
     /**
