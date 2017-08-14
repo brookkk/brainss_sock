@@ -61,6 +61,9 @@ class ExerciceController extends Controller
         $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
       .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
       $fs->touch($new_file_path);
+
+      //$link = explode("")
+
         $exercice->setLink($new_file_path);
         $em= $this->getDoctrine()->getManager();
       $em->persist($exercice);
