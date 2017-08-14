@@ -1,0 +1,17 @@
+
+<input type="text" ng-model="query"/>
+<select ng-model="order">
+    <option value="username">organiser par nom</option>
+    <option value="content">organiser par contenu</option>
+
+</select>
+
+
+    <div ng-repeat="comment in comments | filter:{content:query} | orderBy:order">
+
+        <p> <strong>{{comment.username }}</strong> <br/>  {{comment.content}}
+        </p>
+    </div>
+
+
+
