@@ -148,6 +148,10 @@ public function update_exerciceAction(Request $request, $id)
       $new=$exercice->getNom().'.html';
 if($old!=$new)
       $fs->rename($first_part.$old, $first_part.$new);
+    $exercice->setLink($first_part.$new);
+    $file = fopen($first_part.$new, 'w');
+
+          fputs($file, $exercice->getContenu() );
 
       return $this->redirectToRoute('BP_show_exercice');
     }
