@@ -48,7 +48,7 @@ class Filiere
     private $contributions;
 
   /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="filieres")
    * @ORM\JoinColumn(nullable=false)
    */
   
