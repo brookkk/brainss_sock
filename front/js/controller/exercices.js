@@ -3,8 +3,8 @@
         var post = PostFactory.getPost($routeParams.id).then(function(post){
             $scope.loading=false;
         //console.log($routeParams.id);
-        console.log("post exos : " + post.exercices);
-        console.log("post exos null : " + (post.exercices !==null));
+        //console.log("post exos : " + post.exercices);
+        //console.log("post exos null : " + (post.exercices !==null));
 
        // if(post.annee.short === post.short)
        if(post.exercices !=""){
