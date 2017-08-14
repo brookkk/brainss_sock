@@ -13,15 +13,15 @@
 <a href="#/">retour aux Filieres</a>
 
 
-<h1>{{nom}}</h1>
 
- 
-
-   
    <div ng-repeat="exercice in exercices" >
+
+<h1>{{exercice.nom}}</h1>
+		Par : {{exercice.auteur}}<br>
+
+
 	<p>
-		Nom de l'exo : {{exercice.nom}}<br>
-		Auteur de l'exo : {{exercice.auteur}}<br>
+		<br><br><br>
 		exo créé le  : {{exercice.date_creation}}<br>
 		lien de l'exo  : {{exercice.link}}<br>
 
