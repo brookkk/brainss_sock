@@ -1,45 +1,10 @@
-<div ng-show="loading"><img src="images/loader.gif"></div>
-<div ng-hide="loading">
-<!--
-
-<select ng-model="order">
-	<option value="username">organiser par nom</option>
-	<option value="content">organiser par contenu</option>
-
-</select>
-
--->
-
-<a href="#/">retour aux Filieres</a>
+<h1>{{exercice.nom}}</h1>
+Par : {{exercice.auteur}}<br>
 
 
-<h1>{{nom}}</h1>
+<p>
+	<br><br><br>
+	exo créé le  : {{exercice.date_creation}}<br>
+	lien de l'exo  : {{exercice.link}}<br>
 
- 
-<div ng-comment>  hello world</div>
-
-   
-   <div ng-repeat="exercice in exercices" >
-
-<div ng:exo></div>
-
-
-	<p>
-		Nom de l'exo : {{exercice.nom}}<br>
-		Contenu de l'exo : {{exercice.contenu}}<br>
-		Auteur de l'exo : {{exercice.auteur}}<br>
-		exo créé le  : {{exercice.date_creation}}<br>
-		et maj le  : {{exercice.date_maj}}<br>
-	</p>
-
-
-	<a href="#/exercices/{{post.id}}/contenu">Contenu</a>
-
-	<hr>
-</div>
-
- 
-
-
-</div>
-
+</p>

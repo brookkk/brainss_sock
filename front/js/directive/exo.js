@@ -1,6 +1,6 @@
 app.directive('ngExo', function(){
     return {
-        template :"	"
+        templateUrl :"./partials/_exo.html	"
         
 };
 })
