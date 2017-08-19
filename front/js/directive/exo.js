@@ -15,7 +15,9 @@ app.directive('time', function(){
         scope:{
 
         },
-        link: function(scope, )
+        link: function(scope, element, attrs){
+            scope.time = "Maintenant"
+        }
     }
 
 })
