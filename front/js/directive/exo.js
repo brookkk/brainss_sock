@@ -8,7 +8,7 @@ app.directive('ngExo', function(){
         };
 })
 
-app.directive('time', function(){
+app.directive('time', function(dateFilter, $interval){
     return{
         restrict: 'E',
         template: '{{time}}',
@@ -16,7 +16,7 @@ app.directive('time', function(){
 
         },
         link: function(scope, element, attrs){
-            scope.time = "Maintenant"
+            scope.time = dateFilter(new Date(), 'hh:mm:ss');
         }
     }
 
