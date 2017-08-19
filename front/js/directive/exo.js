@@ -11,7 +11,11 @@ app.directive('ngExo', function(){
 app.directive('time', function(){
     return{
         restrict: 'E',
-        template: '{{time}}'
+        template: '{{time}}',
+        scope:{
+
+        },
+        link: function(scope, )
     }
 
 })
