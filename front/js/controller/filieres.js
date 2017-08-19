@@ -1,4 +1,4 @@
-app.controller('PostsCtrl', function($scope, PostFactory){
+app.controller('FilieresCtrl', function($scope, PostFactory){
 
         $scope.loading = true;
         $scope.posts = PostFactory.getPosts().then(function(posts){

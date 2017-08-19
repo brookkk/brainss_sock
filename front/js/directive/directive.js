@@ -20,6 +20,7 @@ app.directive('time', function(dateFilter, $interval){
 
             element.on('$destroy', function(){
                 $interval.cancel(interval);
+
             })
 
             interval = $interval(function(){
