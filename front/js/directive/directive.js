@@ -31,3 +31,15 @@ app.directive('time', function(dateFilter, $interval){
     }
 
 })
+
+app.directive('ngTabs', function(){
+
+    return{
+        restrict: 'E',
+        transclude: 'true',
+        scope: {},
+        controller: function(){
+            
+        }
+    }
+})
