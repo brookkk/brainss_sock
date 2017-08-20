@@ -1,10 +1,13 @@
 <div class="tabs">
 	<ul class="nav nav-tabs">
   <li><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#home" data-toggle="tab">Home</a></li>
-  <li><a href="#home" data-toggle="tab">Home</a></li>
+  <li><a href="#home" data-toggle="tab">house</a></li>
+ <li ng-repeat="tab in tabs">
+
+ <a href="" data-toggle="tab">{{tabs.nome}}</a>
+
+</li>
+  
 </ul>
 
 <div class="tabs-content" ng-transclude></div>

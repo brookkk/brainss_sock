@@ -59,7 +59,7 @@ app.directive('ngTab', function(){
         templateUrl:'partials/tab.html',
         require: '^ngTabs',
         link: function(scope, element, attrs, tabsCtrl){
-            this.add(scope);
+            tabsCtrl.add(scope);
         }
     }
 })
