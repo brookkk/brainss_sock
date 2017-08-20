@@ -38,6 +38,7 @@ app.directive('ngTabs', function(){
         restrict: 'E',
         transclude: true,
         scope: {},
+        templateUrl:'partials/tabs.html',
         controller: function(){
             this.clic = function(title){
                 alert(title);
@@ -54,6 +55,7 @@ app.directive('ngTab', function(){
         scope: {
             title: '@'
         },
+        templateUrl:'partials/tab.html',
         require: '^ngTabs',
         link: function(scope, element, attrs, tabsCtrl){
             element.click(function(){
