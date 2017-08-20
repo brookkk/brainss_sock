@@ -39,7 +39,19 @@ app.directive('ngTabs', function(){
         transclude: 'true',
         scope: {},
         controller: function(){
-            
-        }
+
+            }
+    }
+})
+
+app.directive('ngTab', function(){
+
+    return{
+        restrict: 'E',
+        transclude: 'true',
+        scope: {
+            title: '@'
+        },
+        require: '^ngTabs'
     }
 })
