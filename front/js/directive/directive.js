@@ -39,10 +39,11 @@ app.directive('ngTabs', function(){
         transclude: true,
         scope: {},
         templateUrl:'partials/tabs.html',
-        controller: function(){
-            this.clic = function(title){
-                alert(title);
-            }
+        controller: function($scope){
+            $scope.tabs = [];
+           this.add=function(tab){
+
+           }
         }
     }
 })
@@ -58,9 +59,7 @@ app.directive('ngTab', function(){
         templateUrl:'partials/tab.html',
         require: '^ngTabs',
         link: function(scope, element, attrs, tabsCtrl){
-            element.click(function(){
-                tabsCtrl(scope.title);
-            })
+            this.add(scope);
         }
     }
 })
