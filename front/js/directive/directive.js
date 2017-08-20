@@ -31,12 +31,12 @@ app.directive('time', function(dateFilter, $interval){
     }
 
 })
-/*
+
 app.directive('ngTabs', function(){
 
     return{
         restrict: 'E',
-        transclude: 'true',
+        transclude: true,
         scope: {},
         controller: function(){
             this.clic = function(title){
@@ -50,7 +50,7 @@ app.directive('ngTab', function(){
 
     return{
         restrict: 'E',
-        transclude: 'true',
+        transclude: true,
         scope: {
             title: '@'
         },
@@ -61,4 +61,4 @@ app.directive('ngTab', function(){
             })
         }
     }
-})*/
+})
