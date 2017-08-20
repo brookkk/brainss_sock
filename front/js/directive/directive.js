@@ -42,7 +42,7 @@ app.directive('ngTabs', function(){
         controller: function($scope){
             $scope.tabs = [];
            this.add=function(tab){
-
+                $scope.tabs.push(tab);
            }
         }
     }
