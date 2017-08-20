@@ -39,8 +39,8 @@ app.directive('ngTabs', function(){
         transclude: 'true',
         scope: {},
         controller: function($scope){
-            $scope.clic = function(){
-                alert
+            $scope.clic = function(title){
+                alert(title);
             }
         }
     }
@@ -56,7 +56,9 @@ app.directive('ngTab', function(){
         },
         require: '^ngTabs'
         link: function(scope, element, attrs, tabsCtrl){
-
+            element.click(function(){
+                tabsCtrl(scope.title);
+            })
         }
     }
 })
