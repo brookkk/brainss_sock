@@ -38,9 +38,11 @@ app.directive('ngTabs', function(){
         restrict: 'E',
         transclude: 'true',
         scope: {},
-        controller: function(){
-
+        controller: function($scope){
+            $scope.clic = function(){
+                alert
             }
+        }
     }
 })
 
