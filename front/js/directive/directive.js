@@ -53,5 +53,8 @@ app.directive('ngTab', function(){
             title: '@'
         },
         require: '^ngTabs'
+        link: function(scope, element, attrs, tabsCtrl){
+
+        }
     }
 })
