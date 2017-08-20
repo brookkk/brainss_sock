@@ -60,6 +60,7 @@ app.directive('ngTab', function(){
         require: '^ngTabs',
         link: function(scope, element, attrs, tabsCtrl){
             tabsCtrl.add(scope);
+            console.log(scope);
         }
     }
 })
