@@ -31,15 +31,15 @@ app.directive('time', function(dateFilter, $interval){
     }
 
 })
-
+/*
 app.directive('ngTabs', function(){
 
     return{
         restrict: 'E',
         transclude: 'true',
         scope: {},
-        controller: function($scope){
-            $scope.clic = function(title){
+        controller: function(){
+            this.clic = function(title){
                 alert(title);
             }
         }
@@ -54,11 +54,11 @@ app.directive('ngTab', function(){
         scope: {
             title: '@'
         },
-        require: '^ngTabs'
+        require: '^ngTabs',
         link: function(scope, element, attrs, tabsCtrl){
             element.click(function(){
                 tabsCtrl(scope.title);
             })
         }
     }
-})
+})*/
