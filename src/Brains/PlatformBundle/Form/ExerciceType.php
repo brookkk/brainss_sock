@@ -40,7 +40,7 @@ class ExerciceType extends AbstractType
     {
         $builder
             ->add('nom',   TextType::class)
-            ->add('public',   TextType::class)
+            ->add('public')
             ->add('auteur',   TextType::class)
             ->add('annee', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Annee',

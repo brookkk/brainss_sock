@@ -79,7 +79,7 @@ public function is_good_annee_filiere(){
     /**
      * @var string
      *
-     * @ORM\Column(name="public", type="string", length=255)
+     * @ORM\Column(name="public", type="boolean")
      */
     private $public;
 
