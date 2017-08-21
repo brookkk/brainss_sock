@@ -1,36 +1,23 @@
 <div ng-show="loading"><img src="images/loader.gif"></div>
 <div ng-hide="loading">
-<!--
+ 
 
-<select ng-model="order">
-	<option value="username">organiser par nom</option>
-	<option value="content">organiser par contenu</option>
-
-</select>
-
--->
+ 
 
 <a href="#/">retour aux Filieres</a>
 
 	<time></time>
+<br/>
+<br/>
+<br/>
+<div class="row">
+	<div ng-repeat="exercice in exercices" >
+<div class="col-sm-4">
+		<ng-exo exercice="exercice"></ng-exo>
 
-
-	<div ng-repeat="exercice2 in exercices" >
-
-		<ng-exo exercice="exercice2"></ng-exo>
-
-
-
-
-
-
-
-
-
-
-	<hr>
 </div>
-
+</div>
+</div>
  
 
 
