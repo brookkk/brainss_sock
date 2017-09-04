@@ -1,0 +1,31 @@
+<div ng-show="loading">
+
+
+	<img src="images/loader.gif">
+	
+	
+</div>
+
+<div class="row">
+<div ng-hide="loading" ng-repeat="post in posts">
+<div class= "col-sm-4">
+ 
+ <div class="panel panel-info" style="width: 100%;">
+  <div class="panel-heading">
+    <h3 class="panel-title">Filière : {{post.nome}}</h3>
+  </div>
+  <div class="panel-body">
+   <h3>Année : {{post.annee.nome}}</h3>
+
+
+		<a href="#/filiere/{{post.id}}">{{post.exercices.length}} Exercice(s)</a>
+  </div>
+</div>
+</div>
+ 		
+		
+ 
+</div>
+</div>
+
+

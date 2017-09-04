@@ -1,0 +1,31 @@
+<!--
+<h1>{{exercice.nom}}</h1>
+Par : {{exercice.auteur}}<br>
+
+
+<p>
+	<br><br><br>
+	exo créé le  : {{exercice.date_creation}}<br>
+	lien de l'exo  : {{exercice.link}}<br>
+
+</p>
+	<a target="_blank"  href="{{exercice.link}}">Contenu</a>
+
+
+-->
+
+
+
+	 <div class="panel panel-success" style="width: 100%;">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{exercice.nom}}</h3>
+  </div>
+  <div class="panel-body">
+<p>
+	
+	exo créé le  : {{exercice.date_creation}}<br>
+
+</p>
+	<div ng-if="exercice.link"><a target="_blank"  href="{{exercice.link}}">Contenu</a></div>
+  </div>
+</div>

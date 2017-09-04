@@ -13,7 +13,7 @@
 
  
   
-   <table class="table table-striped">
+   <table class="data" class="display" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th>Nom</th>
@@ -26,6 +26,19 @@
          
       </tr>
     </thead>
+
+    <tfoot>
+      <tr>
+        <th>Nom</th>
+        <th>Public</th>
+        <th>Auteur</th>
+        <th>Creation</th>
+        <th>Annee</th>
+        <th>Filiere</th>
+        <th>Action</th>
+         
+      </tr>
+    </tfoot>
     <tbody>
 
   {% for exercice in listExercices %}
@@ -41,7 +54,7 @@
    <td> <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exercice', {'id': exercice.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
 
-    <tr>
+    </tr>
   {% endfor %}
  
  </tbody>
