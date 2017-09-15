@@ -54,6 +54,9 @@ class ExerciceType extends AbstractType
                 ))
             ->add('reponse')
             ->add('bareme')
+            ->add('nb_questions')
+            ->add('temps')
+            ->add('bonus')
             ->add( 'contenu', FroalaEditorType::class )
             ->add('Sauvegarder',      SubmitType::class);
             /*->add('annee')

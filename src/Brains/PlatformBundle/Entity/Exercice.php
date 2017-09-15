@@ -443,7 +443,7 @@ public function is_good_annee_filiere(){
      *
      * @return Exercice
      */
-    public function setNb_questions($nb_questions)
+    public function setNbQuestions($nb_questions)
     {
         $this->nb_questions = $nb_questions;
 
@@ -455,7 +455,7 @@ public function is_good_annee_filiere(){
      *
      * @return string
      */
-    public function getNb_questions()
+    public function getNbQuestions()
     {
         return $this->nb_questions;
     }
