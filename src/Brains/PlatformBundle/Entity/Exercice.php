@@ -434,5 +434,37 @@ public function is_good_annee_filiere(){
     }
 
 
+
+
+      /**
+     * Set nb_questions
+     *
+     * @param string $nb_questions
+     *
+     * @return Exercice
+     */
+    public function setNb_questions($nb_questions)
+    {
+        $this->nb_questions = $nb_questions;
+
+        return $this;
+    }
+
+    /**
+     * Get nb_questions
+     *
+     * @return string
+     */
+    public function getNb_questions()
+    {
+        return $this->nb_questions;
+    }
+
+
+
+
+
+
+
 }
 
