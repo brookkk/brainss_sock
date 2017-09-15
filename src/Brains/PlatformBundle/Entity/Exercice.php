@@ -123,7 +123,12 @@ public function is_good_annee_filiere(){
 
     /**
      * @var \int
-     *
+     * @label ("Nombre des questions")
+     ** @Assert\Range(
+     *      min = 0,
+     *      minMessage = "Le nombre des questions ne doit pas être inférieur à 0",
+     * )
+     * @ORM\Column(name="temps", type="integer")
      * @ORM\Column(name="nb_questions", type="integer")
      */
     private $nb_questions;
@@ -131,8 +136,7 @@ public function is_good_annee_filiere(){
       /**
      * @var \int
      *
-     * @ORM\Column(name="temps", type="integer")
-     */
+          */
     private $temps;
 
 
