@@ -463,6 +463,61 @@ public function is_good_annee_filiere(){
 
 
 
+    /**
+     * Set temps
+     *
+     * @param string $temps
+     *
+     * @return Exercice
+     */
+    public function setTemps($temps)
+    {
+        $this->temps = $temps;
+
+        return $this;
+    }
+
+    /**
+     * Get temps
+     *
+     * @return string
+     */
+    public function getTemps()
+    {
+        return $this->temps;
+    }
+
+
+
+
+
+    /**
+     * Set bonus
+     *
+     * @param string $bonus
+     *
+     * @return Exercice
+     */
+    public function setBonus($bonus)
+    {
+        $this->bonus = $bonus;
+
+        return $this;
+    }
+
+    /**
+     * Get bareme
+     *
+     * @return string
+     */
+    public function getBonus()
+    {
+        return $this->bonus;
+    }
+
+
+
+
 
 
 
