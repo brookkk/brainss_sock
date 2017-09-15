@@ -138,6 +138,13 @@ public function is_good_annee_filiere(){
 
       /**
      * @var \int
+     * 
+      * @Assert\Range(
+     *      min = 0,
+     *      max = 33,
+     *      minMessage = "Le bonus ne doit pas être inférieur à 0%",
+     *      maxMessage = "Le bonus ne doit pas dépasser 33%"
+     * )
      *
      * @ORM\Column(name="bonus", type="integer")
      */
