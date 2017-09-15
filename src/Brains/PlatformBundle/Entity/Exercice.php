@@ -356,5 +356,59 @@ public function is_good_annee_filiere(){
     {
         return $this->dateMaj;
     }
+
+
+ /**
+     * Set reponse
+     *
+     * @param string $reponse
+     *
+     * @return Exercice
+     */
+    public function setReponse($reponse)
+    {
+        $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    /**
+     * Get reponse
+     *
+     * @return string
+     */
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+
+
+
+
+     /**
+     * Set bareme
+     *
+     * @param string $bareme
+     *
+     * @return Exercice
+     */
+    public function setBareme($bareme)
+    {
+        $this->bareme = $bareme;
+
+        return $this;
+    }
+
+    /**
+     * Get bareme
+     *
+     * @return string
+     */
+    public function getBareme()
+    {
+        return $this->bareme;
+    }
+
+
 }
 
