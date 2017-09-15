@@ -83,20 +83,12 @@ public function is_good_annee_filiere(){
      */
     private $public;
 
-
-
-
-
-
-
     /**
      * @var string
      *
      * @ORM\Column(name="auteur", type="string", length=255)
      */
     private $auteur;
-
-
 
     /**
      * @var \DateTime
@@ -111,6 +103,25 @@ public function is_good_annee_filiere(){
      * @ORM\Column(name="date_maj", type="datetimetz")
      */
     private $dateMaj;
+
+
+    /**
+     * @var \int
+     *
+     * @ORM\Column(name="reponse", type="integer")
+     */
+    private $reponse;
+
+      /**
+     * @var \int
+     *
+     * @ORM\Column(name="bareme", type="integer")
+     */
+    private $bareme;
+
+
+
+
 
 
 //Date par défaut lors de la creation d'un new Exo
