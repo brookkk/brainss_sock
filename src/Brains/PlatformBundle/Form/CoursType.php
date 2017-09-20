@@ -19,6 +19,7 @@ use Brains\PlatformBundle\Entity\Filiere;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use KMS\FroalaEditorBundle\Form\Type\FroalaEditorType;
 
 class CoursType extends AbstractType
 {
@@ -43,6 +44,7 @@ class CoursType extends AbstractType
                 'choice_label' => 'nome',
                 'multiple'     => false,
                 ))
+            ->add( 'contenu', FroalaEditorType::class )
             ->add('Sauvegarder',      SubmitType::class);
 
     }

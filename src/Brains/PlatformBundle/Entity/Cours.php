@@ -33,6 +33,13 @@ class Cours
     /**
      * @var string
      *
+     * @ORM\Column(name="contenu", type="string", length=855, unique=true)
+     */
+    private $contenu;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="public", type="string", length=255)
      */
     private $public;

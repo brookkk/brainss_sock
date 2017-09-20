@@ -58,7 +58,12 @@ $file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->
         .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html';
  $fs->touch($file);
 
-fwrite($file, "heyy file");
+
+ $file = fopen($file, 'a+');
+          fputs($file, $cours->getContenu() );
+
+
+//fwrite($file, "heyy file");
 
 
         return $this->redirectToRoute('BP_show_cours');
