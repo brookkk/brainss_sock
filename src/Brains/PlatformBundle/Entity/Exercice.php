@@ -127,14 +127,15 @@ public function is_good_annee_filiere(){
      *      min = 1,
      *      minMessage = "Le nombre des questions ne doit pas être inférieur à 1",
      * )
-     * @ORM\Column(name="temps", type="integer")
      * @ORM\Column(name="nb_questions", type="integer")
      */
     private $nb_questions;
 
+
       /**
      * @var \int
-     *
+ 
+     ** @ORM\Column(name="temps", type="integer")
           */
     private $temps;
 
