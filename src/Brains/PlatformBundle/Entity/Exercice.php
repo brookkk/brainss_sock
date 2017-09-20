@@ -123,7 +123,6 @@ public function is_good_annee_filiere(){
 
     /**
      * @var \int
-     * @label ("Nombre des questions")
      ** @Assert\Range(
      *      min = 0,
      *      minMessage = "Le nombre des questions ne doit pas être inférieur à 0",
