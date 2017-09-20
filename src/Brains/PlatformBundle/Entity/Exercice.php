@@ -107,14 +107,20 @@ public function is_good_annee_filiere(){
 
     /**
      * @var \int
-     *
+     ** @Assert\Range(
+     *      min = 1,
+     *      minMessage = "La valeur réponse ne doit pas être inférieure à 1",
+     * )
      * @ORM\Column(name="reponse", type="integer")
      */
     private $reponse;
 
       /**
      * @var \int
-     *
+     ** @Assert\Range(
+     *      min = 1,
+     *      minMessage = "La valeur barème ne doit pas être inférieure à 1",
+     * )
      * @ORM\Column(name="bareme", type="integer")
      */
     private $bareme;
