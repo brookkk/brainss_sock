@@ -134,7 +134,10 @@ public function is_good_annee_filiere(){
 
       /**
      * @var \int
- 
+     ** @Assert\Range(
+     *      min = 1,
+     *      minMessage = "Le temps ne doit pas être inférieur à 1 minute",
+     * )
      ** @ORM\Column(name="temps", type="integer")
           */
     private $temps;
@@ -144,9 +147,9 @@ public function is_good_annee_filiere(){
      * @var \int
      * 
       * @Assert\Range(
-     *      min = 0,
+     *      min = 1,
      *      max = 33,
-     *      minMessage = "Le bonus ne doit pas être inférieur à 0%",
+     *      minMessage = "Le bonus ne doit pas être inférieur à 1%",
      *      maxMessage = "Le bonus ne doit pas dépasser 33%"
      * )
      *
