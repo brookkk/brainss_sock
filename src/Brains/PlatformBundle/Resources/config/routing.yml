@@ -66,6 +66,6 @@ BP_api:
 BP_n_contribution:
     path:     /n_contribution
     defaults: { _controller: BrainsPlatformBundle:Contribution:n_contribution }
-BP_show_contribution:
-    path:     /show_contribution
-    defaults: { _controller: BrainsPlatformBundle:Contribution:show_contribution}
+BP_UI:
+    path:     /ui
+    defaults: { _controller: BrainsPlatformBundle:Default:ui }

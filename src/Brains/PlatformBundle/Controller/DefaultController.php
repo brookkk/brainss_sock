@@ -25,26 +25,7 @@ class DefaultController extends Controller
         $this->get('mailer')->send($message);
 }
 
-       // echo("wtf");
 
-
-
-            /*$this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                'mail.html.twig',
-                array('name' => 'abdellah')
-            )*/
-        
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
    
     $this->get('mailer')->send($message);
      //$this->getMailer()->send("tets");
@@ -52,6 +33,15 @@ class DefaultController extends Controller
      return $this->render('BrainsPlatformBundle:Default:index.html.twig');
 
 
+    }
+
+
+
+       public function uiAction()
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
+        return $this->render('BrainsPlatformBundle:Default:ui.html.twig');
+        else return $this->redirectToRoute('login');
     }
 
 }

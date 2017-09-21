@@ -1,0 +1,82 @@
+ {% extends "BrainsPlatformBundle::layout.html.twig" %}
+ 
+
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="dialog-form" title="Ajouter une question">
+  <p class="validateTips">tous les champs sont requis</p>
+ 
+  <form>
+    <fieldset>
+      <label for="question">question</label>
+      <input type="text" name="question" id="question" value="1+2" class="text ui-widget-content ui-corner-all">
+      <label for="reponse">reponse</label>
+      <input type="text" name="reponse" id="reponse" value="3" class="text ui-widget-content ui-corner-all">
+      <label for="bareme">bareme</label>
+      <input type="text" name="bareme" id="bareme" value="0.25" class="text ui-widget-content ui-corner-all">
+ 
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
+ 
+ 
+<div id="users-contain" class="ui-widget">
+  <h1>Questions</h1>
+  <table id="users" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>question</th>
+        <th>reponse</th>
+        <th>bareme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1+2</td>
+        <td>3</td>
+        <td>0.25</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button id="create-user">Ajouter une nouvelle question</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
