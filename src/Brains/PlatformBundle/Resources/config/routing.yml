@@ -69,3 +69,6 @@ BP_n_contribution:
 BP_UI:
     path:     /ui
     defaults: { _controller: BrainsPlatformBundle:Default:ui }
+BP_n_ui:
+    path:     /n_ui
+    defaults: { _controller: BrainsPlatformBundle:Default:n_ui }
