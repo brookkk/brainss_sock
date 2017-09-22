@@ -7,7 +7,21 @@
 <div id="dialog-form" title="Ajouter une question" disabled>
   <p class="validateTips">tous les champs sont requis</p>
  
- {{ form(form) }}
+
+
+ {{ form_start(form) }}
+
+{{ form_errors(form) }}
+
+
+{{ form_end(form) }}
+
+
+
+
+
+
+
 </div>
  
  

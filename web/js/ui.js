@@ -59,6 +59,12 @@
           "<td>" + password.val() + "</td>" +
         "</tr>" );
         dialog.dialog( "close" );
+        $.ajax({
+  url: "http://localhost/brainss/web/app_dev.php/api/filieres",
+  context: document.body
+}).done(function() {
+  $( this ).addClass( "done" );
+});
       }
       return valid;
     }
