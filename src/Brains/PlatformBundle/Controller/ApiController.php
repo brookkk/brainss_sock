@@ -15,7 +15,7 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Cours;
-use Brains\PlatformBundle\Entity\Question;
+use Brains\PlatformBundle\Entity\question;
 
 
 
@@ -142,21 +142,7 @@ class ApiController extends Controller
 
 
 
-
-
-/**
-     * @Rest\Get("/annees", name="annees_list")
-     * @Rest\View()
-     */
-    public function anneesListAction()
-    {
-        $annees = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Annee')->findAll();
-
-        return $annees;
-    }
-
-
-      /**
+  /**
      * @Rest\Post(
      *    path = "/question",
      *    name = "question_ajouter"
@@ -164,7 +150,7 @@ class ApiController extends Controller
      * @Rest\View(StatusCode = 201)
      * @ParamConverter("question", converter="fos_rest.request_body")
      */
-    public function createAction(Question $question)
+    public function createQuestionAction(Question $question)
     {
         $em = $this->getDoctrine()->getManager();
 
