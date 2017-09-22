@@ -59,12 +59,27 @@
           "<td>" + password.val() + "</td>" +
         "</tr>" );
         dialog.dialog( "close" );
-        $.ajax({
-  url: "http://localhost/brainss/web/app_dev.php/api/filieres",
-  context: document.body
-}).done(function() {
-  $( this ).addClass( "done" );
+    
+
+
+$.ajax({
+    type: "POST",
+    url: "http://localhost/brainss/web/app_dev.php/api/question",
+    data: {
+    "id": 5,
+    "question": "Le titre de ma deuxieme question ",
+    "reponse": "La réponse 2."
+},
+    /*beforeSend: function() { $.mobile.showPageLoadingMsg("b", "Loading...", true) },
+    complete: function() { $.mobile.hidePageLoadingMsg() },
+    success: function(data) { alert("ajax worked"); },
+    error: function(data) {alert("ajax error"); },*/
+    dataType: 'json'
 });
+
+
+
+
       }
       return valid;
     }
