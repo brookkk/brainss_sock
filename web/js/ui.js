@@ -1,4 +1,4 @@
-  <script>
+
   $( function() {
     var dialog, form,
  
@@ -89,9 +89,7 @@
       dialog.dialog( "open" );
     });
   } );
-  </script>
 
-   <script>
   $( function() {
     $( "#dialog" ).dialog({
       autoOpen: false,
@@ -109,4 +107,4 @@
       $( "#dialog" ).dialog( "open" );
     });
   } );
-  </script>
+  
