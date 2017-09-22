@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9a1d80ce5dd142829d6c6257502ec9a3",
-    "content-hash": "11b91f152eeae2903a83d4c49707b2c0",
+    "hash": "7bf69a3382828b113712d00ecb7d2276",
+    "content-hash": "aded803a3064c525c8cc14e855e66748",
     "packages": [
+        {
+            "name": "bmatzner/jquery-bundle",
+            "version": "1.12.2",
+            "target-dir": "Bmatzner/JQueryBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bmatzner/BmatznerJQueryBundle.git",
+                "reference": "461ceff1e2bf2f4459d8d187c4f196cf14b1a360"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bmatzner/BmatznerJQueryBundle/zipball/461ceff1e2bf2f4459d8d187c4f196cf14b1a360",
+                "reference": "461ceff1e2bf2f4459d8d187c4f196cf14b1a360",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Bmatzner\\JQueryBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "GPLv2"
+            ],
+            "authors": [
+                {
+                    "name": "Bernd Matzner",
+                    "email": "bernd@matznermatzner.de",
+                    "homepage": "http://berndmatzner.de"
+                }
+            ],
+            "description": "jQuery Bundle for Symfony2",
+            "homepage": "http://jquery.com/",
+            "keywords": [
+                "javascript",
+                "jquery",
+                "symfony"
+            ],
+            "time": "2016-03-26 19:53:02"
+        },
         {
             "name": "composer/ca-bundle",
             "version": "1.0.7",

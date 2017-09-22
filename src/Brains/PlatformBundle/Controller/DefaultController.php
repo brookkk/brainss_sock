@@ -3,6 +3,12 @@
 namespace Brains\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Brains\PlatformBundle\Entity\Exercice;
+use Symfony\Component\HttpFoundation\Request;
+use Brains\PlatformBundle\Form\ExerciceType;
+
+
+
 
 class DefaultController extends Controller
 {
@@ -25,26 +31,7 @@ class DefaultController extends Controller
         $this->get('mailer')->send($message);
 }
 
-       // echo("wtf");
 
-
-
-            /*$this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                'mail.html.twig',
-                array('name' => 'abdellah')
-            )*/
-        
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'Emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
    
     $this->get('mailer')->send($message);
      //$this->getMailer()->send("tets");
@@ -53,5 +40,74 @@ class DefaultController extends Controller
 
 
     }
+
+
+
+       public function uiAction()
+    {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
+        return $this->render('BrainsPlatformBundle:Default:ui.html.twig');
+        else return $this->redirectToRoute('login');
+    }
+
+
+
+
+
+public function n_uiAction(Request $request)
+  {
+//nouvelle instance de l'entité Année
+    $exercice= new Exercice();
+
+
+    $form = $this->createForm(ExerciceType::class, $exercice);
+
+
+//si le formulaire est bien rempli, on l'enregistre dans la BD
+    if($request->isMethod('POST')){
+
+      $form->handleRequest($request);
+
+      $exercice->getAnnee()->addExercices($exercice);
+      $exercice->getFiliere()->addExercices($exercice);
+
+      $exercice->setAnnee($exercice->getAnnee());
+      $exercice->setFiliere($exercice->getFiliere());
+
+
+
+      
+      if($form->isValid()    
+        ){
+
+        
+
+        $exercice->setLink("new_file_path");
+        $em= $this->getDoctrine()->getManager();
+      $em->persist($exercice);
+      $em->flush();
+
+      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+
+  
+
+
+
+
+
+          return $this->redirectToRoute('BP_show_exercice');
+    }
+  }
+
+//sinon (ou bien premier landing sur le form), on affiche le formulaire
+  return $this->render('BrainsPlatformBundle:Default:n_ui.html.twig', array(
+   'form'=>$form->createView(),
+   ));
+
+}
+
+
+
+
 
 }

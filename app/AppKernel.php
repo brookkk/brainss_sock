@@ -22,7 +22,11 @@ class AppKernel extends Kernel
             new KMS\FroalaEditorBundle\KMSFroalaEditorBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+<<<<<<< HEAD
             new Bmatzner\JQueryBundle\BmatznerJQueryBundle(),
+=======
+            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
+>>>>>>> ecd4f11e2b9e93ca7e84716a3c304fe2a3a39997
         ];
 
         

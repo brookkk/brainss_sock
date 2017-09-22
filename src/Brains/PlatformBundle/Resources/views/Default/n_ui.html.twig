@@ -1,0 +1,70 @@
+ {% extends "BrainsPlatformBundle::layout.html.twig" %}
+ 
+
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="dialog-form" title="Ajouter une question">
+  <p class="validateTips">tous les champs sont requis</p>
+ 
+ {{ form(form) }}
+</div>
+ 
+ 
+<div id="users-contain" class="ui-widget">
+  <h1>Questions</h1>
+  <table id="users" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+        <th>question</th>
+        <th>reponse</th>
+        <th>bareme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1+2</td>
+        <td>3</td>
+        <td>0.25</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button id="create-user">Ajouter une nouvelle question</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
