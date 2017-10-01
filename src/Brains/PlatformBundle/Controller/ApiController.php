@@ -2,6 +2,10 @@
 
 namespace Brains\PlatformBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -16,6 +20,8 @@ use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Cours;
 use Brains\PlatformBundle\Entity\question;
+use Brains\PlatformBundle\Form\questionType;
+
 
 
 
@@ -160,6 +166,31 @@ class ApiController extends Controller
         return $question;
     }
 
+
+
+  /**
+     * @Rest\Post(
+     *    path = "/testApi"
+     * )
+     * @Rest\View(StatusCode = 201)
+     */
+    public function testApiAction()
+    {
+
+
+        $data = $this->get('jms_serializer')->deserialize($request->getContent(), 'array', 'json');
+        $question = new Question();
+
+        $form = $this->get('form.factory')->create(QuestionType::class, $question);
+        $form->submit($data);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($question);
+        $em->flush();
+
+       return new Response("done");
+    }
 
 
 }

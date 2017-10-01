@@ -53,20 +53,24 @@
       valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );*/
  
       if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
+        /*$( "#users tbody" ).append( "<tr>" +
           "<td>" + name.val() + "</td>" +
           "<td>" + email.val() + "</td>" +
           "<td>" + password.val() + "</td>" +
-        "</tr>" );
+        "</tr>" );*/
         dialog.dialog( "close" );
     
-
+var password="pass";
 
 $.ajax({
-    type: "POST",
-    url: "http://localhost/brainss/web/app_dev.php/api/question",
+    type: 'POST',
+    url: "api/testApi",
+    headers : {
+                        
+                        'Content-Type' : 'application/json'
+                  },
     data: {
-    "id": 5,
+   
     "question": "Le titre de ma deuxieme question ",
     "reponse": "La réponse 2."
 },
@@ -74,7 +78,11 @@ $.ajax({
     complete: function() { $.mobile.hidePageLoadingMsg() },
     success: function(data) { alert("ajax worked"); },
     error: function(data) {alert("ajax error"); },*/
-    dataType: 'json'
+    success: function(data) { alert("ajax worked"); },
+     error: function(request, status, error) {
+            console.log(request.responseText);
+        },
+    dataType: 'application/json'
 });
 
 
