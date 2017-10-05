@@ -66,12 +66,18 @@ console.log("question");console.log(question.val());
     
 var password="pass";
 var dataa = {
-"question": question.val(),
+question: question.val(),
     "reponse": reponse.val()
 };
+var quest = 'question';var rep='reponse';
+var data2={};
+var qq=question.val()+" ";
+data2[quest]=qq;
+data2[rep]=qq;
 
-var json =JSON.stringify(dataa);
-console.log(json);
+
+var json =JSON.stringify(data2);
+console.log(data2);
 $.ajax({
     type: 'POST',
     url: "api/question",
