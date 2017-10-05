@@ -7,7 +7,7 @@
      /* nom = $( "#name" ),
       email = $( "#email" ),
       password = $( "#password" ),*/
-      question = $( "#question" ),
+      questionz = $( "#question" ),
       reponse = $( "#reponse" ),
       allFields = $( [] )/*.add( name ).add( email ).add( password )*/.add( question ).add( reponse ),
       tips = $( ".validateTips" );
@@ -61,23 +61,25 @@
           "<td>" + password.val() + "</td>" +
         "</tr>" );*/
 
-console.log("question");console.log(question.val());
-        dialog.dialog( "close" );
-    
+console.log("question");console.log(questionz.val());
+        
+    alert(questionz.val());
+    console.log(questionz.val());
 var password="pass";
 var dataa = {
-question: function (){return question.val()},
+"question":  questionz.val(),
     "reponse": reponse.val()
 };
 var quest = 'question';var rep='reponse';
 var data2={};
-var qq=question.val()+" ";
+var qq=questionz.val()+" ";
 data2[quest]=qq;
 data2[rep]=qq;
 
 
 var json =JSON.stringify(dataa);
 console.log(json);
+dialog.dialog( "close" );
 $.ajax({
     type: 'POST',
     url: "api/question",
