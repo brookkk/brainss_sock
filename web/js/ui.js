@@ -66,7 +66,7 @@ console.log("question");console.log(question.val());
     
 var password="pass";
 var dataa = {
-question: question.val(),
+question: function (){return question.val()},
     "reponse": reponse.val()
 };
 var quest = 'question';var rep='reponse';
@@ -76,8 +76,8 @@ data2[quest]=qq;
 data2[rep]=qq;
 
 
-var json =JSON.stringify(data2);
-console.log(data2);
+var json =JSON.stringify(dataa);
+console.log(json);
 $.ajax({
     type: 'POST',
     url: "api/question",
@@ -111,7 +111,7 @@ $.ajax({
       width: 350,
       modal: true,
       buttons: {
-        "Create an account": addUser,
+        "Créer La Question": addUser,
         Cancel: function() {
           dialog.dialog( "close" );
         }
