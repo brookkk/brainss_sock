@@ -4,10 +4,12 @@
  
       // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
       emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-      nom = $( "#name" ),
+     /* nom = $( "#name" ),
       email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
+      password = $( "#password" ),*/
+      question = $( "#question" ),
+      reponse = $( "#reponse" ),
+      allFields = $( [] )/*.add( name ).add( email ).add( password )*/.add( question ).add( reponse ),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
@@ -58,31 +60,36 @@
           "<td>" + email.val() + "</td>" +
           "<td>" + password.val() + "</td>" +
         "</tr>" );*/
+
+console.log("question");console.log(question.val());
         dialog.dialog( "close" );
     
 var password="pass";
+var dataa = {
+"question": question.val(),
+    "reponse": reponse.val()
+};
 
+var json =JSON.stringify(dataa);
+console.log(json);
 $.ajax({
     type: 'POST',
-    url: "api/testApi",
+    url: "api/question",
     headers : {
                         
                         'Content-Type' : 'application/json'
                   },
-    data: {
-   
-    "question": "Le titre de ma deuxieme question ",
-    "reponse": "La réponse 2."
-},
+    data: json,
     /*beforeSend: function() { $.mobile.showPageLoadingMsg("b", "Loading...", true) },
     complete: function() { $.mobile.hidePageLoadingMsg() },
     success: function(data) { alert("ajax worked"); },
     error: function(data) {alert("ajax error"); },*/
-    success: function(data) { alert("ajax worked"); },
-     error: function(request, status, error) {
+    success: function(data) { console.log("ajax worked"); },
+     error: function(request, status, error, data) {
+        
             console.log(request.responseText);
         },
-    dataType: 'application/json'
+    dataType: 'json'
 });
 
 

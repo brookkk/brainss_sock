@@ -2,7 +2,6 @@
 
 namespace Brains\PlatformBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -21,7 +20,6 @@ use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Cours;
 use Brains\PlatformBundle\Entity\question;
 use Brains\PlatformBundle\Form\questionType;
-
 
 
 
@@ -178,8 +176,11 @@ class ApiController extends Controller
     {
 
 
+
+
+
         $data = $this->get('jms_serializer')->deserialize($request->getContent(), 'array', 'json');
-        $question = new Question();
+ /*       $question = new Question();
 
         $form = $this->get('form.factory')->create(QuestionType::class, $question);
         $form->submit($data);
@@ -187,9 +188,12 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $em->persist($question);
-        $em->flush();
+        $em->flush();*/
 
-       return new Response("done");
+       return new Response('{
+"question": "Le titre de ma deuxieme question ",
+    "reponse": "La réponse 2."
+}');
     }
 
 

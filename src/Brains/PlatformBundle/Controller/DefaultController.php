@@ -7,6 +7,10 @@ use Brains\PlatformBundle\Entity\Exercice;
 use Symfony\Component\HttpFoundation\Request;
 use Brains\PlatformBundle\Form\ExerciceType;
 
+use Brains\PlatformBundle\Entity\question;
+use Brains\PlatformBundle\Form\questionType;
+
+
 
 
 
@@ -57,10 +61,10 @@ class DefaultController extends Controller
 public function n_uiAction(Request $request)
   {
 //nouvelle instance de l'entité Année
-    $exercice= new Exercice();
+    $question= new question();
 
 
-    $form = $this->createForm(ExerciceType::class, $exercice);
+    $form = $this->createForm(questionType::class, $question);
 
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
@@ -68,26 +72,19 @@ public function n_uiAction(Request $request)
 
       $form->handleRequest($request);
 
-      $exercice->getAnnee()->addExercices($exercice);
-      $exercice->getFiliere()->addExercices($exercice);
-
-      $exercice->setAnnee($exercice->getAnnee());
-      $exercice->setFiliere($exercice->getFiliere());
-
-
-
+ 
       
       if($form->isValid()    
         ){
 
         
 
-        $exercice->setLink("new_file_path");
+        
         $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
+      $em->persist($question);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+      $request->getSession()->getFlashBag()->add('notice', 'question Bien enregistré.');
 
   
 
