@@ -42,7 +42,7 @@
       }
     }
  
-    function addUser() {
+    function addQuestion() {
       var valid = true;
       allFields.removeClass( "ui-state-error" );
  
@@ -111,7 +111,7 @@ $.ajax({
       width: 350,
       modal: true,
       buttons: {
-        "Créer La Question": addUser,
+        "Créer La Question": addQuestion,
         Cancel: function() {
           dialog.dialog( "close" );
         }
@@ -124,7 +124,7 @@ $.ajax({
  
     form = dialog.find( "form" ).on( "submit", function( event ) {
       event.preventDefault();
-      addUser();
+      addQuestion();
     });
  
     $( "#create-user" ).button().on( "click", function() {
