@@ -7,7 +7,7 @@
      /* nom = $( "#name" ),
       email = $( "#email" ),
       password = $( "#password" ),*/
-      questionz = $( "#question" ),
+      question = $( "#question" ),
       reponse = $( "#reponse" ),
       allFields = $( [] )/*.add( name ).add( email ).add( password )*/.add( question ).add( reponse ),
       tips = $( ".validateTips" );
@@ -61,18 +61,18 @@
           "<td>" + password.val() + "</td>" +
         "</tr>" );*/
 
-console.log("question");console.log(questionz.val());
+console.log("question");console.log(question.val());
         
-    alert(questionz.val());
-    console.log(questionz.val());
+    alert(question.val());
+    console.log(question.val());
 var password="pass";
 var dataa = {
-"question":  questionz.val(),
+"question":  question.val(),
     "reponse": reponse.val()
 };
 var quest = 'question';var rep='reponse';
 var data2={};
-var qq=questionz.val()+" ";
+var qq=question.val()+" ";
 data2[quest]=qq;
 data2[rep]=qq;
 
