@@ -23,11 +23,11 @@ class Question
 
 
      /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
    * @ORM\JoinColumn(nullable=false)
    */
 
- private $filiere;
+ private $exercice;
 
     /**
      * @var string

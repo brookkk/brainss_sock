@@ -18,7 +18,7 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Cours;
-use Brains\PlatformBundle\Entity\question;
+use Brains\PlatformBundle\Entity\Question;
 use Brains\PlatformBundle\Form\questionType;
 
 
