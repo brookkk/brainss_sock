@@ -9,6 +9,7 @@
       password = $( "#password" ),*/
       question = $( "#question" ),
       reponse = $( "#reponse" ),
+      exercice = $( "#exercice" ),
       allFields = $( [] )/*.add( name ).add( email ).add( password )*/.add( question ).add( reponse ),
       tips = $( ".validateTips" );
  
@@ -61,15 +62,17 @@
           "<td>" + password.val() + "</td>" +
         "</tr>" );*/
 
-console.log("question");console.log(question.val());
+console.log("exercice");console.log(exercice.val());
         
    // alert(question.val());
     console.log(question.val());
 var password="pass";
 var dataa = {
 "question":  question.val(),
-    "reponse": reponse.val()
+    "reponse": reponse.val(),
+    "exercice_id" : parseInt(exercice.val())
 };
+
 var quest = 'question';var rep='reponse';
 var data2={};
 var qq=question.val()+" ";
@@ -82,7 +85,7 @@ console.log(json);
 dialog.dialog( "close" );
 $.ajax({
     type: 'POST',
-    url: "http://localhost/brainss/web/app_dev.php/api/question",
+    url: "http://localhost/brainss/web/app_dev.php/api/question/"+parseInt(exercice.val()),
     headers : {
                         
                         'Content-Type' : 'application/json'

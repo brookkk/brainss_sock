@@ -148,15 +148,22 @@ class ApiController extends Controller
 
   /**
      * @Rest\Post(
-     *    path = "/question",
+     *    path = "/question/{id}",
      *    name = "question_ajouter"
      * )
      * @Rest\View(StatusCode = 201)
      * @ParamConverter("question", converter="fos_rest.request_body")
      */
-    public function createQuestionAction(question $question)
+    public function createQuestionAction(question $question, $id)
     {
+
+        $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+
+        $exercice = $repository->find($id);
+
         $em = $this->getDoctrine()->getManager();
+
+        $question->setExercice($exercice);
 
         $em->persist($question);
         $em->flush();

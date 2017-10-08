@@ -109,6 +109,32 @@ class question
     }
 
 
+     /**
+     * Set exercice
+     *
+     * @param string $exercice
+     *
+     * @return Question
+     */
+    public function setExercice(Exercice $exercice)
+    {
+        $this->exercice = $exercice;
+
+        return $this;
+    }
+
+
+     /**
+     * Get exercice
+     *
+     * @return string
+     */
+    public function getExercice()
+    {
+        return $this->exercice;
+    }
+
+
 
 
 
