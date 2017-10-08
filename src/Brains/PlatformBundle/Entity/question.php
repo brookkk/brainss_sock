@@ -29,7 +29,7 @@ class question
 
      /**
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\JoinColumn
    */
 
  private $exercice;

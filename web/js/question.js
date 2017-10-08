@@ -82,7 +82,7 @@ console.log(json);
 dialog.dialog( "close" );
 $.ajax({
     type: 'POST',
-    url: "api/question",
+    url: "http://localhost/brainss/web/app_dev.php/api/question",
     headers : {
                         
                         'Content-Type' : 'application/json'

@@ -44,9 +44,7 @@
   {% endfor %}
 
 
-<div id="dialog" title="Basic dialog">
- {{ render(controller("OCPlatformBundle:Advert:menu")) }}
-</div>
+
 
 
 
@@ -55,7 +53,31 @@
  
  </tbody>
  </table>
-  <a class="btn btn btn-success" href="{{ path('BP_n_exercice') }}" role="button">Ajouter un Exercice</a>
+
+
+
+<div id="dialog-form" title="Ajouter une question" disabled>
+  <p class="validateTips">tous les champs sont requis</p>
+ 
+
+<form>
+    <fieldset>
+      <label for="Question">Question</label>
+      <input type="text" name="question" id="question" value="" class="text ui-widget-content ui-corner-all">
+      <label for="Reponse">Réponse</label>
+      <input type="text" name="reponse" id="reponse" value="" class="text ui-widget-content ui-corner-all">
+    
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+
+
+
+
+
+</div>
+<button id="create-user">Ajouter une nouvelle question</button>
 
 
 {% endblock %}
