@@ -101,5 +101,33 @@ class Question
     {
         return $this->reponse;
     }
+
+
+ /**
+     * Set filiere
+     *
+     * @param string $filiere
+     *
+     * @return Exercice
+     */
+    public function setFiliere(Filiere $filiere)
+    {
+        $this->filiere = $filiere;
+
+        return $this;
+    }
+
+
+        /**
+     * Get filiere
+     *
+     * @return string
+     */
+    public function getFiliere()
+    {
+        return $this->filiere;
+    }
+
+
 }
 
