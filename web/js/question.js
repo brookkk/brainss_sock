@@ -63,7 +63,7 @@
 
 console.log("question");console.log(question.val());
         
-    alert(question.val());
+   // alert(question.val());
     console.log(question.val());
 var password="pass";
 var dataa = {
