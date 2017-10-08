@@ -72,3 +72,7 @@ BP_UI:
 BP_n_ui:
     path:     /n_ui
     defaults: { _controller: BrainsPlatformBundle:Default:n_ui }
+BP_show_exo_question:
+    path:     /{id}/show_question
+    defaults: { _controller: BrainsPlatformBundle:Question:show_question }
+
