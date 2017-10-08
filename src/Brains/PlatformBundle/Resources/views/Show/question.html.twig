@@ -1,0 +1,51 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_exercice') }}">Questions</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Questions</h3>
+
+ 
+  
+   <table class="table table-striped" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Reponse</th>
+        <th>Bareme</th>
+        <th>Exercice</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+
+
+    <tbody>
+
+  {% for question in listQuestions %}
+
+  <tr>
+  <td>   {{ question.question }} </td> 
+  <td> {{ question.reponse }} </td>
+  <td> {{ question.bareme }} </td>
+   <td> {{ question.exercice.short }} </td>
+  
+
+   <td> <a href="{{ path('BP_update_exercice',{'id': question.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_exercice', {'id': question.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+
+    </tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('BP_n_exercice') }}" role="button">Ajouter un Exercice</a>
+
+
+{% endblock %}

@@ -75,4 +75,6 @@ BP_n_ui:
 BP_show_exo_question:
     path:     /{id}/show_question
     defaults: { _controller: BrainsPlatformBundle:Question:show_question }
+    requirements:
+        id: \d{1,}
 

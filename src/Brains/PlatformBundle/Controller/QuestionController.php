@@ -93,23 +93,25 @@ class QuestionController extends Controller
 
 
     //Action pour Afficher toutes les filières existantes
-public function show_exerciceAction(Request $request)
+public function show_questionAction(Request $request, $id)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:question');
 
 
-  $listExercices = $repository->findAll();
+  $listQuestions = $repository->findBy([
+      'exercice' => $id ,
+    ]);
 
-  if (null === $listExercices) {
-    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+  if (null === $listQuestions) {
+    throw new NotFoundHttpException("Aucune question na été trouvée");
   }
 
 
 
-  return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-    'listExercices' => $listExercices  ) );
+  return $this->render('BrainsPlatformBundle:Show:question.html.twig', array(
+    'listQuestions' => $listQuestions, 'id' => $id  ) );
 }
 
 
