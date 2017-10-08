@@ -105,6 +105,22 @@ public function n_uiAction(Request $request)
 
 
 
+public function n_ui_testAction(Request $request)
+  {
+
+
+
+
+
+//sinon (ou bien premier landing sur le form), on affiche le formulaire
+  return $this->render('BrainsPlatformBundle:Default:n_ui_test.html.twig', array(
+   'form'=>$form->createView(),
+   ));
+
+}
+
+
+
 
 
 }
