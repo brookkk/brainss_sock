@@ -1,6 +1,9 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
+use Brains\PlatformBundle\Entity\Exercice;
+//use Brains\PlatformBundle\Entity\Filiere;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,12 +25,7 @@ class Question
     private $id;
 
 
-     /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
-   * @ORM\JoinColumn(nullable=false)
-   */
 
- private $exercice;
 
     /**
      * @var string
