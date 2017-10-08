@@ -18,7 +18,7 @@ use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Cours;
-use Brains\PlatformBundle\Entity\Question;
+use Brains\PlatformBundle\Entity\question;
 use Brains\PlatformBundle\Form\questionType;
 
 
@@ -154,7 +154,7 @@ class ApiController extends Controller
      * @Rest\View(StatusCode = 201)
      * @ParamConverter("question", converter="fos_rest.request_body")
      */
-    public function createQuestionAction(Question $question)
+    public function createQuestionAction(question $question)
     {
         $em = $this->getDoctrine()->getManager();
 

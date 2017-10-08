@@ -1,7 +1,7 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
-use Brains\PlatformBundle\Entity\Exercice;
+//use Brains\PlatformBundle\Entity\Exercice;
 //use Brains\PlatformBundle\Entity\Filiere;
 
 
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="Brains\PlatformBundle\Repository\questionRepository")
  */
-class Question
+class question
 {
     /**
      * @var int
@@ -101,30 +101,7 @@ class Question
     }
 
 
- /**
-     * Set exercice
-     *
-     * @param string $exercice
-     *
-     * @return Question
-     */
-    public function setExercice(Exercice $exercice)
-    {
-        $this->exercice = $exercice;
 
-        return $this;
-    }
-
-
-        /**
-     * Get exercice
-     *
-     * @return string
-     */
-    public function getExercice()
-    {
-        return $this->exercice;
-    }
 
 
 }

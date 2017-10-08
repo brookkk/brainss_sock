@@ -7,7 +7,7 @@ use Brains\PlatformBundle\Entity\Exercice;
 use Symfony\Component\HttpFoundation\Request;
 use Brains\PlatformBundle\Form\ExerciceType;
 
-use Brains\PlatformBundle\Entity\Question;
+use Brains\PlatformBundle\Entity\question;
 use Brains\PlatformBundle\Form\questionType;
 
 
