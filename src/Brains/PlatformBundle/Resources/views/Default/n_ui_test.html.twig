@@ -1,0 +1,31 @@
+ {% extends "BrainsPlatformBundle::layout.html.twig" %}
+ 
+
+{% block body %}
+
+
+<div id="dialog-form" title="Ajouter une question" disabled>
+
+
+
+ {{ render(controller("BrainsPlatformBundle:Exercice:show_exercice")) }}
+
+
+
+
+
+</div>
+ 
+ 
+
+<!--
+<div id="users-contain" class="ui-widget">
+  <h1>Questions</h1>
+
+</div>
+
+-->
+<button id="create-user">Ajouter une nouvelle question</button>
+
+
+    {% endblock %}
