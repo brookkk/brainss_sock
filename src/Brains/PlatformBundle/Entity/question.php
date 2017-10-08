@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="Brains\PlatformBundle\Repository\questionRepository")
  */
-class question
+class Question
 {
     /**
      * @var int
@@ -20,6 +20,14 @@ class question
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+
+     /**
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+ private $filiere;
 
     /**
      * @var string
