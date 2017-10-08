@@ -27,6 +27,14 @@ class question
 
 
 
+     /**
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+ private $exercice;
+
+
     /**
      * @var string
      *
