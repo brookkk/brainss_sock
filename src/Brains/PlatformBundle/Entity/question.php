@@ -104,28 +104,28 @@ class Question
 
 
  /**
-     * Set filiere
+     * Set exercice
      *
-     * @param string $filiere
+     * @param string $exercice
      *
-     * @return Exercice
+     * @return Question
      */
-    public function setFiliere(Filiere $filiere)
+    public function setExercice(Exercice $exercice)
     {
-        $this->filiere = $filiere;
+        $this->exercice = $exercice;
 
         return $this;
     }
 
 
         /**
-     * Get filiere
+     * Get exercice
      *
      * @return string
      */
-    public function getFiliere()
+    public function getExercice()
     {
-        return $this->filiere;
+        return $this->exercice;
     }
 
 
