@@ -31,7 +31,7 @@
   <tr>
   <td>   {{ partie.contenu }} </td> 
  
-   <td> <a href="{{ path('update_exo_partie',{'id': partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+   <td> <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exercice', {'id': partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
         <a href="{{ path('BP_update_exercice',{'id': partie.id}) }}" title="ajouter partie"><span class="glyphicon glyphicon-plus"></span> </a> </td>
 

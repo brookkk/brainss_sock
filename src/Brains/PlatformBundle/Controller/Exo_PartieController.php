@@ -128,7 +128,7 @@ public function show_questionAction(Request $request, $id)
 
 
 
-public function update_exerciceAction(Request $request, $id)
+public function update_exo_partieAction(Request $request, $id)
 {
 
   $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
