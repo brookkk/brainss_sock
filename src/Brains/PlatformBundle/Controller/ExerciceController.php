@@ -161,7 +161,7 @@ if($old!=$new)
 
   }
 
-  return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
    'form'=>$form->createView(),
    ));
 
