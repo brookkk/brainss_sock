@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 use Brains\PlatformBundle\Form\ExerciceType;
+use Brains\PlatformBundle\Form\Exo_PartieType;
 
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
@@ -31,13 +32,13 @@ class Exo_PartieController extends Controller
   public function n_exo_partieAction(Request $request)
   {
 //nouvelle instance de l'entité Année
-    $exercice= new Exercice();
+    $partie= new Exo_Partie();
 
 
  //too old too long
 //$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
 
-    $form = $this->createForm(ExerciceType::class, $exercice);
+    $form = $this->createForm(Exo_PartieType::class, $partie);
 
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
