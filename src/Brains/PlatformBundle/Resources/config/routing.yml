@@ -88,7 +88,7 @@ BP_show_exo_partie:
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:show_exo_partie }
 BP_update_exo_partie:
     path:     /update_exo_partie/{id}
-    defaults: { _controller: BrainsPlatformBundle:Cours:update_cours }
+    defaults: { _controller: BrainsPlatformBundle:Exo_Partie:update_exo_partie }
 BP_delete_exo_partie:
     path:     /delete_exo_partie/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }

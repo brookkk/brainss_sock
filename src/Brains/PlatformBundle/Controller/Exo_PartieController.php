@@ -131,21 +131,18 @@ public function show_questionAction(Request $request, $id)
 public function update_exerciceAction(Request $request, $id)
 {
 
-  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
 
-  $exercice = $repository->find($id);
+  $partie = $repository->find($id);
 
-  $fs = new Filesystem();
-  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-  .$exercice->getFiliere()->getShort() .'/exercices/';
-  $old=$exercice->getNom().'.html';
-
-  if (null === $exercice) {
-    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+    
+ 
+  if (null === $partie) {
+    throw new NotFoundHttpException("Votre partie na pas été trouvé");
   }
 
 
-  $form = $this->createForm(ExerciceType::class, $exercice);
+  $form = $this->createForm(Exo_PartieType::class, $partie);
 
 
 
@@ -155,19 +152,14 @@ public function update_exerciceAction(Request $request, $id)
 
     if($form->isValid()){
       $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
+      $em->persist($partie);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+      $request->getSession()->getFlashBag()->add('notice', 'partie Bien enregistrée.');
 
-      $new=$exercice->getNom().'.html';
-if($old!=$new)
-      $fs->rename($first_part.$old, $first_part.$new);
-    $exercice->setLink($first_part.$new);
-    $file = fopen($first_part.$new, 'w');
-
-          fputs($file, $exercice->getContenu() );
-
+  
+ 
+ 
       return $this->redirectToRoute('BP_show_exercice');
     }
 
@@ -176,7 +168,7 @@ if($old!=$new)
 
   }
 
-  return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
    'form'=>$form->createView(),
    ));
 
