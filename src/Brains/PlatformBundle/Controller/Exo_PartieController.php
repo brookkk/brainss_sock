@@ -111,7 +111,7 @@ public function show_questionAction(Request $request, $id)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:ExoPartie');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
 
 
   $listParties = $repository->findAll();
