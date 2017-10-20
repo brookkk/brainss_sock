@@ -55,7 +55,7 @@ class Exo_PartieController extends Controller
 
 
        if($form->isValid()  )  
-        ){
+        {
 
         
 
