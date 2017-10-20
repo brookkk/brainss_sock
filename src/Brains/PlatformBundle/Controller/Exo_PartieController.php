@@ -46,39 +46,30 @@ class Exo_PartieController extends Controller
 
       $form->handleRequest($request);
 
-      $exercice->getAnnee()->addExercices($exercice);
-      $exercice->getFiliere()->addExercices($exercice);
+     // $exercice->getAnnee()->addExercices($exercice);
+     // $exercice->getFiliere()->addExercices($exercice);
 
-      $exercice->setAnnee($exercice->getAnnee());
-      $exercice->setFiliere($exercice->getFiliere());
+     // $exercice->setAnnee($exercice->getAnnee());
+     // $exercice->setFiliere($exercice->getFiliere());
 
 
 
-      $fs = new Filesystem();
-      if($form->isValid()   &&     
-        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices' )  
+       if($form->isValid()  )  
         ){
 
-        $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
-      $fs->touch($new_file_path);
+        
 
-      //$link = explode("")
-
-        $exercice->setLink($new_file_path);
-        $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
+ 
+         $em= $this->getDoctrine()->getManager();
+      $em->persist($partie);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
+      $request->getSession()->getFlashBag()->add('notice', 'Partie Bien enregistrée.');
 
   
 
 
-          $file = fopen($new_file_path, 'a+');
-          fputs($file, $exercice->getContenu() );
-
+ 
 
 
           return $this->redirectToRoute('BP_show_exercice');
@@ -86,7 +77,7 @@ class Exo_PartieController extends Controller
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:partie.html.twig', array(
    'form'=>$form->createView(),
    ));
 
