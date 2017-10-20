@@ -77,7 +77,7 @@ class Exo_PartieController extends Controller
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:partie.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
    'form'=>$form->createView(),
    ));
 
