@@ -80,4 +80,15 @@ BP_show_exo_question:
     defaults: { _controller: BrainsPlatformBundle:Question:show_question }
     requirements:
         id: \d{1,}
-
+BP_n_exo_partie:
+    path:     /n_exo_partie
+    defaults: { _controller: BrainsPlatformBundle:Exo_Partie:n_exo_partie }
+BP_show_exo_partie:
+    path:     /show_exo_partie
+    defaults: { _controller: BrainsPlatformBundle:Cours:show_cours }
+BP_update_exo_partie:
+    path:     /update_exo_partie/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours:update_cours }
+BP_delete_exo_partie:
+    path:     /delete_exo_partie/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours:delete_cours }
