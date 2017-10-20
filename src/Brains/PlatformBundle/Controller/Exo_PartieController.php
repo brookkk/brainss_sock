@@ -35,10 +35,7 @@ class Exo_PartieController extends Controller
     $partie= new Exo_Partie();
 
 
- //too old too long
-//$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
-
-    $form = $this->createForm(Exo_PartieType::class, $partie);
+   $form = $this->createForm(Exo_PartieType::class, $partie);
 
 
 //si le formulaire est bien rempli, on l'enregistre dans la BD
@@ -46,33 +43,19 @@ class Exo_PartieController extends Controller
 
       $form->handleRequest($request);
 
-     // $exercice->getAnnee()->addExercices($exercice);
-     // $exercice->getFiliere()->addExercices($exercice);
-
-     // $exercice->setAnnee($exercice->getAnnee());
-     // $exercice->setFiliere($exercice->getFiliere());
+ 
 
 
 
        if($form->isValid()  )  
-        {
-
-        
-
- 
+        { 
          $em= $this->getDoctrine()->getManager();
       $em->persist($partie);
       $em->flush();
 
       $request->getSession()->getFlashBag()->add('notice', 'Partie Bien enregistrée.');
-
-  
-
-
  
-
-
-          return $this->redirectToRoute('BP_show_exercice');
+          return $this->redirectToRoute('BP_show_exo_partie');
     }
   }
 
@@ -160,7 +143,7 @@ public function update_exo_partieAction(Request $request, $id)
   
  
  
-      return $this->redirectToRoute('BP_show_exercice');
+      return $this->redirectToRoute('BP_show_exo_partie');
     }
 
 
