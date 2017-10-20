@@ -1,0 +1,55 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_exercice') }}">Exercices</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Exercices</h3>
+
+ 
+  
+   <table class="table table-striped" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Public</th>
+        <th>Auteur</th>
+        <th>Creation</th>
+        <th>Annee</th>
+        <th>Filiere</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+
+
+    <tbody>
+
+  {% for exercice in listExercices %}
+
+  <tr>
+  <td>   {{ exercice.nom }} </td> 
+  <td> {{ exercice.public }} </td>
+  <td> {{ exercice.auteur }} </td>
+  <td> Le {{ exercice.dateMaj|date("d/m/Y, à h:i a")   }} </td>
+  <td> {{ exercice.annee.short }} </td>
+  <td> {{ exercice.filiere.short }} </td>
+
+   <td> <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_exercice', {'id': exercice.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
+        <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}" title="ajouter partie"><span class="glyphicon glyphicon-plus"></span> </a> </td>
+
+    </tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('BP_n_exercice') }}" role="button">Ajouter un Exercice</a>
+
+
+{% endblock %}
