@@ -2,232 +2,135 @@
 
 namespace Brains\PlatformBundle\Controller;
 
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-
-use Brains\PlatformBundle\Form\ExerciceType;
-
-use Brains\PlatformBundle\Entity\Annee;
-use Brains\PlatformBundle\Entity\Filiere;
-use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\question;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 
-//use Symfony\Component\Filesystem\Filesystem;
-//use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-
-
-class QuestionController extends Controller
+/**
+ * Question controller.
+ *
+ * @Route("question")
+ */
+class questionController extends Controller
 {
-  public function indexAction()
-  {
-    return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-  }
+    /**
+     * Lists all question entities.
+     *
+     * @Route("/", name="question_index")
+     * @Method("GET")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
-  public function n_exerciceAction(Request $request)
-  {
-//nouvelle instance de l'entité Année
-    $exercice= new Exercice();
+        $questions = $em->getRepository('BrainsPlatformBundle:question')->findAll();
 
-
- //too old too long
-//$form = $this->get('form.factory')->create(ExerciceType::class, $exercice);
-
-    $form = $this->createForm(ExerciceType::class, $exercice);
-
-
-//si le formulaire est bien rempli, on l'enregistre dans la BD
-    if($request->isMethod('POST')){
-
-      $form->handleRequest($request);
-
-      $exercice->getAnnee()->addExercices($exercice);
-      $exercice->getFiliere()->addExercices($exercice);
-
-      $exercice->setAnnee($exercice->getAnnee());
-      $exercice->setFiliere($exercice->getFiliere());
-
-
-
-      $fs = new Filesystem();
-      if($form->isValid()   &&     
-        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices' )  
-        ){
-
-        $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
-      $fs->touch($new_file_path);
-
-      //$link = explode("")
-
-        $exercice->setLink($new_file_path);
-        $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
-      $em->flush();
-
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
-
-  
-
-
-          $file = fopen($new_file_path, 'a+');
-          fputs($file, $exercice->getContenu() );
-
-
-
-          return $this->redirectToRoute('BP_show_exercice');
-    }
-  }
-
-//sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:exercice.html.twig', array(
-   'form'=>$form->createView(),
-   ));
-
-}
-
-
-    //Action pour Afficher toutes les filières existantes
-public function show_questionAction(Request $request, $id)
-{
-  $em= $this  ->getDoctrine()  ->getManager();
-
-  $repository = $em  ->getRepository('BrainsPlatformBundle:question');
-
-
-  $listQuestions = $repository->findBy([
-      'exercice' => $id ,
-    ]);
-
-  if (null === $listQuestions) {
-    throw new NotFoundHttpException("Aucune question na été trouvée");
-  }
-
-
-
-  return $this->render('BrainsPlatformBundle:Show:question.html.twig', array(
-    'listQuestions' => $listQuestions, 'id' => $id  ) );
-}
-
-
-
-public function update_exerciceAction(Request $request, $id)
-{
-
-  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
-
-  $exercice = $repository->find($id);
-
-  $fs = new Filesystem();
-  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-  .$exercice->getFiliere()->getShort() .'/exercices/';
-  $old=$exercice->getNom().'.html';
-
-  if (null === $exercice) {
-    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
-  }
-
-
-  $form = $this->createForm(ExerciceType::class, $exercice);
-
-
-
-  if($request->isMethod('POST')){
-
-    $form->handleRequest($request);
-
-    if($form->isValid()){
-      $em= $this->getDoctrine()->getManager();
-      $em->persist($exercice);
-      $em->flush();
-
-      $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
-
-      $new=$exercice->getNom().'.html';
-if($old!=$new)
-      $fs->rename($first_part.$old, $first_part.$new);
-    $exercice->setLink($first_part.$new);
-    $file = fopen($first_part.$new, 'w');
-
-          fputs($file, $exercice->getContenu() );
-
-      return $this->redirectToRoute('BP_show_exercice');
+        return $this->render('question/index.html.twig', array(
+            'questions' => $questions,
+        ));
     }
 
+    /**
+     * Creates a new question entity.
+     *
+     * @Route("/new", name="question_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
+    {
+        $question = new Question();
+        $form = $this->createForm('Brains\PlatformBundle\Form\questionType', $question);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($question);
+            $em->flush();
 
+            return $this->redirectToRoute('question_show', array('id' => $question->getId()));
+        }
 
-  }
+        return $this->render('question/new.html.twig', array(
+            'question' => $question,
+            'form' => $form->createView(),
+        ));
+    }
 
-  return $this->render('BrainsPlatformBundle:New:annee.html.twig', array(
-   'form'=>$form->createView(),
-   ));
+    /**
+     * Finds and displays a question entity.
+     *
+     * @Route("/{id}", name="question_show")
+     * @Method("GET")
+     */
+    public function showAction(question $question)
+    {
+        $deleteForm = $this->createDeleteForm($question);
 
+        return $this->render('question/show.html.twig', array(
+            'question' => $question,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
 
+    /**
+     * Displays a form to edit an existing question entity.
+     *
+     * @Route("/{id}/edit", name="question_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, question $question)
+    {
+        $deleteForm = $this->createDeleteForm($question);
+        $editForm = $this->createForm('Brains\PlatformBundle\Form\questionType', $question);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('question_edit', array('id' => $question->getId()));
+        }
+
+        return $this->render('question/edit.html.twig', array(
+            'question' => $question,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a question entity.
+     *
+     * @Route("/{id}", name="question_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, question $question)
+    {
+        $form = $this->createDeleteForm($question);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($question);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('question_index');
+    }
+
+    /**
+     * Creates a form to delete a question entity.
+     *
+     * @param question $question The question entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(question $question)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('question_delete', array('id' => $question->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
+    }
 }
-
-
-
-public function delete_exerciceAction(Request $request, $id)
-{
-  $em= $this->getDoctrine()->getManager();
-
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
-
-  $exercice = $repository->find($id);
-
-  if (null === $exercice) {
-    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
-  }
-
-
-  $em->remove($exercice);
-  $em->flush();
-
-  $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
-
-  $fs = new Filesystem();
-
-  $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-    .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
-
-
-  return $this->redirectToRoute('BP_show_exercice');
-
-
-}
-
-public function fileAction()
-{
-  $fs = new Filesystem();
-
-//try {
-    //$fs->mkdir('/hahahoho/');
-  $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
-    //$fs->touch('test_file.txt');
-  return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-    /*
-} catch (IOExceptionInterface $e) {
-    echo "An error occurred while creating your directory at ".$e->getPath();
-}
-
-
-return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
-
-
-
-
-}
-
-
-
-}
-
-
-
-?>
