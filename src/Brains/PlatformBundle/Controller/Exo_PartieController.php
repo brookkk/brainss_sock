@@ -14,7 +14,7 @@ use Brains\PlatformBundle\Form\ExerciceType;
 
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
-use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\question;
 
 //use Symfony\Component\Filesystem\Filesystem;
