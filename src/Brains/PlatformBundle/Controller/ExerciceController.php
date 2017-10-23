@@ -112,7 +112,7 @@ foreach($listExercices as $exo){
 }
 
   return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-    'listExercices' => $listExercices/*, 'nb_parties'=>$nb_parties */ ) );
+    'listExercices' => $listExercices, 'nb_parties'=>$nb_parties  ) );
 }
 
 
