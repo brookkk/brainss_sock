@@ -104,11 +104,14 @@ public function show_exerciceAction(Request $request)
   if (null === $listExercices) {
     throw new NotFoundHttpException("Aucun Exercice na été trouvé");
   }
-
-
+  $nb_parties=array();
+foreach($listExercices as $exo){
+//$nb_parties[$exo->getid()] =  nb_partiesAction($request, $exo->getid());
+  echo $exo->getid();
+}
 
   return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
-    'listExercices' => $listExercices  ) );
+    'listExercices' => $listExercices/*, 'nb_parties'=>$nb_parties */ ) );
 }
 
 
@@ -199,12 +202,34 @@ public function delete_exerciceAction(Request $request, $id)
 
 }
 
- 
+     //Action pour calculer le nb de parties d'un exercice donné
+public function nb_partiesAction(Request $request, $id)
+{
+  $em= $this  ->getDoctrine()  ->getManager();
+
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+
+
+  $listParties = $repository->findBy([
+      'exercice' => $id ,
+    ]);
+
+  if (null === $listParties) {
+    throw new NotFoundHttpException("Aucune question na été trouvée");
+  }
+
+
+$count=0;
+
+foreach($listParties as $p){
+  $count++;
+}
+  return $count;
 
 
 
 }
-
+}
 
 
 ?>
