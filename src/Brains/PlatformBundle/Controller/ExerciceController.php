@@ -107,7 +107,8 @@ public function show_exerciceAction(Request $request)
   $nb_parties=array();
 foreach($listExercices as $exo){
 //$nb_parties[$exo->getid()] =  nb_partiesAction($request, $exo->getid());
-  echo $exo->getid()."  ";
+ // echo nb_partiesAction( $exo->getid())."  ";
+  echo $this->nb_partiesAction( 17);
 }
 
   return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
@@ -203,7 +204,7 @@ public function delete_exerciceAction(Request $request, $id)
 }
 
      //Action pour calculer le nb de parties d'un exercice donné
-public function nb_partiesAction(Request $request, $id)
+public function nb_partiesAction( $id)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
