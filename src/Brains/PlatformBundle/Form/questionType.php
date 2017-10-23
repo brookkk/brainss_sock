@@ -13,7 +13,7 @@ class questionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('question')->add('reponse')->add('exercice');
+        $builder->add('question')->add('reponse');
     }
     
     /**
