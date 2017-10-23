@@ -199,27 +199,7 @@ public function delete_exerciceAction(Request $request, $id)
 
 }
 
-public function fileAction()
-{
-  $fs = new Filesystem();
-
-//try {
-    //$fs->mkdir('/hahahoho/');
-  $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
-    //$fs->touch('test_file.txt');
-  return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-    /*
-} catch (IOExceptionInterface $e) {
-    echo "An error occurred while creating your directory at ".$e->getPath();
-}
-
-
-return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
-
-
-
-
-}
+ 
 
 
 

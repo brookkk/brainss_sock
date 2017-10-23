@@ -90,6 +90,8 @@ public function show_questionAction(Request $request, $id)
 }
 
 
+
+
  public function show_exo_partieAction(Request $request)
 {
   $em= $this  ->getDoctrine()  ->getManager();
