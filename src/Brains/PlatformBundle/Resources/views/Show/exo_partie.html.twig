@@ -17,6 +17,7 @@
     <thead>
       <tr>
         <th>Contenu</th>
+        <th>Exercice</th>
        
         <th>Action</th>
          
@@ -30,6 +31,7 @@
 
   <tr>
   <td>   {{ partie.contenu }} </td> 
+  <td>   {{ partie.exercice.nom }} </td> 
  
    <td> <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exo_partie', {'id': partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
