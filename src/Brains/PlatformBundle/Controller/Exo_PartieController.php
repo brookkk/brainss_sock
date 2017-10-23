@@ -160,7 +160,7 @@ public function update_exo_partieAction(Request $request, $id)
 
 
 
-public function delete_exerciceAction(Request $request, $id)
+public function delete_exo_partieAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
 
