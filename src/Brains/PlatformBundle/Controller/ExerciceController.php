@@ -107,7 +107,7 @@ public function show_exerciceAction(Request $request)
   $nb_parties=array();
 foreach($listExercices as $exo){
 //$nb_parties[$exo->getid()] =  nb_partiesAction($request, $exo->getid());
-  echo $exo->getid();
+  echo $exo->getid()."  ";
 }
 
   return $this->render('BrainsPlatformBundle:Show:exercice.html.twig', array(
