@@ -21,6 +21,15 @@ class Exo_Partie
      */
     private $id;
 
+
+ /**
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+ private $exercice;
+
+
     /**
      * @var string
      *
@@ -62,5 +71,32 @@ class Exo_Partie
     {
         return $this->contenu;
     }
+
+
+   /**
+     * Set exercice
+     *
+     * @param string $exercice
+     *
+     * @return Exo_partie
+     */
+    public function setExercice(Exercice $exercice)
+    {
+        $this->exercice = $exercice;
+
+        return $this;
+    }
+
+    /**
+     * Get exercice
+     *
+     * @return string
+     */
+    public function getExercice()
+    {
+        return $this->exercice;
+    }
+
+
 }
 
