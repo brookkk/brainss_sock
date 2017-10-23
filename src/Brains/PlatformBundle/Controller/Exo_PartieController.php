@@ -164,52 +164,29 @@ public function delete_exerciceAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exercice');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
 
-  $exercice = $repository->find($id);
+  $partie = $repository->find($id);
 
-  if (null === $exercice) {
-    throw new NotFoundHttpException("Votre exercice na pas été trouvé");
+  if (null === $partie) {
+    throw new NotFoundHttpException("Votre partie na pas été trouvée");
   }
 
 
-  $em->remove($exercice);
+  $em->remove($partie);
   $em->flush();
 
   $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
 
-  $fs = new Filesystem();
+ 
+ 
 
-  $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-    .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
-
-
-  return $this->redirectToRoute('BP_show_exercice');
+  return $this->redirectToRoute('BP_show_exo_partie');
 
 
 }
 
-public function fileAction()
-{
-  $fs = new Filesystem();
-
-//try {
-    //$fs->mkdir('/hahahoho/');
-  $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
-    //$fs->touch('test_file.txt');
-  return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-    /*
-} catch (IOExceptionInterface $e) {
-    echo "An error occurred while creating your directory at ".$e->getPath();
-}
-
-
-return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
-
-
-
-
-}
+ 
 
 
 
