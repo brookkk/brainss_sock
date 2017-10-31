@@ -92,7 +92,7 @@ public function show_questionAction(Request $request, $id)
 
 
 
- public function show_exo_partieAction(Request $request, $id)
+ public function show_exo_partieAction(Request $request, $id=35)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
