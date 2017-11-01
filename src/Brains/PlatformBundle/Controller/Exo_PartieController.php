@@ -67,27 +67,7 @@ class Exo_PartieController extends Controller
 }
 
 
-    //Action pour Afficher toutes les filières existantes
-public function show_questionAction(Request $request, $id)
-{
-  $em= $this  ->getDoctrine()  ->getManager();
-
-  $repository = $em  ->getRepository('BrainsPlatformBundle:question');
-
-
-  $listQuestions = $repository->findBy([
-      'exercice' => $id ,
-    ]);
-
-  if (null === $listQuestions) {
-    throw new NotFoundHttpException("Aucune question na été trouvée");
-  }
-
-
-
-  return $this->render('BrainsPlatformBundle:Show:question.html.twig', array(
-    'listQuestions' => $listQuestions, 'id' => $id  ) );
-}
+ 
 
 
 
@@ -194,7 +174,7 @@ public function update_exo_partieAction(Request $request, $id)
   
  
  
-      return $this->redirectToRoute('BP_show_exo_partie');
+      return $this->redirectToRoute('BP_show_all_exo_partie');
     }
 
 
