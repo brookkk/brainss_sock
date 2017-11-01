@@ -84,9 +84,11 @@ BP_n_exo_partie:
     path:     /n_exo_partie
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:n_exo_partie }
 BP_show_exo_partie:
-    path:     /show_exo_partie
+    path:     /show_exo_partie/{id}
+    requirements:
+        id: \d{1,}
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:show_exo_partie }
-BP_show_exo_partie:
+BP_show_all_exo_partie:
     path:     /show_exo_partie/all
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:show_all_exo_partie }
 BP_update_exo_partie:

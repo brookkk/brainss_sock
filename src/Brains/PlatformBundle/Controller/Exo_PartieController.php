@@ -116,6 +116,31 @@ public function show_questionAction(Request $request, $id)
 }
 
 
+
+
+ public function show_all_exo_partieAction(Request $request)
+{
+  $em= $this  ->getDoctrine()  ->getManager();
+
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+
+
+  $listParties = $repository->findAll();
+
+   
+
+  if (null === $listParties) {
+    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+  }
+
+
+
+  return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
+    'listParties' => $listParties  ) );
+}
+
+
+
  public function show_partie_by_exoAction(Request $request)
 {
   $em= $this  ->getDoctrine()  ->getManager();
