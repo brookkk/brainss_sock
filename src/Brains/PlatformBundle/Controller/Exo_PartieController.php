@@ -55,7 +55,7 @@ class Exo_PartieController extends Controller
 
       $request->getSession()->getFlashBag()->add('notice', 'Partie Bien enregistrée.');
  
-          return $this->redirectToRoute('BP_show_exo_partie');
+          return $this->redirectToRoute('BP_show_all_exo_partie');
     }
   }
 
@@ -232,7 +232,7 @@ public function delete_exo_partieAction(Request $request, $id)
  
  
 
-  return $this->redirectToRoute('BP_show_exo_partie');
+  return $this->redirectToRoute('BP_show_all_exo_partie');
 
 
 }
