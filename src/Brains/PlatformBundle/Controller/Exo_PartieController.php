@@ -175,7 +175,9 @@ public function update_exo_partieAction(Request $request, $id)
   
  
  
-      return $this->redirectToRoute('BP_show_all_exo_partie');
+     // return $this->redirectToRoute('BP_show_all_exo_partie');
+          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+
     }
 
 
@@ -213,7 +215,9 @@ public function delete_exo_partieAction(Request $request, $id)
  
  
 
-  return $this->redirectToRoute('BP_show_all_exo_partie');
+  //return $this->redirectToRoute('BP_show_all_exo_partie');
+  return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+
 
 
 }
