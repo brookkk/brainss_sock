@@ -44,7 +44,7 @@
 
    <td> <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exercice', {'id': exercice.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
-        <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}" title="parties"><span class="glyphicon glyphicon-plus"></span> </a> </td>
+        <a href="{{ path('BP_show_exo_partie',{'id': exercice.id}) }}" title="parties"><span class="glyphicon glyphicon-plus"></span> </a> </td>
 
     </tr>
   {% endfor %}
