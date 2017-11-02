@@ -38,6 +38,8 @@ class Exo_PartieController extends Controller
    $form = $this->createForm(Exo_PartieType::class, $partie);
 
 
+
+
 //si le formulaire est bien rempli, on l'enregistre dans la BD
     if($request->isMethod('POST')){
 
@@ -49,6 +51,7 @@ class Exo_PartieController extends Controller
 
        if($form->isValid()  )  
         { 
+          $partie->setExercice($exercice);
          $em= $this->getDoctrine()->getManager();
       $em->persist($partie);
       $em->flush();
