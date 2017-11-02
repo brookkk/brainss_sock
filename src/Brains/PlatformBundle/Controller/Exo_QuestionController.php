@@ -115,6 +115,7 @@ public function update_exo_questionAction(Request $request, $id)
 
   $form = $this->createForm(Exo_QuestionType::class, $question);
 
+//echo "hohohoho ". $question->getPartie()->getExercice()->getId();
 
 
   if($request->isMethod('POST')){
@@ -131,7 +132,6 @@ public function update_exo_questionAction(Request $request, $id)
   
  
  
-     // return $this->redirectToRoute('BP_show_all_exo_partie');
           return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
 
     }
@@ -140,6 +140,7 @@ public function update_exo_questionAction(Request $request, $id)
 
   return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
    'form'=>$form->createView(), 'partie_id' =>$question->getPartie()->getId(),
+    'exo_id'=>$question->getPartie()->getExercice()->getId(),
    ));
 
 
