@@ -1,7 +1,3 @@
-brains_platform_question:
-    resource: "@BrainsPlatformBundle/Controller/questionController.php"
-    type:     annotation
-
 brains_platform:
     resource: "@BrainsPlatformBundle/Resources/config/routing.yml"
     prefix:   /
