@@ -58,7 +58,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
        if($form->isValid()  )  
         { 
           $partie->setExercice($exercice);
-          
+
          $em= $this->getDoctrine()->getManager();
       $em->persist($partie);
       $em->flush();
@@ -72,7 +72,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
   return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
-   'form'=>$form->createView(),
+   'form'=>$form->createView(), 
    ));
 
 }
@@ -103,7 +103,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 
   return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
-    'listParties' => $listParties  ) );
+    'listParties' => $listParties , 'exo_id'=>$id ) );
 }
 
 
