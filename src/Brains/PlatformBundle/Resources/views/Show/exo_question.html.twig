@@ -39,7 +39,7 @@
   <td>   {{ question.partie.titre }} </td> 
   <td> <a href="{{ path('BP_show_exo_partie',{'id': question.partie.exercice.id}) }}" title="exercice">{{ question.partie.exercice.nom }} </a>   </td> 
  
-   <td> <a href="{{ path('BP_update_exo_question',{'id': question.partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+   <td> <a href="{{ path('BP_update_exo_question',{'id': question.id}) }}" title="modifier la question"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exo_partie', {'id': question.partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
         <a href="{{ path('BP_update_exo_partie',{'id': question.partie.id}) }}" title="Question"><span class="glyphicon glyphicon-question-sign"></span> </a> </td>
 
