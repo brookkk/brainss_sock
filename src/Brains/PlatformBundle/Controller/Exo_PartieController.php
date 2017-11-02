@@ -13,8 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Brains\PlatformBundle\Form\ExerciceType;
 use Brains\PlatformBundle\Form\Exo_PartieType;
 
-use Brains\PlatformBundle\Entity\Annee;
-use Brains\PlatformBundle\Entity\Filiere;
+//use Brains\PlatformBundle\Entity\Annee;
+//use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\question;
@@ -58,6 +58,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
        if($form->isValid()  )  
         { 
           $partie->setExercice($exercice);
+          
          $em= $this->getDoctrine()->getManager();
       $em->persist($partie);
       $em->flush();
