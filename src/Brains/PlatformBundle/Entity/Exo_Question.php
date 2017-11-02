@@ -8,12 +8,12 @@ namespace Brains\PlatformBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * question
+ * Exo_Question
  *
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="Brains\PlatformBundle\Repository\questionRepository")
  */
-class question
+class Exo_Question
 {
     /**
      * @var int
@@ -114,7 +114,7 @@ class question
      *
      * @param string $exercice
      *
-     * @return Question
+     * @return Exo_Question
      */
     public function setExercice(Exercice $exercice)
     {
