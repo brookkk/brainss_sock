@@ -31,7 +31,7 @@ class Exo_QuestionController extends Controller
   public function n_exo_questionAction(Request $request, $id)
   {
 //nouvelle instance de l'entité question
-    $partie= new Exo_Question();
+    $question= new Exo_Question();
 
 
 $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
@@ -39,7 +39,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
   $partie = $repository->find($id);
 
 
-   $form = $this->createForm(Exo_QuestionType::class, $partie);
+   $form = $this->createForm(Exo_QuestionType::class, $question);
 
 
 
@@ -55,21 +55,21 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
        if($form->isValid()  )  
         { 
-          $partie->setExercice($exercice);
+          $question->setPartie($partie);
 
          $em= $this->getDoctrine()->getManager();
-      $em->persist($partie);
+      $em->persist($question);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Partie Bien enregistrée.');
+      $request->getSession()->getFlashBag()->add('notice', 'Question Bien enregistrée.');
  
 
-          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$question->getPartie()->getExercice()->getId()));
     }
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
    'form'=>$form->createView(), 
    ));
 
