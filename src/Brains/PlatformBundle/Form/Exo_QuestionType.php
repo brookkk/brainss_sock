@@ -5,8 +5,6 @@ namespace Brains\PlatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 
 class Exo_QuestionType extends AbstractType
 {
@@ -15,7 +13,7 @@ class Exo_QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('question')->add('reponse')->add('Sauvegarder',      SubmitType::class);
+        $builder->add('question')->add('reponse')->add('bareme')->add('valeur')->add('indice')->add('choix1')->add('choix2')->add('choix3')->add('choix4');
     }
     
     /**
@@ -24,7 +22,7 @@ class Exo_QuestionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Brains\PlatformBundle\Entity\question'
+            'data_class' => 'Brains\PlatformBundle\Entity\Exo_Question'
         ));
     }
 
@@ -33,7 +31,7 @@ class Exo_QuestionType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'brains_platformbundle_question';
+        return 'brains_platformbundle_exo_question';
     }
 
 
