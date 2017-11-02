@@ -16,6 +16,7 @@ use Brains\PlatformBundle\Form\Exo_PartieType;
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exo_Partie;
+use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\question;
 
 //use Symfony\Component\Filesystem\Filesystem;
@@ -33,6 +34,11 @@ class Exo_PartieController extends Controller
   {
 //nouvelle instance de l'entité Année
     $partie= new Exo_Partie();
+
+
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+
+  $exercice = $repository->find($id);
 
 
    $form = $this->createForm(Exo_PartieType::class, $partie);
