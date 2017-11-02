@@ -16,6 +16,7 @@
    <table class="table table-striped" cellspacing="0" width="100%">
     <thead>
       <tr>
+        <th>Titre</th>
         <th>Contenu</th>
         <th>Exercice</th>
        
@@ -30,6 +31,7 @@
   {% for partie in listParties %}
 
   <tr>
+  <td>   {{ partie.titre }} </td> 
   <td>   {{ partie.contenu }} </td> 
   <td> <a href="{{ path('BP_show_exo_partie',{'id': partie.exercice.id}) }}" title="parties">{{ partie.exercice.nom }} </a>   </td> 
  
