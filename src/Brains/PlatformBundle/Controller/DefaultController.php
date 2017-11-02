@@ -6,11 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Brains\PlatformBundle\Entity\Exercice;
 use Symfony\Component\HttpFoundation\Request;
 use Brains\PlatformBundle\Form\ExerciceType;
-
+/*
 use Brains\PlatformBundle\Entity\question;
 use Brains\PlatformBundle\Form\questionType;
 
-
+*/
 
 
 
@@ -45,7 +45,7 @@ class DefaultController extends Controller
 
     }
 
-
+/*
 
        public function uiAction()
     {
@@ -120,7 +120,7 @@ public function n_ui_testAction(Request $request)
 
 }
 
-
+*/
 
 
 

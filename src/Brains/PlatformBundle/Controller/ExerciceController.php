@@ -216,7 +216,7 @@ public function nb_partiesAction( $id)
     ]);
 
   if (null === $listParties) {
-    throw new NotFoundHttpException("Aucune question na été trouvée");
+    throw new NotFoundHttpException("Aucune partie na été trouvée");
   }
 
 
