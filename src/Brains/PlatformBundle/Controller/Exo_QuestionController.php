@@ -64,13 +64,13 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
       $request->getSession()->getFlashBag()->add('notice', 'Question Bien enregistrée.');
  
 
-          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getExercice()->getId()));
+          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
     }
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
   return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
-   'form'=>$form->createView(), 
+   'form'=>$form->createView(), 'partie_id'=>$id
    ));
 
 }
