@@ -69,11 +69,6 @@ BP_n_ui:
 BP_n_ui_test:
     path:     /n_ui_test
     defaults: { _controller: BrainsPlatformBundle:Default:n_ui_test }
-BP_show_exo_question:
-    path:     /{id}/show_question
-    defaults: { _controller: BrainsPlatformBundle:Question:show_question }
-    requirements:
-        id: \d{1,}
 BP_n_exo_partie:
     path:     /n_exo_partie/{id}
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:n_exo_partie }

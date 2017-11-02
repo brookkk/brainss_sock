@@ -323,25 +323,25 @@ class Exo_Question
        /**
      * Set partie
      *
-     * @param string $exercice
+     * @param string $partie
      *
-     * @return Exo_partie
+     * @return Exo_Question
      */
-    public function setExercice(Exercice $exercice)
+    public function setPartie(Exo_Partie $partie)
     {
-        $this->exercice = $exercice;
+        $this->partie = $partie;
 
         return $this;
     }
 
     /**
-     * Get exercice
+     * Get partie
      *
      * @return string
      */
-    public function getExercice()
+    public function getPartie()
     {
-        return $this->exercice;
+        return $this->partie;
     }
 }
 
