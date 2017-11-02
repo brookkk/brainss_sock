@@ -93,10 +93,13 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
     throw new NotFoundHttpException("Aucun Exercice na été trouvé");
   }
 
-
+  $nb_questions=array();
+foreach($listParties as $part){
+  $nb_questions[$part->getId()] = $this->nb_questionsAction( $part->getId());
+}
 
   return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
-    'listParties' => $listParties , 'exo_id'=>$id ) );
+    'listParties' => $listParties , 'exo_id'=>$id, 'nb_questions'=>$nb_questions  ) );
 }
 
 
@@ -226,7 +229,33 @@ public function delete_exo_partieAction(Request $request, $id)
 }
 
 
+     //Action pour calculer le nb de questions d'une partie donnée
+public function nb_questionsAction( $id)
+{
+  $em= $this  ->getDoctrine()  ->getManager();
 
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+
+
+  $listQuestions = $repository->findBy([
+      'partie' => $id ,
+    ]);
+
+  if (null === $listQuestions) {
+    throw new NotFoundHttpException("Aucune question na été trouvée");
+  }
+
+
+$count=0;
+
+foreach($listQuestions as $q){
+  $count++;
+}
+  return $count;
+
+
+
+}
 
  
  

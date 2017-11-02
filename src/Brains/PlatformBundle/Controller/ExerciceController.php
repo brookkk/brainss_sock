@@ -106,8 +106,6 @@ public function show_exerciceAction(Request $request)
   }
   $nb_parties=array();
 foreach($listExercices as $exo){
-//$nb_parties[$exo->getid()] =  nb_partiesAction($request, $exo->getid());
- // echo nb_partiesAction( $exo->getid())."  ";
   $nb_parties[$exo->getid()] = $this->nb_partiesAction( $exo->getid());
 }
 
