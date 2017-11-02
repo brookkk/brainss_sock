@@ -8,18 +8,12 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
-
 use Brains\PlatformBundle\Form\ExerciceType;
 use Brains\PlatformBundle\Form\Exo_PartieType;
-
-//use Brains\PlatformBundle\Entity\Annee;
-//use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Exercice;
  
-//use Symfony\Component\Filesystem\Filesystem;
-//use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+ 
 
 
 class Exo_PartieController extends Controller

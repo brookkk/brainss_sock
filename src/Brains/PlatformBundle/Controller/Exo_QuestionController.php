@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 
 use Brains\PlatformBundle\Form\ExerciceType;
-use Brains\PlatformBundle\Form\Exo_PartieType;
+use Brains\PlatformBundle\Form\Exo_QuestionType;
 
  
 use Brains\PlatformBundle\Entity\Exo_Partie;
@@ -30,16 +30,16 @@ class Exo_QuestionController extends Controller
 
   public function n_exo_questionAction(Request $request, $id)
   {
-//nouvelle instance de l'entité Année
-    $partie= new Exo_Partie();
+//nouvelle instance de l'entité question
+    $partie= new Exo_Question();
 
 
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
 
-  $exercice = $repository->find($id);
+  $partie = $repository->find($id);
 
 
-   $form = $this->createForm(Exo_PartieType::class, $partie);
+   $form = $this->createForm(Exo_QuestionType::class, $partie);
 
 
 
