@@ -65,7 +65,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
   return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
-   'form'=>$form->createView(), 
+   'form'=>$form->createView(), 'exo_id'=>$id
    ));
 
 }
@@ -108,25 +108,7 @@ foreach($listParties as $part){
  
 
 
-
- public function show_partie_by_exoAction(Request $request)
-{
-  $em= $this  ->getDoctrine()  ->getManager();
-
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
-
-
-  $listParties = $repository->findAll();
-
-  if (null === $listParties) {
-    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
-  }
-
-
-
-  return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
-    'listParties' => $listParties  ) );
-}
+ 
 
 
 
