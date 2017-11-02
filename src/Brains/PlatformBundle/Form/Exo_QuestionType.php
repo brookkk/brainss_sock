@@ -5,6 +5,8 @@ namespace Brains\PlatformBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class Exo_QuestionType extends AbstractType
 {
@@ -13,7 +15,7 @@ class Exo_QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('question')->add('reponse');
+        $builder->add('question')->add('reponse')->add('Sauvegarder',      SubmitType::class);
     }
     
     /**
