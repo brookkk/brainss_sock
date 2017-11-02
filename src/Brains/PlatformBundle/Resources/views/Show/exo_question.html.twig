@@ -4,7 +4,7 @@
 {% block body %}
 
 <ul class="breadcrumb">
-  <li><a href="{{ path('BP_show_exo_partie', {'id': exo_id}) }}">Parties</a></li>
+  <li><a href="{{ path('BP_show_exo_partie', {'id': partie_id}) }}">Parties</a></li>
   <li>Liste</li>
  
 </ul>
@@ -36,7 +36,7 @@
   <td>   {{ question.question }} </td> 
   <td>   {{ question.reponse }} </td> 
   <td>   {{ question.bareme }} </td> 
-  <td>   {{ question.partie.title }} </td> 
+  <td>   {{ question.partie.titre }} </td> 
   <td> <a href="{{ path('BP_show_exo_partie',{'id': question.partie.exercice.id}) }}" title="exercice">{{ question.partie.exercice.nom }} </a>   </td> 
  
    <td> <a href="{{ path('BP_update_exo_partie',{'id': question.partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
