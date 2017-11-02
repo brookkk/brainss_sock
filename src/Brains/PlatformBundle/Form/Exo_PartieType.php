@@ -19,6 +19,7 @@ class Exo_PartieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('contenu')
+                ->add('titre')
                 /*->add('exercice', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Exercice',
                 'choice_label' => 'nom',

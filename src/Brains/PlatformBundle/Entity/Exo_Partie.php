@@ -41,7 +41,7 @@ class Exo_Partie
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="string")
+     * @ORM\Column(name="titre", type="string")
      */
     private $titre;
 
