@@ -136,13 +136,10 @@ public function update_exo_questionAction(Request $request, $id)
 
     }
 
-
-
-
   }
 
   return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
-   'form'=>$form->createView(),
+   'form'=>$form->createView(), 'partie_id' =>$question->getPartie()->getId(),
    ));
 
 
