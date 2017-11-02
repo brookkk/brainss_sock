@@ -99,21 +99,21 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 
 
-public function update_exo_partieAction(Request $request, $id)
+public function update_exo_questionAction(Request $request, $id)
 {
 
-  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Question');
 
-  $partie = $repository->find($id);
+  $question = $repository->find($id);
 
     
  
-  if (null === $partie) {
-    throw new NotFoundHttpException("Votre partie na pas été trouvé");
+  if (null === $question) {
+    throw new NotFoundHttpException("Votre question na pas été trouvé");
   }
 
 
-  $form = $this->createForm(Exo_PartieType::class, $partie);
+  $form = $this->createForm(Exo_QuestionType::class, $question);
 
 
 
@@ -123,16 +123,16 @@ public function update_exo_partieAction(Request $request, $id)
 
     if($form->isValid()){
       $em= $this->getDoctrine()->getManager();
-      $em->persist($partie);
+      $em->persist($question);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'partie Bien enregistrée.');
+      $request->getSession()->getFlashBag()->add('notice', 'question Bien enregistrée.');
 
   
  
  
      // return $this->redirectToRoute('BP_show_all_exo_partie');
-          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$partie->getId()));
 
     }
 
@@ -141,7 +141,7 @@ public function update_exo_partieAction(Request $request, $id)
 
   }
 
-  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
    'form'=>$form->createView(),
    ));
 

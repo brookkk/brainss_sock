@@ -94,3 +94,6 @@ BP_n_exo_question:
 BP_show_exo_question:
     path:     /show_exo_question/{id}
     defaults: { _controller: BrainsPlatformBundle:Exo_Question:show_exo_question}
+BP_update_exo_question:
+    path:     /update_exo_question/{id}
+    defaults: { _controller: BrainsPlatformBundle:Exo_Question:update_exo_question }
