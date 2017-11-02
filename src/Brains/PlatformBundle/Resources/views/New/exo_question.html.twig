@@ -1,0 +1,18 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_all_exo_partie') }}">Parties</a></li>
+    <li>MAJ</li>
+ 
+</ul>
+
+<h3>Partie</h3>
+
+<div class="well">
+  {{ form(form) }}
+</div>
+
+{% endblock %}
