@@ -147,39 +147,33 @@ public function update_exo_questionAction(Request $request, $id)
 
 
 
-public function delete_exo_partieAction(Request $request, $id)
+public function delete_exo_questionAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
 
-  $partie = $repository->find($id);
+  $question = $repository->find($id);
 
-  if (null === $partie) {
-    throw new NotFoundHttpException("Votre partie na pas été trouvée");
+  if (null === $question) {
+    throw new NotFoundHttpException("Votre question na pas été trouvée");
   }
 
 
-  $em->remove($partie);
+  $em->remove($question);
   $em->flush();
 
-  $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
+  $request->getSession()->getFlashBag()->add('notice', 'question a été supprimée');
 
  
  
 
   //return $this->redirectToRoute('BP_show_all_exo_partie');
-  return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+  return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
 
 
 
 }
-
-
-
-
- 
- 
 
 
 
