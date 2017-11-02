@@ -37,20 +37,18 @@
   <td>   {{ question.reponse }} </td> 
   <td>   {{ question.bareme }} </td> 
   <td>   {{ question.partie.title }} </td> 
-  <td>   {{ question.partie.exercice.nom }} </td> 
-
-  <td> <a href="{{ path('BP_show_exo_partie',{'id': partie.exercice.id}) }}" title="exercice">{{ question.partie.exercice.nom }} </a>   </td> 
+  <td> <a href="{{ path('BP_show_exo_partie',{'id': question.partie.exercice.id}) }}" title="exercice">{{ question.partie.exercice.nom }} </a>   </td> 
  
-   <td> <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
-        <a href="{{ path('BP_delete_exo_partie', {'id': partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
-        <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="Question"><span class="glyphicon glyphicon-question-sign"></span> </a> </td>
+   <td> <a href="{{ path('BP_update_exo_partie',{'id': question.partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_exo_partie', {'id': question.partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
+        <a href="{{ path('BP_update_exo_partie',{'id': question.partie.id}) }}" title="Question"><span class="glyphicon glyphicon-question-sign"></span> </a> </td>
 
     </tr>
   {% endfor %}
  
  </tbody>
  </table>
-  <a class="btn btn btn-success" href="{{ path('BP_n_exo_partie', {'id': exo_id}) }}" role="button">Ajouter une Partie</a>
+  <a class="btn btn btn-success" href="{{ path('BP_n_exo_question', {'id': partie_id}) }}" role="button">Ajouter une Question</a>
 
 
 {% endblock %}
