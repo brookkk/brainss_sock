@@ -81,7 +81,7 @@ BP_show_exo_question:
     requirements:
         id: \d{1,}
 BP_n_exo_partie:
-    path:     /n_exo_partie
+    path:     /n_exo_partie/{id}
     defaults: { _controller: BrainsPlatformBundle:Exo_Partie:n_exo_partie }
 BP_show_exo_partie:
     path:     /show_exo_partie/{id}

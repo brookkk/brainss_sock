@@ -29,7 +29,7 @@ class Exo_PartieController extends Controller
     return $this->render('BrainsPlatformBundle:Default:index.html.twig');
   }
 
-  public function n_exo_partieAction(Request $request)
+  public function n_exo_partieAction(Request $request, $id)
   {
 //nouvelle instance de l'entité Année
     $partie= new Exo_Partie();
