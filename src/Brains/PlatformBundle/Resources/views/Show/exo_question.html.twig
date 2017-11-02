@@ -9,15 +9,17 @@
  
 </ul>
 
-<h3>Liste des Parties</h3>
+<h3>Liste des Questions</h3>
 
  
   
    <table class="table table-striped" cellspacing="0" width="100%">
     <thead>
       <tr>
-        <th>Titre</th>
-        <th>Contenu</th>
+        <th>Question</th>
+        <th>Réponse</th>
+        <th>Barême</th>
+        <th>Partie</th>
         <th>Exercice</th>
        
         <th>Action</th>
@@ -28,12 +30,16 @@
 
     <tbody>
 
-  {% for partie in listParties %}
+  {% for question in listQuestions %}
 
   <tr>
-  <td>   {{ partie.titre }} </td> 
-  <td>   {{ partie.contenu }} </td> 
-  <td> <a href="{{ path('BP_show_exo_partie',{'id': partie.exercice.id}) }}" title="Exercice">{{ partie.exercice.nom }} </a>   </td> 
+  <td>   {{ question.question }} </td> 
+  <td>   {{ question.reponse }} </td> 
+  <td>   {{ question.bareme }} </td> 
+  <td>   {{ question.partie.title }} </td> 
+  <td>   {{ question.partie.exercice.nom }} </td> 
+
+  <td> <a href="{{ path('BP_show_exo_partie',{'id': partie.exercice.id}) }}" title="exercice">{{ question.partie.exercice.nom }} </a>   </td> 
  
    <td> <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exo_partie', {'id': partie.id}) }}" title="supprimer l'exercice" onclick="return confirm('Etes vous sûr de vouloir supprimer l exercice?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 

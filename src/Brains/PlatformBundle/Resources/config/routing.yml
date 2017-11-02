@@ -91,3 +91,6 @@ BP_delete_exo_partie:
 BP_n_exo_question:
     path:     /n_exo_question/{id}
     defaults: { _controller: BrainsPlatformBundle:Exo_Question:n_exo_question }
+BP_show_exo_question:
+    path:     /show_exo_question/{id}
+    defaults: { _controller: BrainsPlatformBundle:Exo_Partie:show_exo_question}

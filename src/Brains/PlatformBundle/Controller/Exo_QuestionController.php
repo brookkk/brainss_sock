@@ -76,32 +76,26 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 }
 
 
- 
 
-
-
-
- public function show_exo_partieAction(Request $request, $id=35)
+ public function show_exo_questionAction(Request $request, $id=1)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
 
 
-  //$listParties = $repository->findAll();
-
-    $listParties = $repository->findBy([
-      'exercice' => $id ,
+    $listQuestions = $repository->findBy([
+      'partie' => $id ,
     ]);
 
-  if (null === $listParties) {
-    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+  if (null === $listQuestions) {
+    throw new NotFoundHttpException("Aucune partie na été trouvé");
   }
 
 
 
-  return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
-    'listParties' => $listParties , 'exo_id'=>$id ) );
+  return $this->render('BrainsPlatformBundle:Show:exo_question.html.twig', array(
+    'listQuestions' => $listQuestions , 'partie_id'=>$id ) );
 }
 
 
