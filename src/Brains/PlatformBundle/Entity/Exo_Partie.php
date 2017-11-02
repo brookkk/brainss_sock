@@ -39,6 +39,14 @@ class Exo_Partie
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="string")
+     */
+    private $titre;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -70,6 +78,31 @@ class Exo_Partie
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+
+        /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Exo_Partie
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
     }
 
 
