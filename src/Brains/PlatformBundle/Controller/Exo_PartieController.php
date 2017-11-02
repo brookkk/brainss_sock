@@ -155,7 +155,7 @@ public function update_exo_partieAction(Request $request, $id)
   }
 
   return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
-   'form'=>$form->createView(),
+   'form'=>$form->createView(), 'exo_id' =>$partie->getExercice()->getId(),
    ));
 
 
