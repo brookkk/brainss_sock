@@ -132,7 +132,7 @@ public function update_exo_questionAction(Request $request, $id)
  
  
      // return $this->redirectToRoute('BP_show_all_exo_partie');
-          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getpartie()->getId()));
+          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
 
     }
 
