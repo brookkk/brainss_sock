@@ -225,13 +225,7 @@ public function delete_exo_partieAction(Request $request, $id)
 
 
 
- public function grantAction()
-    {
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
-        return true;
-        else return $this->redirectToRoute('login');
-    }
-
+ 
  
 
 
