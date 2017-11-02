@@ -91,9 +91,11 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
   if (null === $listQuestions) {
     throw new NotFoundHttpException("Aucune partie na été trouvé");
   }
+  foreach($listQuestions as $lq)
+  {$part_exp=$lq;}
 
   return $this->render('BrainsPlatformBundle:Show:exo_question.html.twig', array(
-    'listQuestions' => $listQuestions , 'partie_id'=>$id ) );
+    'listQuestions' => $listQuestions , 'partie_id'=>$id, 'exo_id'=>$lq->getPartie()->getExercice()->getId() ) );
 }
 
 
