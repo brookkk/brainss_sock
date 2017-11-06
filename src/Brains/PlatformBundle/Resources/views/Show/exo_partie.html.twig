@@ -36,8 +36,23 @@
   <td>   {{ partie.titre }} </td> 
   <td>   {{ partie.contenu }} </td> 
   <td>   {{ partie.exercice.nom }} </td> 
+
+
+{% if nb_questions[partie.id] > 0 %}
+
   <td><a href="{{ path('BP_show_exo_question',{'id': partie.id}) }}" title="questions">{{ nb_questions[partie.id] }} </a>  </td>
  
+{% else %}
+
+  <td>   {{ nb_questions[partie.id] }} </td> 
+
+
+{% endif %}
+
+
+
+
+
    <td> <a href="{{ path('BP_update_exo_partie',{'id': partie.id}) }}" title="modifier la Partie"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_exo_partie', {'id': partie.id}) }}" title="supprimer la question" onclick="return confirm('Etes vous sûr de vouloir supprimer la question?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
         <a href="{{ path('BP_show_exo_question',{'id': partie.id}) }}" title="Question"><span class="glyphicon glyphicon-question-sign"></span> </a> </td>
