@@ -106,8 +106,19 @@ $questions = $this->get_questionsAction(1);
 
 
 foreach ($questions as $question) {
-  print_r($question->getReponse());
-  echo("<br>");
+ // print_r($question->getReponse());
+
+  echo ($question ->getQuestion());
+  echo("<br><br>");
+  echo($question->getChoix1()); echo("&nbsp"); 
+  echo($question->getChoix2()); echo("&nbsp");
+  echo($question->getChoix3()); echo("&nbsp");
+  echo($question->getChoix4()); echo("&nbsp");
+
+  echo("<br><br>");
+  
+
+
 }
 
 
