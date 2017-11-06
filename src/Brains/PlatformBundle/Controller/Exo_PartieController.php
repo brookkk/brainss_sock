@@ -107,7 +107,7 @@ $questions = $this->get_questionsAction(1);
 
 foreach ($questions as $question) {
   print_r($question->getReponse());
-  echo("<br>heyy <br>");
+  echo("<br>");
 }
 
 
