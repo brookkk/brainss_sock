@@ -70,7 +70,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
   return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
-   'form'=>$form->createView(), 'partie_id'=>$id
+   'form'=>$form->createView(), 'partie_id'=>$id, 'exo_id' => $partie->getExercice()->getId(),
    ));
 
 }
