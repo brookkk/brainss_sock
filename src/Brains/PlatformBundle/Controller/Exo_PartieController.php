@@ -98,6 +98,8 @@ foreach($listParties as $part){
   $nb_questions[$part->getId()] = $this->nb_questionsAction( $part->getId());
 }
 
+print_r($this->get_questionsAction(6));
+
   return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
     'listParties' => $listParties , 'exo_id'=>$id, 'nb_questions'=>$nb_questions  ) );
 }
@@ -222,6 +224,24 @@ foreach($listQuestions as $q){
 
  
  
+
+public function get_questionsAction($id){
+
+
+   $em= $this  ->getDoctrine()  ->getManager();
+
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+
+
+  /*$listQuestions = $repository->findBy([
+      'partie' => 6 ,
+    ]);*/
+$listQuestions="hh";
+ // print_r($listQuestions);
+  return $listQuestions;
+
+}
+
 
 
 
