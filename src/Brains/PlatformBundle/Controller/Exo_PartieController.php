@@ -105,7 +105,7 @@ foreach($listParties as $part){
 $questions = $this->get_questionsAction(17);
 
 $rep=array();
-
+/*
 foreach ($questions as $question) {
  // print_r($question->getReponse());
 
@@ -124,7 +124,7 @@ foreach ($questions as $question) {
 }
 
 print_r($rep);
-
+*/
 
 ////////////////// end tests ////////////////
 
