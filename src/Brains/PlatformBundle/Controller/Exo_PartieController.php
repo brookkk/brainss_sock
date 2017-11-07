@@ -102,7 +102,7 @@ foreach($listParties as $part){
 
 
 ///////////////////tests question / reponse /////////////////
-$questions = $this->get_questionsAction(17);
+//$questions = $this->get_questionsAction(17);
 
 $rep=array();
 /*
