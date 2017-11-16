@@ -27,7 +27,7 @@ private $annee;
 
 
  /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere" fetch="LAZY")
    * @ORM\JoinColumn(nullable=false)
    */
 
