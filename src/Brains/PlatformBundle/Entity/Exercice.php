@@ -105,37 +105,10 @@ public function is_good_annee_filiere(){
     private $dateMaj;
 
 
-    /**
-     * @var \int
-     ** @Assert\Range(
-     *      min = 1,
-     *      minMessage = "La valeur réponse ne doit pas être inférieure à 1",
-     * )
-     * @ORM\Column(name="reponse", type="integer")
-     */
-    private $reponse;
-
-      /**
-     * @var \int
-     ** @Assert\Range(
-     *      min = 1,
-     *      minMessage = "La valeur barème ne doit pas être inférieure à 1",
-     * )
-     * @ORM\Column(name="bareme", type="integer")
-     */
-    private $bareme;
+ 
 
 
 
-    /**
-     * @var \int
-     ** @Assert\Range(
-     *      min = 1,
-     *      minMessage = "Le nombre des questions ne doit pas être inférieur à 1",
-     * )
-     * @ORM\Column(name="nb_questions", type="integer")
-     */
-    private $nb_questions;
 
 
       /**
@@ -149,19 +122,7 @@ public function is_good_annee_filiere(){
     private $temps;
 
 
-      /**
-     * @var \int
-     * 
-      * @Assert\Range(
-     *      min = 1,
-     *      max = 33,
-     *      minMessage = "Le bonus ne doit pas être inférieur à 1%",
-     *      maxMessage = "Le bonus ne doit pas dépasser 33%"
-     * )
-     *
-     * @ORM\Column(name="bonus", type="integer")
-     */
-    private $bonus;
+
 
 
 
@@ -402,29 +363,9 @@ public function is_good_annee_filiere(){
     }
 
 
- /**
-     * Set reponse
-     *
-     * @param string $reponse
-     *
-     * @return Exercice
-     */
-    public function setReponse($reponse)
-    {
-        $this->reponse = $reponse;
+ 
 
-        return $this;
-    }
-
-    /**
-     * Get reponse
-     *
-     * @return string
-     */
-    public function getReponse()
-    {
-        return $this->reponse;
-    }
+ 
 
 
 
