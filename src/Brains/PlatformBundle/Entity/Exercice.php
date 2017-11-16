@@ -369,57 +369,12 @@ public function is_good_annee_filiere(){
 
 
 
-
-     /**
-     * Set bareme
-     *
-     * @param string $bareme
-     *
-     * @return Exercice
-     */
-    public function setBareme($bareme)
-    {
-        $this->bareme = $bareme;
-
-        return $this;
-    }
-
-    /**
-     * Get bareme
-     *
-     * @return string
-     */
-    public function getBareme()
-    {
-        return $this->bareme;
-    }
+ 
 
 
 
-
-      /**
-     * Set nb_questions
-     *
-     * @param string $nb_questions
-     *
-     * @return Exercice
-     */
-    public function setNbQuestions($nb_questions)
-    {
-        $this->nb_questions = $nb_questions;
-
-        return $this;
-    }
-
-    /**
-     * Get nb_questions
-     *
-     * @return string
-     */
-    public function getNbQuestions()
-    {
-        return $this->nb_questions;
-    }
+ 
+ 
 
 
 
@@ -451,31 +406,7 @@ public function is_good_annee_filiere(){
 
 
 
-
-    /**
-     * Set bonus
-     *
-     * @param string $bonus
-     *
-     * @return Exercice
-     */
-    public function setBonus($bonus)
-    {
-        $this->bonus = $bonus;
-
-        return $this;
-    }
-
-    /**
-     * Get bareme
-     *
-     * @return string
-     */
-    public function getBonus()
-    {
-        return $this->bonus;
-    }
-
+ 
 
 
 
