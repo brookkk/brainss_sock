@@ -52,12 +52,7 @@ class ExerciceType extends AbstractType
                 'choice_label' => 'nome',
                 'multiple'     => false,
                 ))
-            ->add('nb_questions')
-            ->add('reponse')
-            ->add('bareme')
             ->add('temps')
-            ->add('bonus')
-            ->add( 'contenu', FroalaEditorType::class )
             ->add('Sauvegarder',      SubmitType::class);
 
     }
