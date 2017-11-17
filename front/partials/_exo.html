@@ -23,18 +23,44 @@ Par : {{exercice.auteur}}<br>
   <div class="panel-body">
 <p>
 	
-	exo créé le  : {{exercice.date_creation}}<br>
 
 	exo => temps  : {{exercice.temps}}<br>
-
+<form action = "">
 
 <div ng-repeat="partie in exercice.exo_parties" >
 
 
 	 {{partie.titre}}
+
+	 <br><br>
+	 {{partie.contenu}}
+
+
+	 <div ng-repeat="question in partie.exo_questions" >
+
+	 	{{question.question}}   ( bareme :   {{question.bareme}} points  )
+
+
+ 
+
+<br>
+  <input type="radio" name="{{question.id}}" value="1" checked> {{question.choix1}}<br>
+  <input type="radio" name="{{question.id}}" value="2" checked> {{question.choix2}}<br>
+  <input type="radio" name="{{question.id}}" value="3" checked> {{question.choix3}}<br>
+  <input type="radio" name="{{question.id}}" value="4" checked> {{question.choix4}}<br>
+ 
+
+
+
+ 
+	 	
+<hr>
+	 </div>
+
+<hr>
 <hr>
 </div>
-
+</form>
 
 </p>
 	<div ng-if="exercice.link"><a target="_blank"  href="{{exercice.link}}">Contenu</a></div>
