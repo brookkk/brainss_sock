@@ -60,12 +60,7 @@ class Exercice
 
 
 
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="contenu", type="text", length=255)
-     */
-    private $contenu;
+  
 
     /**
      * @var string
@@ -141,29 +136,7 @@ class Exercice
 
 
 
- /**
-     * Set contenu
-     *
-     * @param string $contenu
-     *
-     * @return Exercice
-     */
-    public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
 
-        return $this;
-    }
-
-    /**
-     * Get contenu
-     *
-     * @return string
-     */
-    public function getContenu()
-    {
-        return $this->contenu;
-    }
 
 
 
