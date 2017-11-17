@@ -53,18 +53,18 @@ class ExerciceController extends Controller
 
 
       $fs = new Filesystem();
-      if($form->isValid()   &&     
+      if($form->isValid()   /*&&     
         $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices' )  
+         .$exercice->getFiliere()->getShort().'/exercices' )  */
         ){
 
-        $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
-      $fs->touch($new_file_path);
+       /* $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';*/
+      //$fs->touch($new_file_path);
 
       //$link = explode("")
 
-        $exercice->setLink($new_file_path);
+        //$exercice->setLink($new_file_path);
         $em= $this->getDoctrine()->getManager();
       $em->persist($exercice);
       $em->flush();
@@ -74,8 +74,8 @@ class ExerciceController extends Controller
   
 
 
-          $file = fopen($new_file_path, 'a+');
-          fputs($file, $exercice->getContenu() );
+         /* $file = fopen($new_file_path, 'a+');
+          fputs($file, $exercice->getContenu() );*/
 
 
 
@@ -123,8 +123,8 @@ public function update_exerciceAction(Request $request, $id)
   $exercice = $repository->find($id);
 
   $fs = new Filesystem();
-  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-  .$exercice->getFiliere()->getShort() .'/exercices/';
+  /*$first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
+  .$exercice->getFiliere()->getShort() .'/exercices/';*/
   $old=$exercice->getNom().'.html';
 
   if (null === $exercice) {
