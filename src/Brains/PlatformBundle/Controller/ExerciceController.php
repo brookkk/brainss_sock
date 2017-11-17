@@ -47,7 +47,7 @@ class ExerciceController extends Controller
       $exercice->getAnnee()->addExercices($exercice);
       $exercice->getFiliere()->addExercices($exercice);
 
-      $exercice->setAnnee($exercice->getAnnee());
+      //$exercice->setAnnee($exercice->getAnnee());
       $exercice->setFiliere($exercice->getFiliere());
 
 

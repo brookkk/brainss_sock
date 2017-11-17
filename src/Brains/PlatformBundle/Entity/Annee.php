@@ -21,7 +21,7 @@ class Annee
 
     /**
     * 
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee")
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee" , fetch="LAZY")
    * 
    */
 

@@ -16,12 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Exercice
 {
 
-/**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="exercices", fetch="LAZY")
-   * @ORM\JoinColumn(nullable=false)
-   */
 
-private $annee;
 
 
 
@@ -38,11 +33,7 @@ private $annee;
 /**
 * @Assert\IsTrue(message="Il faut choisir la bonne année/filière")
 */
-public function is_good_annee_filiere(){
-    if($this->filiere->getAnnee()->getShort() == $this->annee->getShort())
-        return true;
-    else return false;    
-}
+
 
     /**
      * @var int
@@ -240,29 +231,9 @@ public function is_good_annee_filiere(){
         return $this->public;
     }
 
-    /**
-     * Set annee
-     *
-     * @param string $annee
-     *
-     * @return Exercice
-     */
-    public function setAnnee(Annee $annee)
-    {
-        $this->annee = $annee;
 
-        return $this;
-    }
 
-    /**
-     * Get annee
-     *
-     * @return string
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
+
 
     /**
      * Set filiere
