@@ -25,6 +25,17 @@ Par : {{exercice.auteur}}<br>
 	
 	exo créé le  : {{exercice.date_creation}}<br>
 
+	exo => temps  : {{exercice.temps}}<br>
+
+
+<div ng-repeat="partie in exercice.exo_parties" >
+
+
+	 {{partie.titre}}
+<hr>
+</div>
+
+
 </p>
 	<div ng-if="exercice.link"><a target="_blank"  href="{{exercice.link}}">Contenu</a></div>
   </div>
