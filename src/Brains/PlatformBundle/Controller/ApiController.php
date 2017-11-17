@@ -120,7 +120,7 @@ class ApiController extends Controller
      * @Rest\Get("/filieres", name="filieres_list")
      * @Rest\View()
      */
-    public function fiflieresListAction()
+    public function filieresListAction()
     {
         $filieres = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Filiere')->findAll();
 
