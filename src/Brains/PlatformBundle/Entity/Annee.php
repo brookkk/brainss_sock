@@ -23,7 +23,7 @@ class Annee
 
 /**
     * 
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Filiere", mappedBy="annee")
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Filiere", mappedBy="annee" , fetch="LAZY") 
    * 
    */
 

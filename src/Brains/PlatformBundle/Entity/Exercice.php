@@ -32,9 +32,7 @@ class Exercice
 
 
 
-/**
-* @Assert\IsTrue(message="Il faut choisir la bonne année/filière")
-*/
+
 
 
     /**

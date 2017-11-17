@@ -2,6 +2,7 @@
 
 namespace Brains\PlatformBundle\Entity;
 use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Contribution;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -48,7 +49,7 @@ class Filiere
     private $contributions;
 
   /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="filieres")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee" ,fetch="LAZY")
    * @ORM\JoinColumn(nullable=false)
    */
   
