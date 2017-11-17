@@ -9,8 +9,7 @@ Par : {{exercice.auteur}}<br>
 	lien de l'exo  : {{exercice.link}}<br>
 
 </p>
-	<a target="_blank"  href="{{exercice.link}}">Contenu</a>
-
+ 
 
 -->
 
@@ -25,7 +24,10 @@ Par : {{exercice.auteur}}<br>
 	
 
 	exo => temps  : {{exercice.temps}}<br>
-<form action = "../web/test.php">
+<!--<form action = "../web/test.php">-->
+
+	<form name="myForm" required my-directive >
+
 
 <div ng-repeat="partie in exercice.exo_parties" >
 <hr><hr>
@@ -69,7 +71,4 @@ Par : {{exercice.auteur}}<br>
 </div>
 
 
-<script type="text/javascript">
-	
-	console.log("hello");
-</script>
+ 
