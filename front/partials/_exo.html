@@ -26,7 +26,6 @@ Par : {{exercice.auteur}}<br>
 	exo => temps  : {{exercice.temps}}<br>
 <form action = "http://localhost/brainss/web/app_dev.php/show_exercice" method = "get">
 
-	<form name="myForm" required my-directive >
 
 
 <div ng-repeat="partie in exercice.exo_parties" >
@@ -44,20 +43,26 @@ Par : {{exercice.auteur}}<br>
 
 
  
+	<form >
 
 <br>
-  <input type="radio" name="{{question.id}}" value="1"> {{question.choix1}}  &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="2"> {{question.choix2}} &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="3"> {{question.choix3}} &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="4"> {{question.choix4}} &nbsp  &nbsp  &nbsp
+  <input type="radio" ng-model="vvv" value="1"> {{question.choix1}}  &nbsp  &nbsp  &nbsp
+  <input type="radio" ng-model="vvv" value="2"> {{question.choix2}} &nbsp  &nbsp  &nbsp
+  <input type="radio" ng-model="vvv" value="3"> {{question.choix3}} &nbsp  &nbsp  &nbsp
+  <input type="radio" ng-model="vvv" value="4"> {{question.choix4}} &nbsp  &nbsp  &nbsp
   <input type="hidden" name="reponse" value="{{question.valeur}}"> 
+</form>
 
  
 
-  <div ng-if="{{question.id}} == {{question.valeur}}">
-  	true
+  <div ng-switch="vvv">
+  <div ng-switch-when="question.valeur">
+     <h2>{{question.valeur}}</h2>
 
   </div>
+  
+ 
+</div>
 
 	 	
 
@@ -67,9 +72,8 @@ Par : {{exercice.auteur}}<br>
 
 </div>
 
-  <input type="submit" value="Valider">
+<!--  <input type="submit" value="Valider"> -->
 
-</form>
 
 </p>
   </div>
