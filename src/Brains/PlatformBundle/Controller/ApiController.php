@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\View;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -140,6 +141,23 @@ class ApiController extends Controller
     public function filiereShowAction(Filiere $filiere)
     {
         return $filiere;
+    }
+
+
+
+
+ 
+
+
+
+    /**
+     * @Rest\Post("/exercices")
+     * @Rest\View
+     * @ParamConverter("exercice", converter="fos_rest.request_body")
+     */
+    public function createAction(Exercice $exercice)
+    {
+        dump($article); die;
     }
 
 

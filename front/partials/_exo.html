@@ -24,7 +24,7 @@ Par : {{exercice.auteur}}<br>
 	
 
 	exo => temps  : {{exercice.temps}}<br>
-<!--<form action = "../web/test.php">-->
+<form action = "http://localhost/brainss/web/app_dev.php/show_exercice" method = "get">
 
 	<form name="myForm" required my-directive >
 
@@ -46,13 +46,18 @@ Par : {{exercice.auteur}}<br>
  
 
 <br>
-  <input type="radio" name="{{question.id}}" value="1" checked> {{question.choix1}}  &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="2" checked> {{question.choix2}} &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="3" checked> {{question.choix3}} &nbsp  &nbsp  &nbsp
-  <input type="radio" name="{{question.id}}" value="4" checked> {{question.choix4}} &nbsp  &nbsp  &nbsp
+  <input type="radio" name="{{question.id}}" value="1"> {{question.choix1}}  &nbsp  &nbsp  &nbsp
+  <input type="radio" name="{{question.id}}" value="2"> {{question.choix2}} &nbsp  &nbsp  &nbsp
+  <input type="radio" name="{{question.id}}" value="3"> {{question.choix3}} &nbsp  &nbsp  &nbsp
+  <input type="radio" name="{{question.id}}" value="4"> {{question.choix4}} &nbsp  &nbsp  &nbsp
+  <input type="hidden" name="reponse" value="{{question.valeur}}"> 
+
  
 
+  <div ng-if="{{question.id}} == {{question.valeur}}">
+  	true
 
+  </div>
 
 	 	
 
