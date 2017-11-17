@@ -25,7 +25,7 @@ class Exo_PartieController extends Controller
 
   public function n_exo_partieAction(Request $request, $id)
   {
-//nouvelle instance de l'entité Année
+//nouvelle instance de l'entité partie
     $partie= new Exo_Partie();
 
 
@@ -44,13 +44,17 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
       $form->handleRequest($request);
 
- 
+            print_r($partie);
+            
+          $partie->setExercice($exercice);
+    
 
 
 
        if($form->isValid()  )  
         { 
-          $partie->setExercice($exercice);
+          $partie->getExercice()->addExo_Partie($partie);
+          
 
          $em= $this->getDoctrine()->getManager();
       $em->persist($partie);

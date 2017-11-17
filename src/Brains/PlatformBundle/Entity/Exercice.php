@@ -53,7 +53,7 @@ class Exercice
 
 /**
     * 
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Filiere", mappedBy="annee")
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exo_Partie", mappedBy="exercice")
    * 
    */
 
