@@ -17,7 +17,7 @@ class Exercice
 {
 
 /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="exercices")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee", inversedBy="exercices", fetch="LAZY")
    * @ORM\JoinColumn(nullable=false)
    */
 
@@ -27,7 +27,7 @@ private $annee;
 
 
  /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere" fetch="LAZY")
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere" ,fetch="LAZY")
    * @ORM\JoinColumn(nullable=false)
    */
 
