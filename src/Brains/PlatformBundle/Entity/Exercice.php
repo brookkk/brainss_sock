@@ -51,24 +51,33 @@ class Exercice
 
 
 
- /**
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", cascade={"persist"})
+/**
+    * 
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Filiere", mappedBy="annee")
+   * 
    */
-  private $exercices;
+
+private $exo_parties;
 
 
 
 
 
- public function addExercices(Exercice $exercice)
+ public function addExo_Partie(Exo_Partie $exo_partie)
   {
-    $this->exercices[] = $exercice;
+    $this->exo_parties[] = $exo_partie;
   }
 
-  public function removeExercices(Exercice $exercice)
+  public function removeExo_Partie(Exo_Partie $exo_partie)
   {
-    $this->exercices->removeElement($exercice);
+    $this->exo_parties->removeElement($exo_partie);
   }
+
+
+    public function getExo_PartieS()
+    {
+        return $this->exo_parties;
+    }
 
 
 
