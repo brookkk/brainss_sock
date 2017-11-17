@@ -74,7 +74,7 @@ private $exo_parties;
   }
 
 
-    public function getExo_PartieS()
+    public function getExo_Parties()
     {
         return $this->exo_parties;
     }
