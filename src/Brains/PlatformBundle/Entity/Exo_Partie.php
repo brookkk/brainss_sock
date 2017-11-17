@@ -1,6 +1,8 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
+use Brains\PlatformBundle\Entity\Exo_Question;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,44 @@ class Exo_Partie
    */
 
  private $exercice;
+
+
+
+
+
+
+
+
+
+
+/**
+    * 
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exo_Question", mappedBy="partie")
+   * 
+   */
+
+private $exo_questions;
+
+
+
+
+
+ public function addExo_Question(Exo_Question $exo_question)
+  {
+    $this->exo_questions[] = $exo_question;
+  }
+
+  public function removeExo_Question(Exo_Question $exo_question)
+  {
+    $this->exo_questions->removeElement($exo_question);
+  }
+
+
+    public function getExo_Questions()
+    {
+        return $this->exo_questions;
+    }
+
 
 
     /**

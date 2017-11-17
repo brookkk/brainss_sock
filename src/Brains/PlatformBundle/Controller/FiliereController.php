@@ -164,7 +164,9 @@ $filiere = $repository->find($id);
 if (null === $filiere) {
       throw new NotFoundHttpException("Votre filière na pas été trouvée");
     }
- 
+      
+      //$filiere->getAnnee()->removeFiliere($filiere);
+
         $em= $this->getDoctrine()->getManager();
         $em->remove($filiere);
         $em->flush();

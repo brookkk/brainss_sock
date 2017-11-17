@@ -49,13 +49,17 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
       $form->handleRequest($request);
 
+          $question->setPartie($partie);
  
 
 
 
        if($form->isValid()  )  
         { 
-          $question->setPartie($partie);
+
+
+
+          $question->getPartie()->addExo_Question($question);
 
          $em= $this->getDoctrine()->getManager();
       $em->persist($question);
