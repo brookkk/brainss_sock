@@ -17,12 +17,7 @@ class Exercice
 {
 
 
- /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee" ,fetch="LAZY")
-   * @ORM\JoinColumn(nullable=false)
-   */
 
- private $annee;
 
 
 
