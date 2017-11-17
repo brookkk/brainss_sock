@@ -28,16 +28,16 @@ Par : {{exercice.auteur}}<br>
 <form action = "">
 
 <div ng-repeat="partie in exercice.exo_parties" >
-
+<hr><hr>
 
 	 {{partie.titre}}
 
-	 <br><br>
-	 {{partie.contenu}}
+	 
+
 
 
 	 <div ng-repeat="question in partie.exo_questions" >
-
+<hr>
 	 	{{question.question}}   ( bareme :   {{question.bareme}} points  )
 
 
@@ -52,16 +52,24 @@ Par : {{exercice.auteur}}<br>
 
 
 
- 
 	 	
-<hr>
+
 	 </div>
 
-<hr>
-<hr>
+
+
 </div>
+
+  <input type="submit" value="Valider">
+
 </form>
 
 </p>
   </div>
 </div>
+
+
+<script type="text/javascript">
+	
+	console.log("hello");
+</script>
