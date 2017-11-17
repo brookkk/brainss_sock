@@ -2,6 +2,8 @@
 
 namespace Brains\PlatformBundle\Entity;
 use Brains\PlatformBundle\Entity\Annee;
+use Brains\PlatformBundle\Entity\Exo_Partie;
+
 
 
 use Doctrine\ORM\Mapping as ORM;
@@ -43,6 +45,35 @@ class Exercice
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+
+
+
+
+
+ /**
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", cascade={"persist"})
+   */
+  private $exercices;
+
+
+
+
+
+ public function addExercices(Exercice $exercice)
+  {
+    $this->exercices[] = $exercice;
+  }
+
+  public function removeExercices(Exercice $exercice)
+  {
+    $this->exercices->removeElement($exercice);
+  }
+
+
+
+
+
 
     /**
      * @var string
