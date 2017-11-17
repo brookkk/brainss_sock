@@ -1,7 +1,7 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
-use Brains\PlatformBundle\Entity\Exercice;
+//use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Filiere;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -19,37 +19,6 @@ class Annee
 
 
 
-    /**
-    * 
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exercice", mappedBy="annee" , fetch="LAZY")
-   * 
-   */
-
-private $exercices;
-
- 
-  public function __construct()
-  {
-    $this->exercices = new ArrayCollection();
-    $this->filieres = new ArrayCollection();
-    // ...
-  }
-
- public function addExercices(Exercice $exercice)
-  {
-    $this->exercices[] = $exercice;
-  }
-
-  public function removeExercices(Exercice $exercice)
-  {
-    $this->exercices->removeElement($exercice);
-  }
-
-
-    public function getExercices()
-    {
-        return $this->exercices;
-    }
 
 
 /**

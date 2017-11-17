@@ -17,7 +17,12 @@ class Exercice
 {
 
 
+ /**
+   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee" ,fetch="LAZY")
+   * @ORM\JoinColumn(nullable=false)
+   */
 
+ private $annee;
 
 
 
@@ -52,12 +57,7 @@ class Exercice
     private $nom;
 
 
-      /**
-     * @var string
-     *
-     * @ORM\Column(name="link", type="string", length=255)
-     */
-    private $link;
+
 
 
      /**
@@ -185,12 +185,7 @@ class Exercice
         return $this;
     }
 
-      public function setLink($link)
-    {
-        $this->link = $link;
-
-        return $link;
-    }
+     
 
     /**
      * Get nom
@@ -202,10 +197,7 @@ class Exercice
         return $this->nom;
     }
 
-     public function getLink()
-    {
-        return $this->link;
-    }
+  
 
     /**
      * Set public
