@@ -40,7 +40,7 @@
             ng-repeat="exo in exos |filter : criteria"
           >
           
-            <td><a href="exo.html" >{{exo.nom}}</span> </a></td>
+            <td><a href="exo.html" >{{exo.nom}} </a></td>
             <td><span >{{exo.auteur}}</span></td>
             <td><span ></span>{{exo.date_creation  | date: 'dd/MM/yyyy'}} at {{exo.date_creation|date: 'HH:mm:ss'}}</td>
            </tr>
