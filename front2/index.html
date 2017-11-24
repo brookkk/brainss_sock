@@ -32,26 +32,18 @@
         <thead>
           <tr>
             <th></th>
-            <th>Plate</th>
-            <th>Color</th>
-            <th>Entrance</th>
+            <th>Exo name</th>
+            <th>Auteur</th>
+            <th>Date creation</th>
           </tr>
         </thead>
         <tbody>
           <tr 
-            ng-class="{selected: car.selected}" 
-            ng-repeat="car in cars |filter : criteria"
+            ng-repeat="car in cars"
           >
-            <td>
-              <input 
-                type="checkbox" 
-                ng-model="car.selected"
-              />
-            </td>
-            <td><span >{{car.plate|plate: "__"}}</span></td>
-
-            <td><span  ng-style="{ color: car.color  }">{{car.color}}</span></td>
-            <td><span ></span>{{car.entrance  | date: 'dd/MM/yyyy'}} at {{car.entrance|date: 'HH:mm:ss'}}</td>
+            <td><span >{{exo.nom}}</span></td>
+            <td><span >{{exo.auteur}}</span></td>
+            <td><span ></span>{{exo.date_ceration  | date: 'dd/MM/yyyy'}} at {{exo.date_ceration|date: 'HH:mm:ss'}}</td>
             <td> <button       ng-click="calculateTicket(car)" >
        calculate Ticket
     </button></td></tr>
