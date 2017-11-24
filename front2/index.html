@@ -37,11 +37,9 @@
         </thead>
         <tbody>
           <tr 
-            ng-repeat="exo in exos"
+            ng-repeat="exo in exos |filter : criteria"
           >
-          <script type="text/javascript">
-            console.log(exo);
-          </script>
+          
             <td><span >{{exo.nom}}</span></td>
             <td><span >{{exo.auteur}}</span></td>
             <td><span ></span>{{exo.date_creation  | date: 'dd/MM/yyyy'}} at {{exo.date_creation|date: 'HH:mm:ss'}}</td>
