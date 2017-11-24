@@ -1,0 +1,140 @@
+<!doctype html>
+<html ng-app="parking">
+	<head>
+    	<title>Exo</title>
+ 
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    	<script src="js/app.js"></script>
+      <script src="js/controllers.js"></script>
+      <script src="js/services.js"></script>
+    	<script src="js/filters.js"></script>
+      <script src="js/directives.js"></script>
+    	<script src="js/constants.js"></script>
+
+
+    	<link rel="stylesheet" type="text/css" href="css/app.css">
+
+    	
+
+ 
+
+	</head>
+ 
+
+
+  <body ng-controller="parkingCtrl">
+    <h3 ng-bind="appTitle"></h3>
+    <div ng-show="cars.length > 0">
+
+      <input type="text" ng-model="criteria" placeholder="what are you looking for?">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Plate</th>
+            <th>Color</th>
+            <th>Entrance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr 
+            ng-class="{selected: car.selected}" 
+            ng-repeat="car in cars |filter : criteria"
+          >
+            <td>
+              <input 
+                type="checkbox" 
+                ng-model="car.selected"
+              />
+            </td>
+            <td><span >{{car.plate|plate: "__"}}</span></td>
+
+            <td><span  ng-style="{ color: car.color  }">{{car.color}}</span></td>
+            <td><span ></span>{{car.entrance  | date: 'dd/MM/yyyy'}} at {{car.entrance|date: 'HH:mm:ss'}}</td>
+            <td> <button       ng-click="calculateTicket(car)" >
+       calculate Ticket
+    </button></td>
+           
+  </form>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-hide="cars.length > 0">
+      The parking lot is empty
+    </div>
+
+
+
+<!--
+
+    <input 
+      type="text" 
+      ng-model="car.plate" 
+      placeholder="What's the plate?"
+    />
+    <select 
+      ng-model="car.color" 
+      ng-options="color for color in colors"
+    >
+      Pick a color
+    </select>
+    <button 
+      ng-click="park(car)" 
+      ng-disabled="!car.plate || !car.color"
+     >
+       Park
+    </button>
+
+
+  -->
+
+
+  <form name="carForm">
+    <input type="text" 
+    name="plateField" 
+    ng-model="car.plate" 
+    placeholder="what's the plate?" 
+    ng-pattern="/[A-Z]{3}[0-9]{3,7}/"
+    ng-required="true"
+    ng-minlength="6"
+    ng-maxlength="10"
+    >
+
+  <button 
+      ng-click="park(car)" 
+      ng-disabled="carForm.$invalid"
+     >
+       Park
+    </button>
+  </form>
+
+  <alert
+ng-show="carForm.plateField.$invalid && carForm.plateField.$dirty"
+topic="Something went wrong!"
+>
+<span ng-show="carForm.plateField.$error.required">You must inform the plate of the car!<br></span>
+<span ng-show="carForm.plateField.$error.minlength">the minimum length of a plate is 6 chars<br></span>
+<span ng-show="carForm.plateField.$error.maxlength">the maximum length of a plate is 10 chars<br></span>
+<span ng-show="carForm.plateField.$error.pattern">the pattern ( 3 CAPITAL letters then 3 to 6 digits ) must be respected<br></span>
+</alert>
+    
+    <accordion>
+      <accordion-item title="MMM-8790">
+        White - 10/10/2002 10:00
+      </accordion-item>
+      <accordion-item title="ABC-9954">
+        Black - 10/10/2002 10:36
+      </accordion-item>
+      <accordion-item title="XYZ-9768">
+        Blue - 10/10/2002 11:10
+      </accordion-item>
+    </accordion>
+  </body>
+
+
+
+
+
+</html>
