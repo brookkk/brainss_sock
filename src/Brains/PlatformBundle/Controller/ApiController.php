@@ -18,6 +18,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Cours;
 
 
@@ -154,16 +155,20 @@ class ApiController extends Controller
 
     /**
      * @Rest\Get(
-     *     path = "/exercices/{id}",
-     *     name = "exercice_show",
+     *     path = "/exercices/{id}/parties",
+     *     name = "parties_show",
      *     requirements = {"id"="\d+"}
      * )
      * @Rest\View
      */
 
-    public function exerciceShowAction(Exercice $exercice)
+    public function partiesShowAction()
     {
-      return $exercice;
+
+     $parties = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findbyId(3)->getExo_Parties();
+
+        
+      return $parties;
     }
 
 
