@@ -1,1 +1,1 @@
-    	var parking = angular.module("parking", []);
+    	var brains = angular.module("brains", []);

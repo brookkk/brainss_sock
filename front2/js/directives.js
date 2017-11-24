@@ -1,6 +1,6 @@
 
 
-parking.directive("alert", function () {
+brains.directive("alert", function () {
 	return {
 		restrict: 'E',
 		scope: {
@@ -14,7 +14,7 @@ parking.directive("alert", function () {
 
 
  
-parking.directive("accordion", function(){
+brains.directive("accordion", function(){
 	return{
 		template:"<div ng-transclude></div>",
 		restrict: 'E',
@@ -41,7 +41,7 @@ parking.directive("accordion", function(){
 }); 
 
  
-parking.directive("accordionItem", function(){
+brains.directive("accordionItem", function(){
 
 	return{
 

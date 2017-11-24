@@ -1,6 +1,6 @@
 
 
-parking.filter("plate", function(){
+brains.filter("plate", function(){
 	return function(input, separator){
 		var firstPart= input.substring(0,3);
 		var secondPart = input.substring(3);

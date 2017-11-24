@@ -1,3 +1,3 @@
-parking.constant("parkingConfig", {
+brains.constant("brainsConfig", {
 	parkingRate: 10
 });

@@ -1,20 +1,20 @@
 
-parking.factory("parkingService", function(parkingConfig){
+brains.factory("brainsService", function(brainsConfig){
 	var _calculateTicket = function(car){
 		var departHour = new Date().getHours();
 		var entranceHour = car.entrance.getHours() -1;
 
-		var parkingPeriod = departHour - entranceHour;
-		var parkingPrice = parkingPeriod * parkingConfig.parkingRate ;
+		var brainsPeriod = departHour - entranceHour;
+		var brainsPrice = brainsPeriod * brainsConfig.brainsRate ;
 
 		console.log("departHour" + departHour);
 		console.log("entranceHour" + entranceHour);
-		console.log("parkingPeriod" + parkingPeriod);
-		console.log("parkingPrice" + parkingPrice);
+		console.log("brainsPeriod" + brainsPeriod);
+		console.log("brainsPrice" + brainsPrice);
 
 		return {
-			period : parkingPeriod,
-			price : parkingprice
+			period : brainsPeriod,
+			price : brainsprice
 		};
 	};
 
@@ -24,22 +24,22 @@ parking.factory("parkingService", function(parkingConfig){
 });
 
 
-parking.service("parkingService2", function(parkingConfig){
+brains.service("brainsService2", function(brainsConfig){
 	this.calculateTicket = function(car){
 		var departHour = new Date() . getHours();
 		var entranceHour = car.entrance.getHours();
 
-		var parkingPeriod = departHour - entranceHour;
-		var parkingPrice = parkingPeriod * parkingConfig.parkingRate ;
+		var brainsPeriod = departHour - entranceHour;
+		var brainsPrice = brainsPeriod * brainsConfig.brainsRate ;
 		
 		console.log("departHour" + departHour);
 		console.log("entranceHour" + entranceHour);
-		console.log("parkingPeriod" + parkingPeriod);
-		console.log("parkingPrice" + parkingPrice);
+		console.log("brainsPeriod" + brainsPeriod);
+		console.log("brainsPrice" + brainsPrice);
 
 		return {
-			period : parkingPeriod,
-			price : parkingprice
+			period : brainsPeriod,
+			price : brainsprice
 		};
 	};
 });

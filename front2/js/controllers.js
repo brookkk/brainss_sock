@@ -1,37 +1,12 @@
-
-
-
- 	parking.controller("parkingCtrl", function($scope, parkingService2, $http,$q){
-
-
+	brains.controller("brainsCtrl", function($scope, brainsService2, $http,$q){
 
     		$scope.cars = [];
-
     		$scope.colors=["white", "black", "blue", "red", "silver"];
+    		$scope.appTitle="Exercices";
 
-    		$scope.appTitle="the app title";
-
-    		$scope.park = function(car){
-    			car.entrance = new Date();
-    			$scope.cars.push(car);
-    			delete $scope.car;
-    		};
-
-          $scope.calculateTicket = function(car){
-                $scope.ticket = parkingService2.calculateTicket(car);
-            };
-
-
-
-
-
-
-
-            // EXERCICES
-
+         // EXERCICES
 
             $scope.exos = [];
-
 
             var retreiveExos = function(){
 
@@ -57,34 +32,5 @@
 
             retreiveExos();
 
-
-
-
-
-/*
-retreiveExos = function () {
-
-            $http.get("../web/app_dev.php/api/exercices");
-              //   .success(function() {console.log("success");});
-            console.log($http.success);
-
-
-
-};*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     	});	
+
