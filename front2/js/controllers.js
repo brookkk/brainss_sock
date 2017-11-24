@@ -1,7 +1,7 @@
 
 
 
- 	parking.controller("parkingCtrl", function($scope, parkingService2, $http){
+ 	parking.controller("parkingCtrl", function($scope, parkingService2, $http,$q){
 
 
 
@@ -35,9 +35,10 @@
 
             var retreiveExos = function(){
 
-                 $http.get("http://localhost/brainss/web/app_dev.php/api/exercices")
+                 $http.get('../web/app_dev.php/api/exercices')
                     .success(function(data, status, headers, config){
-                        $sope.exos = data;
+                        $scope.exos = data;
+                        //console.log(data);
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
@@ -55,6 +56,34 @@
             };
 
             retreiveExos();
+
+
+
+
+
+/*
+retreiveExos = function () {
+
+            $http.get("../web/app_dev.php/api/exercices");
+              //   .success(function() {console.log("success");});
+            console.log($http.success);
+
+
+
+};*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
