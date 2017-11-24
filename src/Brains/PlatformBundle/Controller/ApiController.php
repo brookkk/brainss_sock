@@ -162,10 +162,10 @@ class ApiController extends Controller
      * @Rest\View
      */
 
-    public function partiesShowAction()
+    public function partiesShowAction( $id)
     {
 
-     $parties = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findbyId(3)->getExo_Parties();
+     $parties = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->find($id)->getExo_Parties();
 
         
       return $parties;
