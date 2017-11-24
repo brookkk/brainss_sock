@@ -6,14 +6,14 @@
 
          // EXERCICES
 
-            $scope.exos = [];
+            $scope.parties = [];
 
             var retreiveExos = function(){
 
-                 $http.get('../web/app_dev.php/api/exercices')
+                 $http.get('../web/app_dev.php/api/exercices/3/parties')
                     .success(function(data, status, headers, config){
-                        $scope.exos = data;
-                        //console.log(data);
+                        $scope.parties = data;
+                        console.log(data);
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
@@ -33,4 +33,5 @@
             retreiveExos();
 
     	});	
+
 
