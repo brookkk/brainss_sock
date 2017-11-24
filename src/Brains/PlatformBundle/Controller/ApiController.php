@@ -32,31 +32,6 @@ class ApiController extends Controller
 
 
 
-    /**
-     * @Rest\Get(
-     *     path = "/exercices/{id}",
-     *     name = "exercice_show",
-     *     requirements = {"id"="\d+"}
-     * )
-     * @Rest\View
-     */
-
-    public function exerciceShowAction(Exercice $exercice)
-    {
-      return $exercice;
-    }
-
-
- /**
-     * @Rest\Get("/exercices", name="exercices_list")
-     * @Rest\View()
-     */
-    public function exercicesListAction()
-    {
-        $exercices = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findAll();
-        
-        return $exercices;
-    }
 
 
      /**
@@ -162,6 +137,37 @@ class ApiController extends Controller
 
 
 
+
+
+
+          /**
+     * @Rest\Get("/exercices", name="exercices_list")
+     * @Rest\View()
+     */
+    public function exercicesListAction()
+    {
+        $exercices = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findAll();
+
+        return $exercices;
+    }
+
+
+    /**
+     * @Rest\Get(
+     *     path = "/exercices/{id}",
+     *     name = "exercice_show",
+     *     requirements = {"id"="\d+"}
+     * )
+     * @Rest\View
+     */
+
+    public function exerciceShowAction(Exercice $exercice)
+    {
+      return $exercice;
+    }
+
+
+ 
  
 
 }
