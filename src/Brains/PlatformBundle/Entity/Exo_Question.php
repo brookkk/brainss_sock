@@ -74,9 +74,9 @@ class Exo_Question
     /**
      * @var string
      *
-     * @ORM\Column(name="choix2", type="string", length=255)
+     * @ORM\Column(name="choix_2", type="string", length=255)
      */
-    private $choix2;
+    private $choix_2;
 
     /**
      * @var string
@@ -248,27 +248,27 @@ class Exo_Question
     }
 
     /**
-     * Set choix2
+     * Set choix_2
      *
-     * @param string $choix2
+     * @param string $choix_2
      *
      * @return Exo_Question
      */
-    public function setChoix2($choix2)
+    public function setChoix2($choix_2)
     {
-        $this->choix2 = $choix2;
+        $this->choix_2 = $choix_2;
 
         return $this;
     }
 
     /**
-     * Get choix2
+     * Get choix_2
      *
      * @return string
      */
     public function getChoix2()
     {
-        return $this->choix2;
+        return $this->choix_2;
     }
 
     /**
