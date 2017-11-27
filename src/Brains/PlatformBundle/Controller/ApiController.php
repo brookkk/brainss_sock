@@ -20,6 +20,7 @@ use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Cours;
+use Brains\UserBundle\Entity\User;
 
 
 
@@ -173,6 +174,19 @@ class ApiController extends Controller
 
 
  
+
+
+
+       /**
+     * @Rest\Get("/users", name="users_list")
+     * @Rest\View()
+     */
+    public function usersListAction()
+    {
+        $users = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->findAll();
+
+        return $users;
+    }
  
 
 }
