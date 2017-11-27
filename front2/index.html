@@ -55,8 +55,15 @@
             Valider             
            </button>
 <br>
-           votre score : <span ng-bind="evaluation"></span>
+<div ng-if="max>0 && evaluation < max">
+           votre score :  {{evaluation}} / {{max}}
+</div>
 
+<div ng-if="max>0 && evaluation == max">
+           votre score :  {{evaluation}} / {{max}} <br>
+           well done 
+
+</div>
          </form>
        
     </div>
