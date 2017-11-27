@@ -33,7 +33,7 @@
 
             console.log($scope.parties);
 
-$scope.rep = '';
+$scope.evaluation = 0;
 
 //$scope.parties.reponses = [];
 
@@ -52,43 +52,35 @@ $scope.rep = '';
 
 
 
-        //console.log ("evaluation : " + $scope.eval_rep([false,false, false, true]));
 
-            $scope.evaluateForm = function(valeur, reponse, partie, question){
-
-               // console.log("valeur : " + valeur + " reponse : " + reponse.rep_4);
-                //var repp = reponse.split("_");
-               // console.log("partie : " + partie + " question " + question);
-                //console.log("answer : " + repp[1]);
-               // console.log( "difficult "  );console.log($scope.parties);
+            $scope.evaluateForm = function(){
+            $scope.evaluation = 0;
+               
 
 
 
 
 
                 $scope.parties.forEach(function(part){
-                    //console.log(part.exo_questions);
-
+ 
                     part.exo_questions.forEach(function(question){
-                        //console.log(question);
+ 
+                $scope.answers = [question.rep_1, question.rep_2, question.rep_3, question.rep_4];
+                var eval = $scope.eval_rep($scope.answers);
+
+                if( eval == question.valeur)
+                    {
+                $scope.evaluation+= ( question.bareme );}
+               
+
+
                     });
                 });
 
 
-
-                console.log("VALEUR " + valeur);
-                $scope.answers = [reponse.rep_1, reponse.rep_2, reponse.rep_3, reponse.rep_4];
-                //console.log("evaluation : " + $scope.eval_rep($scope.answers));
-
-                var eval = $scope.eval_rep($scope.answers);
-
-                //console.log("weird response " + (reponse.rep_+(valeur+1)));
-
-
-                if( eval != valeur)
-                    {console.log("mauvaise reponse");return 0;}
-                else
-                    {console.log("bonne reponse");return 1;}
+                console.log ("votre score est  " + $scope.evaluation);
+                return $scope.evaluation;
+                
             };
 
 
