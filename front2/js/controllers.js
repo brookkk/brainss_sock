@@ -37,10 +37,14 @@ $scope.rep = '';
 
 //$scope.parties.reponses = [];
 
-            $scope.evaluateForm = function(valeur, reponse){
+            $scope.evaluateForm = function(valeur, reponse, partie, question){
 
-                console.log("valeur : " + valeur + " reponse : " + reponse);
-                if(valeur != reponse)
+                //console.log("valeur : " + valeur + " reponse : " + reponse);
+                var repp = reponse.split("_");
+                console.log("partie : " + partie + " question " + question);
+                //console.log("answer : " + repp[1]);
+                console.log( "difficult "  + $scope.parties.7);
+                if(valeur != repp[1])
                     {console.log("mauvaise reponse");return 0;}
                 else
                     {console.log("bonne reponse");return 1;}
