@@ -33,6 +33,12 @@
 
             console.log($scope.parties);
 
+
+
+            var evaluateForm = function(valeur, reponse){
+                
+            };
+
     	});	
 
 
