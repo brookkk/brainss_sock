@@ -37,13 +37,13 @@
             <div ng-repeat="quest in partie.exo_questions ">
               <p>{{quest.question}}</p>
                 <!--   Réponses   -->
-                <input type="radio" ng-model="quest.rep" value="quest.choix_1">{{quest.choix_1}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-model="quest.rep" value="quest.choix_2">{{quest.choix_2}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-model="quest.rep" value="quest.choix_3">{{quest.choix_3}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-model="quest.rep" value="quest.choix_4">{{quest.choix_4}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_1" value="quest.choix_1" checked="checked"/>{{quest.choix_1}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_2" value="quest.choix_2">{{quest.choix_2}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_3" value="quest.choix_3">{{quest.choix_3}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_4" value="quest.choix_4">{{quest.choix_4}}     &nbsp &nbsp &nbsp
 
                 <button
-           ng-click = "evaluateForm(quest.valeur, quest.rep, partie.id, quest.id)">
+           ng-click = "evaluateForm(quest.valeur, quest, partie.id, quest.id)">
             Valider             
            </button>
 

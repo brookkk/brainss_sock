@@ -39,12 +39,28 @@ $scope.rep = '';
 
             $scope.evaluateForm = function(valeur, reponse, partie, question){
 
-                //console.log("valeur : " + valeur + " reponse : " + reponse);
-                var repp = reponse.split("_");
-                console.log("partie : " + partie + " question " + question);
+                console.log("valeur : " + valeur + " reponse : " + reponse.rep_4);
+                //var repp = reponse.split("_");
+               // console.log("partie : " + partie + " question " + question);
                 //console.log("answer : " + repp[1]);
-                console.log( "difficult "  + $scope.parties.7);
-                if(valeur != repp[1])
+               // console.log( "difficult "  );console.log($scope.parties);
+
+
+
+
+
+                $scope.parties.forEach(function(part){
+                    //console.log(part.exo_questions);
+
+                    part.exo_questions.forEach(function(question){
+                        //console.log(question);
+                    });
+                });
+
+                console.log("weird response " + (reponse.rep_+(valeur+1)));
+
+
+                if( reponse.rep_+(valeur+1) !== true)
                     {console.log("mauvaise reponse");return 0;}
                 else
                     {console.log("bonne reponse");return 1;}
