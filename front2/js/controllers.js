@@ -37,9 +37,26 @@ $scope.rep = '';
 
 //$scope.parties.reponses = [];
 
+
+
+    $scope.eval_rep = function(reponses){
+            var eval=0;
+            for(var i=0; i<reponses.length; i++){
+                //console.log("inside evel " + i + " responses[i] " + responses[i] );
+                if(reponses[i]===true)
+                    eval += Math.pow(2,i);
+                }
+            return eval;
+        };
+
+
+
+
+        //console.log ("evaluation : " + $scope.eval_rep([false,false, false, true]));
+
             $scope.evaluateForm = function(valeur, reponse, partie, question){
 
-                console.log("valeur : " + valeur + " reponse : " + reponse.rep_4);
+               // console.log("valeur : " + valeur + " reponse : " + reponse.rep_4);
                 //var repp = reponse.split("_");
                // console.log("partie : " + partie + " question " + question);
                 //console.log("answer : " + repp[1]);
@@ -57,16 +74,33 @@ $scope.rep = '';
                     });
                 });
 
-                console.log("weird response " + (reponse.rep_+(valeur+1)));
 
 
-                if( reponse.rep_+(valeur+1) !== true)
+                console.log("VALEUR " + valeur);
+                $scope.answers = [reponse.rep_1, reponse.rep_2, reponse.rep_3, reponse.rep_4];
+                //console.log("evaluation : " + $scope.eval_rep($scope.answers));
+
+                var eval = $scope.eval_rep($scope.answers);
+
+                //console.log("weird response " + (reponse.rep_+(valeur+1)));
+
+
+                if( eval != valeur)
                     {console.log("mauvaise reponse");return 0;}
                 else
                     {console.log("bonne reponse");return 1;}
             };
 
-console.log("reponse : " + $scope.rep);
+
+
+
+
+
+
+    
+
+
+
 
     	});	
 
