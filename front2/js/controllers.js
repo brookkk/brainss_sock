@@ -13,7 +13,6 @@
                  $http.get('../web/app_dev.php/api/exercices/3/parties')
                     .success(function(data, status, headers, config){
                         $scope.parties = data;
-                        //console.log(data);
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
