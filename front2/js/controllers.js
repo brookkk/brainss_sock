@@ -33,14 +33,20 @@
 
             console.log($scope.parties);
 
+$scope.rep = '';
 
+//$scope.parties.reponses = [];
 
-            var evaluateForm = function(valeur, reponse){
+            $scope.evaluateForm = function(valeur, reponse){
+
+                console.log("valeur : " + valeur + " reponse : " + reponse);
                 if(valeur != reponse)
                     {console.log("mauvaise reponse");return 0;}
                 else
                     {console.log("bonne reponse");return 1;}
             };
+
+console.log("reponse : " + $scope.rep);
 
     	});	
 

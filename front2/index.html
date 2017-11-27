@@ -37,10 +37,15 @@
             <div ng-repeat="quest in partie.exo_questions ">
               <p>{{quest.question}}</p>
                 <!--   Réponses   -->
-                <input type="radio" ng-bind="rep">{{quest.choix1}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-bind="rep">{{quest.choix2}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-bind="rep">{{quest.choix3}}     &nbsp &nbsp &nbsp
-                <input type="radio" ng-bind="rep">{{quest.choix4}}     &nbsp &nbsp &nbsp
+                <input type="radio" ng-model="quest.rep" value="quest.choix1">{{quest.choix1}}     &nbsp &nbsp &nbsp
+                <input type="radio" ng-model="quest.rep" value="quest.choix2">{{quest.choix2}}     &nbsp &nbsp &nbsp
+                <input type="radio" ng-model="quest.rep" value="{{quest.choix3}}">{{quest.choix3}}     &nbsp &nbsp &nbsp
+                <input type="radio" ng-model="quest.rep" value="quest.choix4">{{quest.choix4}}     &nbsp &nbsp &nbsp
+
+                <button
+           ng-click = "evaluateForm(quest.valeur, quest.rep)">
+            Valider             
+           </button>
 
             </div>
 
@@ -48,10 +53,7 @@
 
            </div>
 
-           <button
-           ng-click = "evaluateForm(quest.valeur, rep)">
-            Valider             
-           </button>
+           
 
          </form>
        
