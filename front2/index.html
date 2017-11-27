@@ -24,27 +24,21 @@
 
   <body ng-controller="brainsCtrl">
     <h3 ng-bind="appTitle"></h3>
-    <div ng-show="exos.length > 0">
+    <div ng-show="parties.length > 0">
 
       <input type="text" ng-model="criteria" placeholder="what are you looking for?">
       <table>
-        <thead>
-          <tr>
-            <th>Exo name</th>
-            <th>Auteur</th>
-            <th>Date creation</th>
-          </tr>
-        </thead>
+       
         <tbody>
+          <div ng-repeat="partie in parties |filter : criteria">
           <tr 
-            ng-repeat="exo in exos |filter : criteria"
+            
           >
           
-            <td><a href="exo.html" >{{exo.nom}} </a></td>
-            <td><span >{{exo.auteur}}</span></td>
-            <td><span ></span>{{exo.date_creation  | date: 'dd/MM/yyyy'}} at {{exo.date_creation|date: 'HH:mm:ss'}}</td>
+            <td>{{partie.titre}}</td>
+            <td><span ></span>{{partie.contenu  }} </td>
            </tr>
-           
+           </div>
 
            
         </tbody>

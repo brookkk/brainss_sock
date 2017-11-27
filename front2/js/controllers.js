@@ -26,11 +26,13 @@
                                 break;
                             }
                         }
-                        console.log(data,status);
+                        
                     });
             };
 
             retreiveExos();
+
+            console.log($scope.parties);
 
     	});	
 
