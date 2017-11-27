@@ -81,16 +81,16 @@ class Exo_Question
     /**
      * @var string
      *
-     * @ORM\Column(name="choix3", type="string", length=255)
+     * @ORM\Column(name="choix_3", type="string", length=255)
      */
-    private $choix3;
+    private $choix_3;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="choix4", type="string", length=255)
+     * @ORM\Column(name="choix_4", type="string", length=255)
      */
-    private $choix4;
+    private $choix_4;
 
 
     /**
@@ -272,51 +272,51 @@ class Exo_Question
     }
 
     /**
-     * Set choix3
+     * Set choix_3
      *
-     * @param string $choix3
+     * @param string $choix_3
      *
      * @return Exo_Question
      */
-    public function setChoix3($choix3)
+    public function setChoix3($choix_3)
     {
-        $this->choix3 = $choix3;
+        $this->choix_3 = $choix_3;
 
         return $this;
     }
 
     /**
-     * Get choix3
+     * Get choix_3
      *
      * @return string
      */
     public function getChoix3()
     {
-        return $this->choix3;
+        return $this->choix_3;
     }
 
     /**
-     * Set choix4
+     * Set choix_4
      *
-     * @param string $choix4
+     * @param string $choix_4
      *
      * @return Exo_Question
      */
-    public function setChoix4($choix4)
+    public function setChoix4($choix_4)
     {
-        $this->choix4 = $choix4;
+        $this->choix_4 = $choix_4;
 
         return $this;
     }
 
     /**
-     * Get choix4
+     * Get choix_4
      *
      * @return string
      */
     public function getChoix4()
     {
-        return $this->choix4;
+        return $this->choix_4;
     }
 
 

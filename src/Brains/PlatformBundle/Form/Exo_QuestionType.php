@@ -15,7 +15,7 @@ class Exo_QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('question')->add('reponse')->add('bareme')->add('valeur')->add('indice')
-        ->add('choix_1')->add('choix_2')->add('choix3')->add('choix4')
+        ->add('choix_1')->add('choix_2')->add('choix_3')->add('choix_4')
         ->add('Sauvegarder',      SubmitType::class);
     }
     
