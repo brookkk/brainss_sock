@@ -36,7 +36,10 @@
 
 
             var evaluateForm = function(valeur, reponse){
-                
+                if(valeur != reponse)
+                    {console.log("mauvaise reponse");return 0;}
+                else
+                    {console.log("bonne reponse");return 1;}
             };
 
     	});	
