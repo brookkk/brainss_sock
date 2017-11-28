@@ -26,35 +26,7 @@
 
       -->
 
-
-<script type="text/javascript">
-(function() {
-    if (typeof window.janrain !== 'object') window.janrain = {};
-    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
-    
-    janrain.settings.tokenUrl = '.';
-
-    function isReady() { janrain.ready = true; };
-    if (document.addEventListener) {
-      document.addEventListener("DOMContentLoaded", isReady, false);
-    } else {
-      window.attachEvent('onload', isReady);
-    }
-
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.id = 'janrainAuthWidget';
-
-    if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/brains/engage.js';
-    } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/brains/engage.js';
-    }
-
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(e, s);
-})();
-</script>
+ 
  
 
 	</head>
@@ -66,52 +38,14 @@
 
 
 
-<a class="janrainEngage" href="#">Sign-In</a>
 
 
 
     <h3 ng-bind="appTitle"></h3>
-    <div ng-show="parties.length > 0">
+    <div ng-show="exercices.length > 0">
 
       
-       <form name="exoForm">
-        
-          <div ng-repeat="partie in parties ">
-          
-            <p>{{partie.titre}}<br>
-            {{partie.contenu}}</p>
-
-            <div ng-repeat="quest in partie.exo_questions ">
-              <p>{{quest.question}}</p>
-                <!--   Réponses   -->
-                <input type="checkbox" ng-model="quest.rep_1" value="quest.choix_1" checked="checked"/>{{quest.choix_1}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_2" value="quest.choix_2">{{quest.choix_2}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_3" value="quest.choix_3">{{quest.choix_3}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_4" value="quest.choix_4">{{quest.choix_4}}     &nbsp &nbsp &nbsp
-
-               
-
-            </div>
-
-            
-
-           </div>
-           <br><br>
-            <button
-           ng-click = "evaluateForm()">
-            Valider             
-           </button>
-<br>
-<div ng-if="max>0 && evaluation < max">
-           votre score :  {{evaluation}} / {{max}}
-</div>
-
-<div ng-if="max>0 && evaluation == max">
-           votre score :  {{evaluation}} / {{max}} <br>
-           well done 
-
-</div>
-         </form>
+ 
        
     </div>
     
@@ -124,25 +58,7 @@
 
 
 
-
-  <form name="carForm">
-    <input type="text" 
-    name="plateField" 
-    ng-model="car.plate" 
-    placeholder="what's the plate?" 
-    ng-pattern="/[A-Z]{3}[0-9]{3,7}/"
-    ng-required="true"
-    ng-minlength="6"
-    ng-maxlength="10"
-    >
-
-  <button 
-      ng-click="park(car)" 
-      ng-disabled="carForm.$invalid"
-     >
-       Park
-    </button>
-  </form>
+ 
 
  
     

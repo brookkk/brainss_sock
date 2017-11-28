@@ -2,7 +2,7 @@
 
     		$scope.cars = [];
     		$scope.colors=["white", "black", "blue", "red", "silver"];
-    		$scope.appTitle="Exercices";
+    		$scope.appTitle="Exercice";
 
 
 
@@ -96,4 +96,13 @@ $scope.max = 0;
 
     	});	
 
+
+
+
+
+
+    brains.controller("exercicesCtrl", function($scope, brainsService2, $http,$q){
+
+        
+    });
 
