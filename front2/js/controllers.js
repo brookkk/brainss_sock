@@ -57,12 +57,6 @@ $scope.evaluation = 0;
 $scope.max = 0;
 
 
-
-
-    
-
-
-
                 // fct qui se charge de l'évaluation des réponses : comparaison des réponses données vs la réponse ->
                 // récupérée depuis le BO ; cette fct est appelée depuis le view
 
@@ -96,13 +90,7 @@ $scope.max = 0;
             };
 
 
-    $scope.evaluateForm();
-
-
-
-
-    
-
+    //$scope.evaluateForm();
 
 
 
