@@ -109,6 +109,14 @@ private $exo_parties;
      */
     private $auteur;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rating", type="decimal", precision=3)
+     */
+    private $rating;
+
     /**
      * @var \DateTime
      *

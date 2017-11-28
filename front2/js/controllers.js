@@ -9,11 +9,11 @@
 
 
 
-         // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.parties"
+         // retreiveParties : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.parties"
 
             $scope.parties = [];
 
-            var retreiveExos = function(){
+            var retreiveParties = function(){
 
                  $http.get('../web/app_dev.php/api/exercices/3/parties')
                     .success(function(data, status, headers, config){
@@ -50,7 +50,7 @@
 
 
 
-            retreiveExos();
+            retreiveParties();
 
 
 $scope.evaluation = 0;
@@ -103,6 +103,54 @@ $scope.max = 0;
 
     brains.controller("exercicesCtrl", function($scope, brainsService2, $http,$q){
 
-        
+            $scope.appTitle="Exercices";
+
+
+
+
+
+
+
+             // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
+
+            $scope.exos = [];
+
+            var retreiveExos = function(){
+
+                 $http.get('../web/app_dev.php/api/exercices')
+                    .success(function(data, status, headers, config){
+                        $scope.exos = data;
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }
+                        
+                    });
+            };
+
+
+            
+
+
+
+
+            
+
+            
+
+
+            retreiveExos();
+
+
+
+
     });
 
