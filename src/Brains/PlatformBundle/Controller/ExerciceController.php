@@ -141,6 +141,7 @@ public function update_exerciceAction(Request $request, $id)
     $form->handleRequest($request);
 
     if($form->isValid()){
+      $exercice -> setDateMaj(new \Datetime());  
       $em= $this->getDoctrine()->getManager();
       $em->persist($exercice);
       $em->flush();
