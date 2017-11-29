@@ -22,6 +22,7 @@
         <th>Creation</th>
         <th>Annee</th>
         <th>Filiere</th>
+        <th>Rating</th>
         <th>Parties</th>
         <th>Action</th>
          
@@ -40,6 +41,7 @@
   <td> Le {{ exercice.dateMaj|date("d/m/Y, à h:i a")   }} </td>
   <td> {{ exercice.annee.short }} </td>
   <td> {{ exercice.filiere.short }} </td>
+  <td> {{ exercice.rating }} </td>
   <td><a href="{{ path('BP_show_exo_partie',{'id': exercice.id}) }}" title="parties">{{ nb_parties[exercice.id] }} </a>  </td>
 
    <td> <a href="{{ path('BP_update_exercice',{'id': exercice.id}) }}" title="modifier l'exercice"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 

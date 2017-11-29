@@ -120,7 +120,15 @@ $scope.max = 0;
                  $http.get('../web/app_dev.php/api/exercices')
                     .success(function(data, status, headers, config){
                         $scope.exos = data;
-                        console.log("exos " + $scope.exos);
+                              console.log("exos2 "); console.log( $scope.exos);
+
+                              console.log("exos1 "); console.log( $scope.exos['2'].rating);
+      
+                        $scope.exos.sort(function(a, b){return b.rating - a.rating});
+                              console.log("exos2 "); console.log( $scope.exos);
+                              console.log("exos1 "); console.log( $scope.exos['2'].rating);
+
+
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
@@ -141,6 +149,9 @@ $scope.max = 0;
             
 
 
+                        
+
+
 
 
             
@@ -151,6 +162,7 @@ $scope.max = 0;
             retreiveExos();
 
 
+      
 
 
     });
