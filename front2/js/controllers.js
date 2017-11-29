@@ -124,7 +124,7 @@ $scope.max = 0;
 
                               console.log("exos1 "); console.log( $scope.exos['2'].rating);
       
-                        $scope.exos.sort(function(a, b){return b.rating - a.rating});
+                        $scope.rated_exos = $scope.exos.sort(function(a, b){return b.rating - a.rating});
                               console.log("exos2 "); console.log( $scope.exos);
                               console.log("exos1 "); console.log( $scope.exos['2'].rating);
 
