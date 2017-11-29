@@ -114,6 +114,12 @@ private $exo_parties;
      * @var string
      *
      * @ORM\Column(name="rating", type="decimal", precision=3)
+    ** @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "Le rating ne doit pas être inférieur à 1",
+     *      maxMessage = "Le rating ne doit pas être supérieur à 5",
+     * )
      */
     private $rating;
 
@@ -211,6 +217,33 @@ private $exo_parties;
         return $this->nom;
     }
 
+
+
+    /**
+     * Set rating
+     *
+     * @param string $rating
+     *
+     * @return Rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+     
+
+    /**
+     * Get rating
+     *
+     * @return string
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
   
 
     /**

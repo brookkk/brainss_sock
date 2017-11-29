@@ -48,6 +48,7 @@ class ExerciceType extends AbstractType
                 'multiple'     => false,
                 ))
             ->add('temps')
+            ->add('rating')
             ->add('Sauvegarder',      SubmitType::class);
 
     }
