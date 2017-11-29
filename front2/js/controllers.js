@@ -120,6 +120,7 @@ $scope.max = 0;
                  $http.get('../web/app_dev.php/api/exercices')
                     .success(function(data, status, headers, config){
                         $scope.exos = data;
+                        console.log("exos " + $scope.exos);
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
