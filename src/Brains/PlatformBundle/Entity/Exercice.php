@@ -211,7 +211,7 @@ private $exo_parties;
     /**
      * Get nbViews
      *
-     * @return string
+     * @return int
      */
     public function getNbViews()
     {

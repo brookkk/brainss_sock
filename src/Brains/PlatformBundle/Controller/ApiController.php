@@ -159,11 +159,16 @@ class ApiController extends Controller
     /**
      * @Rest\Put("/exercices/{id}")
      * @Rest\View
-     * @ParamConverter("exercice", converter="fos_rest.request_body")
      */
-    public function exoViewsAction(Exercice $exercice)
+    public function exoViewsAction($id)
     {
-        $exercice->setNbViews($exercice->getNbViews +1 );
+    $exercice = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->find($id);
+    $exercice->setNbViews($exercice->getNbViews() +1 );
+     $em= $this->getDoctrine()->getManager();
+      $em->persist($exercice);
+      $em->flush();
+
+        return "new nb_views : " .$exercice->getNbViews();
 
     }
 
