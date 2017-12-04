@@ -55,7 +55,6 @@
 <div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true">
     {{exo.nom}} &nbsp
     {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
-<a ng-click="view()" href="exercices.html">click</a>
 
   </div>  
 
@@ -66,7 +65,9 @@
 
  <div ng-repeat="exo_v in exos | orderBy: 'nb_views' : reverse">
     {{exo_v.nom}} &nbsp
-    {{exo_v.nb_views}}<br>
+    {{exo_v.nb_views}}
+<a ng-click="view(exo_v.id)" href="exercices.html">visit</a>
+
   </div>
 
   <hr>

@@ -148,9 +148,9 @@
 
 
 
-             $scope.view = function(){
+             $scope.view = function(id){
 
-                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/3')
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id)
                     .success(function(data, status, headers, config){
                         console.log("success");
                        
