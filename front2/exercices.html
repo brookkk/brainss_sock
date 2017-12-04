@@ -42,9 +42,8 @@
 
 
     <h3 ng-bind="appTitle"></h3>
-    <div ng-show="exos.length > 0">
-
-
+ 
+<div ng-show="exos.length>0">
 
 <div>Top Solved</div>
 <hr>
@@ -53,12 +52,12 @@
 <div>New Exos</div>
 <hr>
 
-<div ng-repeat="exo in newest_exos">
+<div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true">
     {{exo.nom}} &nbsp
     {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
 
 
-  </div>
+  </div>  
 
 <hr>
 <div>Top Visited</div>
@@ -66,10 +65,10 @@
 
 <div>Top Rated
 
-
-  <div ng-repeat="exo in rated_exos">
-    {{exo.nom}} &nbsp
-    {{exo.rating}}<br>
+<hr>
+  <div ng-repeat="exo_r in exos | orderBy: 'rating' : reverse">
+    {{exo_r.nom}} &nbsp
+    {{exo_r.rating}}<br>
   </div>
 
 
@@ -87,8 +86,7 @@
       
  
        
-    </div>
-    
+     
 
 <br>
 <br>
@@ -100,7 +98,9 @@
 
  
 
- 
+ </div>
+</body>
+
     
  
 
