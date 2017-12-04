@@ -53,8 +53,8 @@
             retreiveParties();
 
 
-$scope.evaluation = 0;
-$scope.max = 0;
+        $scope.evaluation = 0;
+        $scope.max = 0;
 
 
                 // fct qui se charge de l'évaluation des réponses : comparaison des réponses données vs la réponse ->
@@ -90,11 +90,11 @@ $scope.max = 0;
             };
 
 
-    //$scope.evaluateForm();
+            //$scope.evaluateForm();
 
 
 
-    	});	
+});	
 
 
 
@@ -123,8 +123,10 @@ $scope.max = 0;
                               //console.log("exos2 "); console.log( $scope.exos);
                               //console.log("exos1 "); console.log( $scope.exos['2'].rating);
       
+                        $scope.newest_exos = $scope.exos.sort(function(a, b){return new Date(b.date_creation) - new Date (a.date_creation)});
+
                         $scope.rated_exos = $scope.exos.sort(function(a, b){return b.rating - a.rating});
-                        $scope.newest_exos = $scope.exos.sort(function(a, b){return new Date(b.date_maj) - new Date (a.date_maj)});
+                        
 
                               //console.log("exos2 "); console.log( $scope.exos);
                               console.log("exos1 "); console.log( $scope.exos);
