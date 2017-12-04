@@ -54,10 +54,13 @@
 <hr>
 
 <div ng-repeat="exo in newest_exos">
-    {{exo.nom}} <br>
+    {{exo.nom}} &nbsp
+    {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
+
+
   </div>
 
-
+<hr>
 <div>Top Visited</div>
 <hr>
 

@@ -114,22 +114,24 @@
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
 
             $scope.exos = [];
+            $scope.newest_exos = [];
+            $scope.rated_exos = [];
 
             var retreiveExos = function(){
 
                  $http.get('../web/app_dev.php/api/exercices')
                     .success(function(data, status, headers, config){
                         $scope.exos = data;
-                              //console.log("exos2 "); console.log( $scope.exos);
-                              //console.log("exos1 "); console.log( $scope.exos['2'].rating);
+                        $scope.newest_exos = data;
+                        $scope.rated_exos = data;
       
-                        $scope.newest_exos = $scope.exos.sort(function(a, b){return new Date(b.date_creation) - new Date (a.date_creation)});
+                        //$scope.temp_exos = $scope.exos;
 
-                        $scope.rated_exos = $scope.exos.sort(function(a, b){return b.rating - a.rating});
-                        
+                        $scope.rated_exos.sort(function(a, b){return b.rating - a.rating});
 
-                              //console.log("exos2 "); console.log( $scope.exos);
-                              console.log("exos1 "); console.log( $scope.exos);
+
+                        $scope.newest_exos.sort(function(a, b){return new Date(b.date_maj) - new Date (a.date_maj)});
+
 
 
                     })
@@ -149,23 +151,12 @@
             };
 
 
-            
-
-
-                        
-
-
-
-
-            
-
-            
 
 
             retreiveExos();
 
 
-      
+        
 
 
     });
