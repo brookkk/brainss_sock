@@ -157,7 +157,7 @@ class ApiController extends Controller
     }
 
     /**
-     * @Rest\Put("/exercices/{id}")
+     * @Rest\Put("/exercices/{id}/view")
      * @Rest\View
      */
     public function exoViewsAction($id)
@@ -169,6 +169,24 @@ class ApiController extends Controller
       $em->flush();
 
         return "new nb_views : " .$exercice->getNbViews();
+
+    }
+
+
+
+     /**
+     * @Rest\Put("/exercices/{id}/solve")
+     * @Rest\View
+     */
+    public function exoSolvesAction($id)
+    {
+    $exercice = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->find($id);
+    $exercice->setNbSolves($exercice->getNbSolves() +1 );
+     $em= $this->getDoctrine()->getManager();
+      $em->persist($exercice);
+      $em->flush();
+
+        return "new nb_solves : " .$exercice->getNbSolves();
 
     }
 
