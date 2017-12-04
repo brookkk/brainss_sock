@@ -147,6 +147,34 @@
             retreiveExos();
 
 
+
+             $scope.view = function(){
+
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/3')
+                    .success(function(data, status, headers, config){
+                        console.log("success");
+                       
+      
+ 
+
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }
+                        
+                    });
+            
+                        
+            };
+
         
 
 

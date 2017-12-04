@@ -55,7 +55,7 @@
 <div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true">
     {{exo.nom}} &nbsp
     {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
-
+<span ng-click="view()">click</span>
 
   </div>  
 
