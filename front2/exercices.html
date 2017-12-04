@@ -49,6 +49,16 @@
 <hr>
 
 
+ <div ng-repeat="exo_s in exos | orderBy: 'nb_solves' : reverse">
+    {{exo_s.nom}} &nbsp
+    {{exo_s.nb_solves}}
+<a ng-click="solve(exo_s.id)" href="exercices.html">solve</a>
+
+  </div>
+
+  <hr>
+
+
 <div>New Exos</div>
 <hr>
 

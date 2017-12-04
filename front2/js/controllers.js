@@ -150,7 +150,35 @@
 
              $scope.view = function(id){
 
-                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id)
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/view')
+                    .success(function(data, status, headers, config){
+                        console.log("success");
+                       
+      
+ 
+
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }
+                        
+                    });
+            
+                        
+            };
+
+
+            $scope.solve = function(id){
+
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/solve')
                     .success(function(data, status, headers, config){
                         console.log("success");
                        
