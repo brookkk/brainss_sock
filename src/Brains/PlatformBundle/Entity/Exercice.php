@@ -158,6 +158,13 @@ private $exo_parties;
 
 
 
+     /**
+     * @var \int
+     ** @ORM\Column(name="nbViews", type="integer")
+          */
+    private $nbViews;
+
+
 
 
 
@@ -185,7 +192,31 @@ private $exo_parties;
 
 
 
+    /**
+     * Set nbViews
+     *
+     * @param string $nbViews
+     *
+     * @return NbViews
+     */
+    public function setNbViews($nbViews)
+    {
+        $this->nbViews = $nbViews;
 
+        return $this;
+    }
+
+     
+
+    /**
+     * Get nbViews
+     *
+     * @return string
+     */
+    public function getNbViews()
+    {
+        return $this->nbViews;
+    }
 
 
 

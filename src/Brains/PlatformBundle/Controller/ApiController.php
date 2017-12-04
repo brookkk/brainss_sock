@@ -142,6 +142,36 @@ class ApiController extends Controller
 
 
 
+    /**
+     * @Rest\Get(
+     *     path = "/exercices/{id}",
+     *     name = "exercice_show",
+     *     requirements = {"id"="\d+"}
+     * )
+     * @Rest\View
+     */
+
+    public function exerciceShowAction(Exercice $exercice)
+    {
+        return $exercice;
+    }
+
+    /**
+     * @Rest\Put("/exercices/{id}")
+     * @Rest\View
+     * @ParamConverter("exercice", converter="fos_rest.request_body")
+     */
+    public function exoViewsAction(Exercice $exercice)
+    {
+        $exercice->setNbViews($exercice->getNbViews +1 );
+
+    }
+
+
+
+
+
+
           /**
      * @Rest\Get("/exercices", name="exercices_list")
      * @Rest\View()
