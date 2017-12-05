@@ -1,0 +1,134 @@
+
+
+    <h3 ng-bind="appTitle"></h3>
+ 
+
+<div ng-show="loading">
+
+	Chargement en cours<br>
+	<img src="images/loader.gif">
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+  <div ng-show="parties.length > 0" ng-hide="loading">
+
+      
+       <form name="exoForm">
+        
+          <div ng-repeat="partie in parties ">
+          
+            <p>{{partie.titre}}<br>
+            {{partie.contenu}}</p>
+
+            <div ng-repeat="quest in partie.exo_questions ">
+              <p>{{quest.question}}</p>
+                <!--   Réponses   -->
+                <input type="checkbox" ng-model="quest.rep_1" value="quest.choix_1" checked="checked"/>{{quest.choix_1}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_2" value="quest.choix_2">{{quest.choix_2}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_3" value="quest.choix_3">{{quest.choix_3}}     &nbsp &nbsp &nbsp
+                <input type="checkbox" ng-model="quest.rep_4" value="quest.choix_4">{{quest.choix_4}}     &nbsp &nbsp &nbsp
+
+               
+
+            </div>
+
+            
+
+           </div>
+           <br><br>
+            <button
+           ng-click = "evaluateForm()">
+            Valider             
+           </button>
+<br>
+<div ng-if="max>0 && evaluation < max">
+           votre score :  {{evaluation}} / {{max}}
+</div>
+
+<div ng-if="max>0 && evaluation == max">
+           votre score :  {{evaluation}} / {{max}} <br>
+           well done 
+
+</div>
+         </form>
+       
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<div ng-show="exo.length>0" ng-hide="loading">
+
+<div>Top Solved</div>
+<hr>
+
+
+<div>New Exos</div>
+<hr>
+
+<div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true">
+    <a href="#/exercice/{{exo.id}}">{{exo.nom}}</a> &nbsp
+    {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
+
+  </div>  
+
+<hr>
+<div>Top Visited</div>
+<hr>
+
+<div>Top Rated
+
+<hr>
+  <div ng-repeat="exo_r in exos | orderBy: 'rating' : reverse">
+    {{exo_r.nom}} &nbsp
+    {{exo_r.rating}}<br>
+  </div>
+
+
+
+
+</div>
+<hr>
+
+<div>Exos Par Cours</div>
+<hr>
+
+
+
+
+      
+ 
+       
+     
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+ 
+
+ </div>
+
+-->
