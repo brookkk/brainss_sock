@@ -43,3 +43,23 @@ brains.service("brainsService2", function(brainsConfig){
 		};
 	};
 });
+
+
+brains.factory("brainsHttpFacade", function($http){
+
+	var _getExercices = function(){
+		return $http.get("http://localhost/brainss/web/app_dev.php/api/exercices");
+	};
+
+	var _getExercice= function(id){
+		return $http.get("http://localhost/brainss/web/app_dev.php/api/exercices/"+id+"/parties");
+	};
+
+
+
+	return {
+		getExercices: _getExercices,
+		getExercice: _getExercice
+	};
+
+});

@@ -1,1 +1,1 @@
-var brains = angular.module("brains", []);
+var brains = angular.module("brains", ["ngRoute"]);
