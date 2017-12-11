@@ -56,9 +56,16 @@ brains.factory("brainsHttpFacade", function($http){
 	};
 
 
+	var _solveExercice= function(id){
+		console.log("id : " + id);
+        return $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/solve');
+	};
+
+
 
 	return {
 		getExercices: _getExercices,
+		solveExercice: _solveExercice,
 		getExercice: _getExercice
 	};
 

@@ -5,8 +5,8 @@
  
     	<script src="js/lib/angular.js"></script>
       <script src="js/lib/angular-route.js"></script>
-      <script src="js/config.js"></script>
     	<script src="js/app.js"></script>
+      <script src="js/config.js"></script>
       <script src="js/controllers.js"></script>
       <script src="js/services.js"></script>
     	<script src="js/filters.js"></script>
@@ -16,106 +16,22 @@
 
     	<link rel="stylesheet" type="text/css" href="css/app.css">
 
-    	
 
-
-
-
-
- 
  
 
 	</head>
  
 
 
-  <body >
+  <body>
 
 
 
 
- 
-
-
-    <h3 ng-bind="appTitle"></h3>
-    <div ng-show="parties.length > 0">
-
-      
-       <form name="exoForm">
-        
-          <div ng-repeat="partie in parties ">
-          
-            <p>{{partie.titre}}<br>
-            {{partie.contenu}}</p>
-
-            <div ng-repeat="quest in partie.exo_questions ">
-              <p>{{quest.question}}</p>
-                <!--   Réponses   -->
-                <input type="checkbox" ng-model="quest.rep_1" value="quest.choix_1" checked="checked"/>{{quest.choix_1}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_2" value="quest.choix_2">{{quest.choix_2}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_3" value="quest.choix_3">{{quest.choix_3}}     &nbsp &nbsp &nbsp
-                <input type="checkbox" ng-model="quest.rep_4" value="quest.choix_4">{{quest.choix_4}}     &nbsp &nbsp &nbsp
-
-               
-
-            </div>
-
-            
-
-           </div>
-           <br><br>
-            <button
-           ng-click = "evaluateForm()">
-            Valider             
-           </button>
-<br>
-<div ng-if="max>0 && evaluation < max">
-           votre score :  {{evaluation}} / {{max}}
-</div>
-
-<div ng-if="max>0 && evaluation == max">
-           votre score :  {{evaluation}} / {{max}} <br>
-           well done 
-
-</div>
-         </form>
-       
-    </div>
-    
-
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 
-
-  <form name="carForm">
-    <input type="text" 
-    name="plateField" 
-    ng-model="car.plate" 
-    placeholder="what's the plate?" 
-    ng-pattern="/[A-Z]{3}[0-9]{3,7}/"
-    ng-required="true"
-    ng-minlength="6"
-    ng-maxlength="10"
-    >
-
-  <button 
-      ng-click="park(car)" 
-      ng-disabled="carForm.$invalid"
-     >
-       Park
-    </button>
-  </form>
-
- 
-    
- 
-
-
+<div ng-view></div>
 
 
 
