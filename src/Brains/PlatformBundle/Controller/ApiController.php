@@ -267,9 +267,9 @@ class ApiController extends Controller
 
         //$ret = $user->'username';
 
-        //$token = array('token'=> 123456);
+        $token = array('token'=> 123456);
         if($in)
-        return 123456;
+        return $token;
         //return $user->getUsername();
         //else return 0;
 
