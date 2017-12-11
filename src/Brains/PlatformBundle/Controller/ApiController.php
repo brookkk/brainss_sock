@@ -240,6 +240,44 @@ class ApiController extends Controller
 
         return $users;
     }
+
+
+
+
+      /**
+     * @Rest\Post("/authenticate")
+     * @Rest\View(StatusCode = 201)
+     *@ParamConverter("user", converter="fos_rest.request_body")
+     */
+    public function authenticateAction(User $user/*, $username, $password*/)
+    {
+   // if($username == 'brook' && $password == 'brook')
+
+
+        $in = false;
+        $users = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->findAll();
+
+        foreach($users as $key => $value)
+        {
+            if($users[$key]->getUsername() == $user->getUsername())
+                $in=true;
+                
+
+        }
+
+        //$ret = $user->'username';
+
+        //$token = array('token'=> 123456);
+        if($in)
+        return 123456;
+        //return $user->getUsername();
+        //else return 0;
+
+    }
+
+
+
+
  
 
 }
