@@ -68,7 +68,7 @@
 
               $scope.root = $rootScope;
 
-            console.log("root : "); console.log( $scope.root);
+            console.log("uuser : "); console.log( $scope.root);
 
 
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"

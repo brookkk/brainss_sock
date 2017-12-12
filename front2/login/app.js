@@ -4,7 +4,10 @@
     angular
         .module('app', ['ui.router', 'ngMessages', 'ngStorage'])
         .config(config)
-        .run(run);
+        .run(run)
+        .value("user","aaaa");
+        ;
+
 
     function config($stateProvider, $urlRouterProvider) {
         // default route
@@ -44,3 +47,5 @@
         });
     }
 })();
+
+
