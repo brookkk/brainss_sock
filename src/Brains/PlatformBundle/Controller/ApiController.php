@@ -309,8 +309,7 @@ class ApiController extends Controller
 
 
 
-        //l'objet retour est le "token" + "user trouvé"
-        $retour = array('token'=> $token, 'user'=> $bd_user);
+
        /*  if($good_psw&& $found)
         return $retour;
         else return 0;*/
@@ -323,6 +322,9 @@ class ApiController extends Controller
             return "mdp erroné;";
         else{
             $bd_user->setLastLogin($date);
+             //l'objet retour est le "token" + "user trouvé"
+        $retour = array('token'=> $token, 'user'=> array('username'=>$bd_user->getUsername(), 'email' => $bd_user->getEmail(),
+        'annee' => $bd_user->getAnnee(), 'filiere' => $bd_user->getFiliere() ));
             return $retour;}
 
 
