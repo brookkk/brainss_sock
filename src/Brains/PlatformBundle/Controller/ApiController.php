@@ -256,13 +256,36 @@ class ApiController extends Controller
     public function authenticateAction(User $user)
     {
 
-        $pass=$user->getPassword();
+
+        //Méthode qui vérifie que l'utilisateur a les bons idntifiants
+        //en input : $user de type User ayant un "username" et "password"
+        //en output : si "good credentials" : un 'token' === l'heure actuelle transformée en un entier ( => unique)
+        // + l'objet "user" trouvé au niveau de la BD
+        // sinon "user non trouvé" ou "mdp erroné"
+ 
         $factory = $this->get('security.encoder_factory');
-        $users = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->findAll();
 
-
+        // pour vérifier si le user existe au niveau de la BD
         $found = false;
+
+        // pour vérifier si le psw est correct pour le user
         $good_psw=false;
+
+        // on vérifie l'existance d'un user avec l'identifiant "username"
+        $bd_user = $this->get('fos_user.user_manager')->findUserByUsername($user->getUsername());
+
+        if($bd_user)
+        {
+            //on a trouvé un user avec l'idntifiant "username"
+            $found = true;
+            //on va encoder le psw de user (de l'input) et vérifier les deux psw encodés
+            $encoder = $factory->getEncoder($bd_user);
+            $pass=$user->getPassword();
+            $good_psw = $encoder->isPasswordValid($bd_user->getPassword(),$pass,$bd_user->getSalt());
+
+        }
+
+/*
         foreach($users as $key => $value)
         {
 
@@ -279,10 +302,29 @@ class ApiController extends Controller
         }
 
 
-        $token = array('token'=> 123456, 'user'=> $this->get('fos_user.user_manager')->findUserByUsername($user->getUsername()));
-         if($good_psw&& $found)
-        return $token;
-        else return 0;
+*/
+        //on crée le token à partir de DateTime()
+        $date = new \DateTime();
+        $token = $date->format('YmdHis');
+
+
+
+        //l'objet retour est le "token" + "user trouvé"
+        $retour = array('token'=> $token, 'user'=> $bd_user);
+       /*  if($good_psw&& $found)
+        return $retour;
+        else return 0;*/
+
+
+
+        if(!$found)
+            return "user non trouvé";
+        else if(!$good_psw)
+            return "mdp erroné;";
+        else{
+            $bd_user->setLastLogin($date);
+            return $retour;}
+
 
     }
  
