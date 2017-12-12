@@ -253,27 +253,24 @@ class ApiController extends Controller
      * @Rest\View(StatusCode = 201)
      *@ParamConverter("user", converter="fos_rest.request_body")
      */
-    public function authenticateAction(User $user/*, $username, $password*/ )
+    public function authenticateAction(User $user)
     {
-   // if($username == 'brook' && $password == 'brook')
-
-
 
         $pass=$user->getPassword();
         $factory = $this->get('security.encoder_factory');
-
-
-        $in = false;
         $users = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->findAll();
-        $bool=false;
+
+
+        $found = false;
+        $good_psw=false;
         foreach($users as $key => $value)
         {
 
             if($users[$key]->getUsername() == $user->getUsername())
                 {   
-                    $in=true;
+                    $found=true;
                     $encoder = $factory->getEncoder($users[$key]);
-                    $bool = $encoder->isPasswordValid($users[$key]->getPassword(),$pass,$users[$key]->getSalt());
+                    $good_psw = $encoder->isPasswordValid($users[$key]->getPassword(),$pass,$users[$key]->getSalt());
 
 
                 }
@@ -283,16 +280,11 @@ class ApiController extends Controller
 
 
         $token = array('token'=> 123456, 'user'=> $this->get('fos_user.user_manager')->findUserByUsername($user->getUsername()));
-         if($bool&& $in)
+         if($good_psw&& $found)
         return $token;
-        //return $user->getUsername();
         else return 0;
 
     }
-
-
-
-
  
 
 }
