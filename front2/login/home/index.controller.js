@@ -5,10 +5,14 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller() {
+    function Controller($scope, $rootScope) {
         var vm = this;
 
         initController();
+
+        $scope.user = $rootScope.response;
+        console.log ("response : ");
+        console.log ($scope.user);
 
         function initController() {
         }

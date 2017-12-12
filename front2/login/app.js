@@ -13,11 +13,7 @@
         // app routes
         $stateProvider
             .state('home', {
-                /*url: '../',
-                templateUrl: 'home/index.view.html',
-                controller: 'Home.IndexController',
-                controllerAs: 'vm'
-                */
+              
                 url: '/',
                 templateUrl: 'home/index.view.html',
                 controller: 'Home.IndexController',

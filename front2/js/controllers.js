@@ -1,4 +1,4 @@
-	brains.controller("partiesCtrl", function($scope, brainsService2, $http,$q){
+	brains.controller("partiesCtrl", function($scope, brainsService2, $http,$q, $rootScope){
 
     		$scope.cars = [];
     		$scope.colors=["white", "black", "blue", "red", "silver"];
@@ -59,14 +59,16 @@
 
 
 
-    brains.controller("exercicesCtrl", function($scope, brainsService2, $http,$q){
+    brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, $http,$q){
 
             $scope.appTitle="Exercices";
 
 
 
 
+              $scope.root = $rootScope;
 
+            console.log("root : "); console.log( $scope.root);
 
 
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
