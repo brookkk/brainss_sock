@@ -285,37 +285,11 @@ class ApiController extends Controller
 
         }
 
-/*
-        foreach($users as $key => $value)
-        {
-
-            if($users[$key]->getUsername() == $user->getUsername())
-                {   
-                    $found=true;
-                    $encoder = $factory->getEncoder($users[$key]);
-                    $good_psw = $encoder->isPasswordValid($users[$key]->getPassword(),$pass,$users[$key]->getSalt());
-
-
-                }
-                
-
-        }
-
-
-*/
+ 
         //on crée le token à partir de DateTime()
         $date = new \DateTime();
         $token = $date->format('YmdHis');
-
-
-
-
-       /*  if($good_psw&& $found)
-        return $retour;
-        else return 0;*/
-
-
-
+ 
         if(!$found)
             return "user non trouvé";
         else if(!$good_psw)
@@ -326,8 +300,7 @@ class ApiController extends Controller
         $retour = array('token'=> $token, 'user'=> array('username'=>$bd_user->getUsername(), 'email' => $bd_user->getEmail(),
         'annee' => $bd_user->getAnnee(), 'filiere' => $bd_user->getFiliere() ));
             return $retour;}
-
-
+ 
     }
  
 
