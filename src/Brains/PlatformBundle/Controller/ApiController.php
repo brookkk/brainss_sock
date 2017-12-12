@@ -265,7 +265,7 @@ class ApiController extends Controller
 
         $in = false;
         $users = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->findAll();
-
+        $bool=false;
         foreach($users as $key => $value)
         {
 
@@ -283,10 +283,10 @@ class ApiController extends Controller
 
 
         $token = array('token'=> 123456, 'password'=> $this->get('fos_user.user_manager')->findUserByUsername('test'));
-         if($bool)
+         if($bool&& $in)
         return $token;
         //return $user->getUsername();
-        //else return 0;
+        else return 0;
 
     }
 
