@@ -282,7 +282,7 @@ class ApiController extends Controller
         }
 
 
-        $token = array('token'=> 123456, 'password'=> $this->get('fos_user.user_manager')->findUserByUsername('test'));
+        $token = array('token'=> 123456, 'user'=> $this->get('fos_user.user_manager')->findUserByUsername($user->getUsername()));
          if($bool&& $in)
         return $token;
         //return $user->getUsername();
