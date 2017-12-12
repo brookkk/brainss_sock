@@ -22,6 +22,10 @@ use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Cours;
 use Brains\UserBundle\Entity\User;
 
+use FOS\UserBundle\Model;
+use FOS\UserBundle\Entity\UserManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 
 
@@ -249,9 +253,14 @@ class ApiController extends Controller
      * @Rest\View(StatusCode = 201)
      *@ParamConverter("user", converter="fos_rest.request_body")
      */
-    public function authenticateAction(User $user/*, $username, $password*/)
+    public function authenticateAction(User $user/*, $username, $password*/ )
     {
    // if($username == 'brook' && $password == 'brook')
+
+
+
+        $pass=$user->getPassword();
+        $factory = $this->get('security.encoder_factory');
 
 
         $in = false;
@@ -259,16 +268,22 @@ class ApiController extends Controller
 
         foreach($users as $key => $value)
         {
+
             if($users[$key]->getUsername() == $user->getUsername())
-                $in=true;
+                {   
+                    $in=true;
+                    $encoder = $factory->getEncoder($users[$key]);
+                    $bool = $encoder->isPasswordValid($users[$key]->getPassword(),$pass,$users[$key]->getSalt());
+
+
+                }
                 
 
         }
 
-        //$ret = $user->'username';
 
-        $token = array('token'=> 123456);
-        if($in)
+        $token = array('token'=> 123456, 'password'=> $this->get('fos_user.user_manager')->findUserByUsername('test'));
+         if($bool)
         return $token;
         //return $user->getUsername();
         //else return 0;
