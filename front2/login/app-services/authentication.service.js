@@ -5,7 +5,7 @@
         .module('app')
         .factory('AuthenticationService', Service);
 
-    function Service($http, $localStorage, $rootScope) {
+    function Service($http, $localStorage) {
         var service = {};
 
         service.Login = Login;
@@ -22,7 +22,6 @@
                         // store username and token in local storage to keep user logged in between page refreshes
                         $localStorage.currentUser = { username: username, token: response.token };
                         console.log(response.user);
-                        $rootScope.response = response;
 
                         // add jwt token to auth header for all requests made by the $http service
                         $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
