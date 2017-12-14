@@ -47,9 +47,65 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
         console.log("user : ");console.log($localStorage.currentUser);
 
 
-//              $scope.root = $rootScope;
 
-  //          console.log("uuser : "); console.log( $scope.root);
+        // for preventing the infinite loop
+
+        $scope.nb_seen=-1;
+        $scope.first_show = 0;
+
+
+
+
+
+
+
+    $scope.has_seen = function(exo_id, user_id){
+
+        if($scope.first_show===0){
+            $scope.first_show=1;
+          $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
+                    .success(function(data, status, headers, config){
+                        console.log ("has seen daata : " + data);
+                        $scope.nb_seen =  data;
+                        
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }                        
+                    });}
+        
+                    return $scope.nb_seen;
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
@@ -144,7 +200,6 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
      brainsHttpFacade.getExercice(id)
          .success(function(data, status, headers, config){
          $scope.parties = data;
-         console.log(" exerciice : ");console.log( $scope.parties);
          $scope.loading=false;
 
          })
@@ -164,6 +219,12 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
     retreiveExercice($routeParams.id);
 
+
+
+
+
+
+
     $scope.solve_bool=0;
     $scope.view_bool=0;
     $scope.exo_id = $routeParams.id;
@@ -171,13 +232,11 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
      $scope.view = function(id_exo, id_user){
     if($scope.view_bool==0){
     $scope.view_bool=1;
-    console.log("view id : " + id_exo);
 
 
                 //incrémenter le nombre des vues de l'exo (point de vue exo)
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id_exo+'/view')
                     .success(function(data, status, headers, config){
-                        console.log("success");
 
                     })
                     .error(function(data, status, headers, config){
@@ -198,8 +257,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
                 //incrémenter le nombre de fois le user a vu l'exo (pt de vue user)
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id_exo+'/user/'+id_user)
                     .success(function(data, status, headers, config){
-                        console.log("success");
-
+ 
                     })
                     .error(function(data, status, headers, config){
                         switch(status){

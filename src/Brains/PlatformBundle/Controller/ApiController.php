@@ -216,7 +216,7 @@ class ApiController extends Controller
       'exercice' => $exo_id ,
       'user' => $user_id
     ]);
-    //if(is_array($exo_views))
+    //some stupid prb with the exo_views : array or not -_-
     $exo_view= isset($exo_views[0])? $exo_views[0]:$exo_views;
     //else $exo_view=$exo_views;
 

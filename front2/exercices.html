@@ -51,10 +51,13 @@
 
 
  <div ng-repeat="exo_s in exos | orderBy: 'nb_solves' : reverse">
+
+  <!--<div ng-if="has_seen(exo_s.id,user.user.id)!=10000">-->
     {{exo_s.nom}} &nbsp
     {{exo_s.nb_solves}}
-
-  </div>
+    {{nb_seen}}
+</div>
+ 
 
   <hr>
 
