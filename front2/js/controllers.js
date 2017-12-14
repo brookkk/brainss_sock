@@ -43,6 +43,10 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
             $scope.appTitle="Exercices";
 
+
+        console.log("user : ");console.log($rootScope.uuser);
+
+
 //              $scope.root = $rootScope;
 
   //          console.log("uuser : "); console.log( $scope.root);
@@ -267,7 +271,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 
 
-    brains.controller("loginCtrl", function($scope, $location, AuthenticationService){
+    brains.controller("loginCtrl", function($scope, $location, AuthenticationService,$localStorage, $rootScope){
 
 
         //var vm = this;
@@ -276,6 +280,9 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
         $scope.username = '';
         $scope.password = '';
+
+        $scope.user = $rootScope.uuser;
+        console.log("user : ");console.log($scope.user);
 
         initController();
 
