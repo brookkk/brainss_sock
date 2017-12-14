@@ -1,1 +1,4 @@
-var brains = angular.module("brains", ["ngRoute"]);
+var brains = angular.module("brains", ["ngRoute", "ngStorage"]);
+
+
+ 

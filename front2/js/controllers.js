@@ -270,7 +270,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
     brains.controller("loginCtrl", function($scope, $location, AuthenticationService){
 
 
-                var vm = this;
+        var vm = this;
 
         vm.login = login;
 
@@ -282,6 +282,8 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
         };
 
         function login() {
+            console.log("coucou");  
+
             vm.loading = true;
             AuthenticationService.Login(vm.username, vm.password, function (result) {
                 if (result === true) {

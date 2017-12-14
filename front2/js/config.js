@@ -9,6 +9,10 @@ brains.config(function($routeProvider){
 		templateUrl: "exercice.html",
 		controller: "exerciceCtrl"
 	}).
+	when("/login", {
+		templateUrl: "login.html",
+		controller: "loginCtrl"
+	}).
 	otherwise({
 		redirectTo : 'exercices'
 	});

@@ -94,3 +94,7 @@ opacity: 0;
 .selected-add-class-active {
 opacity: 1;
 }
+
+.help-block {
+    font-size: 12px;
+}
