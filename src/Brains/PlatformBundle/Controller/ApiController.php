@@ -18,9 +18,10 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Brains\PlatformBundle\Entity\Annee;
 use Brains\PlatformBundle\Entity\Filiere;
 use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Entity\exo_views;
 use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Cours;
-use Brains\UserBundle\Entity\User;
+//use Brains\UserBundle\Entity\User;
 
 use FOS\UserBundle\Model;
 use FOS\UserBundle\Entity\UserManager;
@@ -197,6 +198,38 @@ class ApiController extends Controller
 
 
 
+         /**
+     * @Rest\Put("/exercices/{exo_id}/user/{user_id}")
+     * @Rest\View
+     */
+    public function userViewsExoAction($exo_id, $user_id)
+    {
+    $exercice = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->find($exo_id);
+
+
+    $user = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->find($user_id);
+
+
+    $exo_view = new Exo_views();
+
+    if($exercice)
+    $exo_view->setExercice($exo_id);
+
+    if($user)
+    $exo_view->setUser($user_id);
+
+    $em= $this->getDoctrine()->getManager();
+      $em->persist($exo_view);
+      $em->flush();
+
+ 
+        return $exo_view ;
+
+    }
+
+
+
+
 
 
           /**
@@ -285,7 +318,6 @@ class ApiController extends Controller
 
         }
 
- 
         //on crée le token à partir de DateTime()
         $date = new \DateTime();
         $token = $date->format('YmdHis');
@@ -302,8 +334,6 @@ class ApiController extends Controller
             return $retour;}
  
     }
- 
-
 }
 
 

@@ -24,16 +24,18 @@ class exo_views
 
 
      /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Exercice")
-   * @ORM\JoinColumn(nullable=false)
+     * @var int
+   * @ORM\Column(name="exercice", type="integer")
    */
 
  private $exercice;
 
 
-    /**
-   * @ORM\ManyToOne(targetEntity="Brains\UserBundle\Entity\User")
-   * @ORM\JoinColumn(nullable=false)
+
+
+  /**
+     * @var int
+   * @ORM\Column(name="user", type="integer")
    */
 
  private $user;
@@ -55,11 +57,11 @@ class exo_views
       /**
      * Set exercice
      *
-     * @param string $exercice
+     * @param int $exercice
      *
      * @return exo_views
      */
-    public function setExercice(Exercice $exercice)
+    public function setExercice($exercice)
     {
         $this->exercice = $exercice;
 
@@ -69,7 +71,7 @@ class exo_views
     /**
      * Get exercice
      *
-     * @return string
+     * @return int
      */
     public function getExercice()
     {
@@ -81,11 +83,11 @@ class exo_views
         /**
      * Set user
      *
-     * @param string $user
+     * @param int $user
      *
      * @return exo_views
      */
-    public function setUser(User $user)
+    public function setUser($user)
     {
         $this->user = $user;
 
