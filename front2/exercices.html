@@ -19,12 +19,18 @@
 	</head>
  
 
- <h1>Bienvenue, {{user.username}}</h1>
-    <h3 ng-bind="appTitle"></h3>
+ 
 
 
   <body ng-controller="exercicesCtrl">
 
+
+<div class="col-md-6 col-md-offset-3">
+
+
+<h1>Bienvenue, {{user.user.username}}</h1>
+ <p><a href="#/login">Logout</a></p>
+    <h3 ng-bind="appTitle"></h3>
 
 
 <div ng-show="loading">
@@ -100,6 +106,8 @@
  
 
  </div>
+
+</div>
 </body>
 
     

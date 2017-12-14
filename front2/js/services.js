@@ -93,7 +93,7 @@ brains.factory("AuthenticationService", function($http, $localStorage,$rootScope
                     // login successful if there's a token in the response
                     if (response.token) {
                         // store username and token in local storage to keep user logged in between page refreshes
-                        $localStorage.currentUser = { username: username, token: response.token };
+                        $localStorage.currentUser = { user: response.user, token: response.token };
                         //console.log(response.user);
 
                         // add jwt token to auth header for all requests made by the $http service
