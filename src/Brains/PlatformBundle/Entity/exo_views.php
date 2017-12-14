@@ -32,6 +32,14 @@ class exo_views
 
 
     /**
+   * @ORM\ManyToOne(targetEntity="Brains\UserBundle\Entity\User")
+   * @ORM\JoinColumn(nullable=false)
+   */
+
+ private $user;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -66,6 +74,32 @@ class exo_views
     public function getExercice()
     {
         return $this->exercice;
+    }
+
+
+
+        /**
+     * Set user
+     *
+     * @param string $user
+     *
+     * @return exo_views
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
 
