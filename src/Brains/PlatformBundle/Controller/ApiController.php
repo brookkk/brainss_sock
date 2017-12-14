@@ -210,6 +210,16 @@ class ApiController extends Controller
     $user = $this->getDoctrine()->getRepository('BrainsUserBundle:User')->find($user_id);
 
 
+
+
+    $exo_views = $this->getDoctrine()->getRepository('BrainsPlatformBundle:exo_views')->findBy([
+      'exercice' => $exo_id ,
+      'user' => $user_id
+    ]);
+
+    $exo_view= $exo_views[0];
+
+    if(!$exo_view){
     $exo_view = new Exo_views();
 
     if($exercice)
@@ -217,6 +227,13 @@ class ApiController extends Controller
 
     if($user)
     $exo_view->setUser($user_id);
+
+    }
+    else {
+        $nb_views = $exo_view->getNbViews();
+        $exo_view ->setNbViews($nb_views +1);
+    }
+
 
     $em= $this->getDoctrine()->getManager();
       $em->persist($exo_view);

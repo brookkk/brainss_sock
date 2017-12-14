@@ -41,6 +41,15 @@ class exo_views
  private $user;
 
 
+
+  /**
+     * @var int
+   * @ORM\Column(name="nb_views", type="integer")
+   */
+
+ private $nb_views;
+
+
     /**
      * Get id
      *
@@ -76,6 +85,31 @@ class exo_views
     public function getExercice()
     {
         return $this->exercice;
+    }
+
+
+      /**
+     * Set nb_views
+     *
+     * @param int $nb_views
+     *
+     * @return exo_views
+     */
+    public function setNbViews($nb_views)
+    {
+        $this->nb_views = $nb_views;
+
+        return $this;
+    }
+
+    /**
+     * Get nb_views
+     *
+     * @return int
+     */
+    public function getNbViews()
+    {
+        return $this->nb_views;
     }
 
 
