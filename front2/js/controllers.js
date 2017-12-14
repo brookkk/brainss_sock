@@ -39,12 +39,12 @@
 });	
 
 
-brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, $http,$q){
+brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, $http,$q, $localStorage){
 
             $scope.appTitle="Exercices";
 
-
-        console.log("user : ");console.log($rootScope.uuser);
+        $scope.user = $localStorage.currentUser;
+        console.log("user : ");console.log($localStorage.currentUser);
 
 
 //              $scope.root = $rootScope;
@@ -281,9 +281,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
         $scope.username = '';
         $scope.password = '';
 
-        $scope.user = $rootScope.uuser;
-        console.log("user : ");console.log($scope.user);
-
+ 
         initController();
 
         function initController() {
@@ -310,7 +308,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 
         //login();
-        function login() {
+     /*   function login() {
             console.log("inside login");  
 
             vm.loading = true;
@@ -322,7 +320,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
                     vm.loading = false;
                 }
             });
-        };
+        };*/
 
 
     });
