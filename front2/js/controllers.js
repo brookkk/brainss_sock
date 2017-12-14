@@ -57,16 +57,16 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 
 
-
+var nb_seen=5;
 
     $scope.has_seen = function(exo_id, user_id){
-
-        if($scope.first_show===0){
-            $scope.first_show=1;
+        
+        if($scope.first_show<10){
+            $scope.first_show++;
           $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
                     .success(function(data, status, headers, config){
                         console.log ("has seen daata : " + data);
-                        $scope.nb_seen =  data;
+                        nb_seen =  data;
                         
                     })
                     .error(function(data, status, headers, config){
@@ -82,7 +82,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
                         }                        
                     });}
         
-                    return $scope.nb_seen;
+                    return nb_seen;
 
     };
 
