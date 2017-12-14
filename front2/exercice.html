@@ -18,12 +18,12 @@
 
 
 
-
   <div ng-show="parties.length > 0" ng-hide="loading">
 
 
+
 <!--  tracker le nombre d'ouvertures de l'exo  -->
-<span ng-bind="view(exo_id)"></span>
+<span ng-bind="view(exo_id, user.user.id)"></span>
       
        <form name="exoForm">
         

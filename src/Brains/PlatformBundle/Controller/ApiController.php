@@ -21,7 +21,7 @@ use Brains\PlatformBundle\Entity\Exercice;
 use Brains\PlatformBundle\Entity\exo_views;
 use Brains\PlatformBundle\Entity\Exo_Partie;
 use Brains\PlatformBundle\Entity\Cours;
-//use Brains\UserBundle\Entity\User;
+use Brains\UserBundle\Entity\User;
 
 use FOS\UserBundle\Model;
 use FOS\UserBundle\Entity\UserManager;
@@ -371,7 +371,7 @@ class ApiController extends Controller
             $bd_user->setLastLogin($date);
              //l'objet retour est le "token" + "user trouvé"
         $retour = array('token'=> $token, 'user'=> array('username'=>$bd_user->getUsername(), 'email' => $bd_user->getEmail(),
-        'annee' => $bd_user->getAnnee(), 'filiere' => $bd_user->getFiliere() ));
+        'annee' => $bd_user->getAnnee(), 'filiere' => $bd_user->getFiliere(), 'id'=>$bd_user->getId() ));
             return $retour;}
  
     }

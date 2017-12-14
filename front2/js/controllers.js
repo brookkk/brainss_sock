@@ -128,10 +128,13 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 
 
-    brains.controller("exerciceCtrl", function($scope, brainsService2, $http, $q, brainsHttpFacade, $routeParams){
+    brains.controller("exerciceCtrl", function($scope, brainsService2, $http, $q, brainsHttpFacade, $routeParams,$localStorage){
 
     $scope.loading=true;
     $scope.parties= [];
+
+
+    $scope.user = $localStorage.currentUser;
 
     $scope.appTitle="Exercice";
 
@@ -165,11 +168,14 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
     $scope.view_bool=0;
     $scope.exo_id = $routeParams.id;
 
-     $scope.view = function(id){
+     $scope.view = function(id_exo, id_user){
     if($scope.view_bool==0){
     $scope.view_bool=1;
-    console.log("view id : " + id);
-                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/view')
+    console.log("view id : " + id_exo);
+
+
+                //incrémenter le nombre des vues de l'exo (point de vue exo)
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id_exo+'/view')
                     .success(function(data, status, headers, config){
                         console.log("success");
 
@@ -186,6 +192,28 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
                             }
                         }                        
                     });
+
+
+
+                //incrémenter le nombre de fois le user a vu l'exo (pt de vue user)
+                $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id_exo+'/user/'+id_user)
+                    .success(function(data, status, headers, config){
+                        console.log("success");
+
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }                        
+                    });
+
             }                        
             };
 
