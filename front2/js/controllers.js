@@ -4,11 +4,6 @@
     		$scope.colors=["white", "black", "blue", "red", "silver"];
     		$scope.appTitle="Exercice";
 
-
-
-
-
-
          // retreiveParties : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.parties"
 
             $scope.loading=true;
@@ -32,51 +27,31 @@
                                 $scope.message = "Something went wrong!";
                                 break;
                             }
-                        }
-                        
+                        }                       
                     });
             };
 
-
-           
-
-
-
-
             retreiveParties();
 
-
-
-
             //$scope.evaluateForm();
-
 
 
 });	
 
 
-
-
-
-
-    brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, $http,$q){
+brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, $http,$q){
 
             $scope.appTitle="Exercices";
 
+//              $scope.root = $rootScope;
 
-
-
-              $scope.root = $rootScope;
-
-            console.log("uuser : "); console.log( $scope.root);
+  //          console.log("uuser : "); console.log( $scope.root);
 
 
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
 
             $scope.exos = [];
             $scope.loading=true;
-
-            
 
             var retreiveExos = function(){
 
@@ -85,10 +60,6 @@
                         $scope.exos = data;
             $scope.loading=false;
 
-                       
-      
- 
-
                     })
                     .error(function(data, status, headers, config){
                         switch(status){
@@ -105,11 +76,7 @@
                     });
             };
 
-
-
-
             retreiveExos();
-
 
 
              $scope.view = function(id){
@@ -117,9 +84,6 @@
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/view')
                     .success(function(data, status, headers, config){
                         console.log("success");
-                       
-      
- 
 
                     })
                     .error(function(data, status, headers, config){
@@ -132,24 +96,15 @@
                                 $scope.message = "Something went wrong!";
                                 break;
                             }
-                        }
-                        
+                        }                       
                     });
-            
-                        
-            };
-
+           };
 
             $scope.solve = function(id){
 
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/solve')
                     .success(function(data, status, headers, config){
-                        console.log("success");
-                       
-      
- 
-
-                    })
+                        console.log("success");})
                     .error(function(data, status, headers, config){
                         switch(status){
                             case 401 : {
@@ -162,26 +117,10 @@
                             }
                         }
                         
-                    });
-            
-                        
+                    });                                   
             };
 
-
-
-
-
-        
-
-
     });
-
-
-
-
-
-
-
 
 
 
@@ -191,13 +130,6 @@
     $scope.parties= [];
 
     $scope.appTitle="Exercice";
-
-
-
-
-
-
-
 
 
     var retreiveExercice = function(id){
@@ -223,24 +155,19 @@
         });
         };
 
-
     retreiveExercice($routeParams.id);
 
     $scope.solve_bool=0;
     $scope.view_bool=0;
-
     $scope.exo_id = $routeParams.id;
 
      $scope.view = function(id){
-if($scope.view_bool==0){
+    if($scope.view_bool==0){
     $scope.view_bool=1;
     console.log("view id : " + id);
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/view')
                     .success(function(data, status, headers, config){
                         console.log("success");
-                       
-      
- 
 
                     })
                     .error(function(data, status, headers, config){
@@ -253,14 +180,10 @@ if($scope.view_bool==0){
                                 $scope.message = "Something went wrong!";
                                 break;
                             }
-                        }
-                        
+                        }                        
                     });
-            }
-                        
+            }                        
             };
-
-
 
         $scope.solve = function(id){
             if($scope.solve_bool==0){
@@ -268,12 +191,7 @@ if($scope.view_bool==0){
 
                 brainsHttpFacade.solveExercice(id)
                     .success(function(data, status, headers, config){
-                        console.log("success");
-                       
-      
- 
-
-                    })
+                        console.log("success");})
                     .error(function(data, status, headers, config){
                         switch(status){
                             case 401 : {
@@ -290,16 +208,9 @@ if($scope.view_bool==0){
                             }
                         }
                         
-                    });
-            
-            }
-                        
+                    });           
+            }                        
             };
-
-
-
-
-
 
 
 
@@ -314,9 +225,6 @@ if($scope.view_bool==0){
                 }
             return eval;
             };
-
-
-
 
 
         $scope.evaluation = 0;
@@ -342,27 +250,49 @@ if($scope.view_bool==0){
                             $scope.evaluation+= ( question.bareme );
                             }
                         $scope.max += question.bareme;
-               
-
-
                     });
                 });
-
 
                 console.log ("votre score est  " + $scope.evaluation + " / " + $scope.max);
                 //console.log ("Le max est  " + $scope.max);
                 return $scope.evaluation;
-                
             };
 
-
             if($scope.evaluation>0 && $scope.evaluation==$scope.max)
-                $scope.solve(9);
-
-
-
-
+                $scope.solve(9); // ????
 
 
     });
 
+
+
+
+    brains.controller("loginCtrl", function($scope, $location, AuthenticationService){
+
+
+                var vm = this;
+
+        vm.login = login;
+
+        initController();
+
+        function initController() {
+            // reset login status
+            AuthenticationService.Logout();
+        };
+
+        function login() {
+            vm.loading = true;
+            AuthenticationService.Login(vm.username, vm.password, function (result) {
+                if (result === true) {
+                    $location.path('/');
+                } else {
+                    vm.error = 'Username or password is incorrect';
+                    vm.loading = false;
+                }
+            });
+        };
+
+
+    });
+    
