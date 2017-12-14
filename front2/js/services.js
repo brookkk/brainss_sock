@@ -74,7 +74,7 @@ brains.factory("brainsHttpFacade", function($http){
 
 
 
-brains.factory("AuthenticationService", function($http){
+brains.factory("AuthenticationService", function($http, $localStorage){
 
         var service = {};
 
@@ -108,7 +108,7 @@ brains.factory("AuthenticationService", function($http){
 
         function Logout() {
             // remove user from local storage and clear http auth header
-            //delete $localStorage.currentUser;
+            delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
         }
     

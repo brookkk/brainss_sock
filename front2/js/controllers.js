@@ -270,19 +270,41 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
     brains.controller("loginCtrl", function($scope, $location, AuthenticationService){
 
 
-        var vm = this;
+        //var vm = this;
 
-        vm.login = login;
+        //vm.login = login;
+
+        $scope.username = '';
+        $scope.password = '';
 
         initController();
 
         function initController() {
             // reset login status
             AuthenticationService.Logout();
+            console.log("coucou");  
         };
 
+
+        $scope.login2 = function(){
+               console.log("inside login");  
+
+            $scope.loading = true;
+            AuthenticationService.Login($scope.username, $scope.password, function (result) {
+                if (result === true) {
+                    $location.path('/exercices');
+                } else {
+                    $scope.error = 'Username or password is incorrect';
+                    $scope.loading = false;
+                }
+            });
+        };
+
+
+
+        //login();
         function login() {
-            console.log("coucou");  
+            console.log("inside login");  
 
             vm.loading = true;
             AuthenticationService.Login(vm.username, vm.password, function (result) {

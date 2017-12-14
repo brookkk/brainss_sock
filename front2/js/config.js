@@ -14,7 +14,7 @@ brains.config(function($routeProvider){
 		controller: "loginCtrl"
 	}).
 	otherwise({
-		redirectTo : 'exercices'
+		redirectTo : 'login'
 	});
 
 
