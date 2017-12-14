@@ -247,6 +247,30 @@ class ApiController extends Controller
 
 
 
+     /**
+     * @Rest\Get(
+     *     path = "/exercices/{exo_id}/user/{user_id}/seen",
+     *     name = "has_user_seen_exo",
+     * )
+     * @Rest\View
+     */
+
+    public function hasUserSeenExoAction($exo_id, $user_id)
+    {
+
+        $exo_views = $this->getDoctrine()->getRepository('BrainsPlatformBundle:exo_views')->findBy([
+      'exercice' => $exo_id ,
+      'user' => $user_id
+    ]);
+
+
+        if($exo_views)
+            return $exo_views[0]->getNbViews();
+
+        else return 0;
+
+    }
+
 
 
           /**
