@@ -44,7 +44,7 @@ class exo_views
 
   /**
      * @var int
-   * @ORM\Column(name="nb_views", type="integer")
+   * @ORM\Column(name="nb_views", type="integer", nullable=true)
    */
 
  private $nb_views;
