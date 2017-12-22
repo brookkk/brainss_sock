@@ -50,14 +50,10 @@
 <hr>
 
 
- <div ng-repeat="exo_s in exos | orderBy: 'nb_solves' : reverse"  ng-if="user.exo_views[exo_s.id]==0">
-
-  <!--<div ng-if="has_seen(exo_s.id,user.user.id)!=10000">-->
-<!-- {{has_seen(exo_s.id,user.user.id)}}
-<div ng-if="user.exo_views[exo_s.id]==0">-->
+ <div ng-repeat="exo_s in exos | orderBy: 'nb_solves' : reverse"  ng-if="user.exo_views[exo_s.id]==0&&user.exo_views[exo_s.id]!=''">
+ 
     {{exo_s.nom}} &nbsp
     {{exo_s.nb_solves}}
-    {{user.exo_views[exo_s.id]}}
     
 </div>
  
@@ -68,25 +64,24 @@
 <div>New Exos</div>
 <hr>
 
-<div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true" ng-if="user.exo_views[exo.id]==0">
+<div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true" ng-if="user.exo_views[exo.id]==0&&user.exo_views[exo.id]!=''">
  
 
- 
 
     {{exo.nom}} &nbsp
-    {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}}<br>
+    {{exo.date_creation  | date: 'dd/MM/yyyy'}} &agrave {{exo.date_creation|date: 'HH:mm:ss'}} 
     {{user.exo_views[exo.id]}}
 
   </div>  
-
 <hr>
 <div>Top Visited</div>
 <hr>
 
 
- <div ng-repeat="exo_v in exos | orderBy: 'nb_views' : reverse" ng-if="user.exo_views[exo_v.id]==0">
+ <div ng-repeat="exo_v in exos | orderBy: 'nb_views' : reverse" ng-if="user.exo_views[exo_v.id]==0&&user.exo_views[exo_v.id]!=''">
  
  
+
 <a  href="#/exercice/{{exo_v.id}}" target="_blank">{{exo_v.nom}}</a>
      &nbsp
     {{exo_v.nb_views}}
@@ -98,12 +93,14 @@
 <div>Top Rated
 
 <hr>
-  <div ng-repeat="exo_r in exos | orderBy: 'rating' : reverse" ng-if="user.exo_views[exo_r.id]==0">
- 
- 
+  <div ng-repeat="exo_r in exos | orderBy: 'rating' : reverse" >
+ {{has_seen(exo_r.id,user.user.id)}}
+
+<div ng-if="user.exo_views[exo_r.id]==0&&user.exo_views[exo_r.id]!=''">
+
     {{exo_r.nom}} &nbsp
     {{exo_r.rating}}<br>
-  </div> 
+  </div></div>
 
 
 
