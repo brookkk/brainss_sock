@@ -87,25 +87,9 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
         $scope.user.exo_views = new Array();
 
-           // console.log("outside CL: exos :  " ); console.log($scope.exos);
+ 
 
-
-
-       /* $scope.exos.forEach(function(exo){
-            console.log("inside CL: " );
-            $scope.user.exo_views[exo.id]=$scope.has_seen(exo.id, $scope.user.id);
-
-        });*/
-
-
-
-       // console.log ("user views : ");console.log($scope.user);
-
-
-
-
-
-
+ 
 
         // for preventing the infinite loop
 
@@ -120,7 +104,7 @@ var nb_seen=5;
 
     $scope.has_seen = function(exo_id, user_id){
         
-        if($scope.first_show<1){
+        if($scope.first_show<$scope.exos.length){
             $scope.first_show++;
           $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
                     .success(function(data, status, headers, config){
@@ -151,22 +135,7 @@ var nb_seen=5;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
 
