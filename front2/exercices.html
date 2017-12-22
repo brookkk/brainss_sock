@@ -55,8 +55,8 @@
   <!--<div ng-if="has_seen(exo_s.id,user.user.id)!=10000">-->
     {{exo_s.nom}} &nbsp
     {{exo_s.nb_solves}}
-    {{has_seen(3,3)}}
-    {{has_seen(3,1)}}
+    {{has_seen(exo_s.id,user.user.id)}}
+    {{user.exo_views[exo_s.id]}}
 </div>
  
 

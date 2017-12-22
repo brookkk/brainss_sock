@@ -48,61 +48,6 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 
 
-        // for preventing the infinite loop
-
-        $scope.nb_seen=-1;
-        $scope.first_show = 0;
-
-
-
-
-
-var nb_seen=5;
-
-    $scope.has_seen = function(exo_id, user_id){
-        
-        if($scope.first_show<10){
-            $scope.first_show++;
-          $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
-                    .success(function(data, status, headers, config){
-                        console.log ("has seen daata : " + data);
-                        nb_seen =  data;
-                        
-                    })
-                    .error(function(data, status, headers, config){
-                        switch(status){
-                            case 401 : {
-                                $scope.message = "You must be Authenticated!";
-                                break;
-                            }
-                            case 500 : {
-                                $scope.message = "Something went wrong!";
-                                break;
-                            }
-                        }                        
-                    });}
-        
-                    return nb_seen;
-
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -137,6 +82,93 @@ var nb_seen=5;
             };
 
             retreiveExos();
+
+
+
+        $scope.user.exo_views = new Array();
+
+           // console.log("outside CL: exos :  " ); console.log($scope.exos);
+
+
+
+       /* $scope.exos.forEach(function(exo){
+            console.log("inside CL: " );
+            $scope.user.exo_views[exo.id]=$scope.has_seen(exo.id, $scope.user.id);
+
+        });*/
+
+
+
+       // console.log ("user views : ");console.log($scope.user);
+
+
+
+
+
+
+
+        // for preventing the infinite loop
+
+        $scope.nb_seen=-1;
+        $scope.first_show = 0;
+
+
+
+
+
+var nb_seen=5;
+
+    $scope.has_seen = function(exo_id, user_id){
+        
+        if($scope.first_show<1){
+            $scope.first_show++;
+          $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
+                    .success(function(data, status, headers, config){
+                        console.log ("has seen daata : " + data);
+                       // nb_seen =  data;
+                        $scope.user.exo_views[exo_id] = data;
+                        
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }                        
+                    });}
+        
+                    //return nb_seen;
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
              $scope.view = function(id){
