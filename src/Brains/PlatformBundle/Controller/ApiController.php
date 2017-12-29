@@ -289,11 +289,14 @@ class ApiController extends Controller
 
 
               /**
-     * @Rest\Get("/exercices/user/{id_user}/seen", name="exercices_list_by_user")
+     * @Rest\Get("/exercices/user/{id_user}/{seen}", name="exercices_list_by_user")
      * @Rest\View()
      */
-    public function seenExercicesByUserAction($id_user)
+    public function seenExercicesByUserAction($id_user,$seen)
     {
+
+        // values of $seen : 0, 1, 100
+
         //get the exercices
         $exercices = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findAll();
 
@@ -302,26 +305,74 @@ class ApiController extends Controller
         $viewed_exos = $this->getDoctrine()->getRepository('BrainsPlatformBundle:exo_views')->findBy([
       'user' => $id_user
     ]);
-        //only keep the seen exos (nb views >0)
-        foreach($viewed_exos as $key=> $value){
-            if(!$value->getNbViews()>0) unset($viewed_exos[$key]);
-        }
 
-        //the seen exos ids
-        $seen_exercices = array();
+
+        switch ($seen) {
+            case 0:{
+                  //only keep the unseen exos (nb views >0)
+                    $viewed_array=array();
+
+                    foreach($viewed_exos as $key=> $value){
+                        if(!$value->getNbViews()>0) unset($viewed_exos[$key]);
+                        else $viewed_array[]=$value->getExercice();
+                    }
+
+
+                  //the seen exos ids
+                    $seen_exercices = array();
 
        
 
-        foreach($exercices as $key=> $exo )
-        {
-            foreach($viewed_exos as $viewed){
-                if($exo->getId() == $viewed->getExercice() )
-                    {$seen_exercices[]=$exercices[$key];
-                    }
-            }
+                    foreach($exercices as $key=> $exo )
+                    {
+                        /*foreach($viewed_exos as $viewed){
+                            if($exo->getId() != $viewed->getExercice() )
+                                {$seen_exercices[]=$exercices[$key];
+                                }
+                        }*/
+                        if(array_search($exo->getId(), $viewed_array)===false)
+                            $seen_exercices[]=$exercices[$key];
 
+
+                    }
+                }
+                break;
+
+            case 1:{
+                  //only keep the seen exos (nb views >0)
+                    foreach($viewed_exos as $key=> $value){
+                        if(!($value->getNbViews()>0)) unset($viewed_exos[$key]);
+                    }
+
+                  //the seen exos ids
+                    $seen_exercices = array();
+
+       
+
+                    foreach($exercices as $key=> $exo )
+                    {
+                        foreach($viewed_exos as $viewed){
+                            if($exo->getId() == $viewed->getExercice() )
+                                {$seen_exercices[]=$exercices[$key];
+                                }
+                        }
+
+                    }
+                }
+                break;
+
+            case 100:
+                $seen_exercices = $exercices;
+                break;
+            
+            default:
+                $seen_exercices="erreur";
+                break;
         }
+
         return $seen_exercices;
+
+      
     }
 
 
