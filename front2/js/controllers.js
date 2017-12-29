@@ -44,7 +44,7 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
             $scope.appTitle="Exercices";
 
         $scope.user = $localStorage.currentUser;
-        console.log("user : ");console.log($localStorage.currentUser);
+        console.log("user : ");console.log($scope.user.user.id);
 
 
 
@@ -56,13 +56,63 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
              // retreiveExos : se charge de la récupération des exos du BO (Rest API) et les mettre dans "scope.exos"
 
             $scope.exos = [];
+            $scope.seen_exos = [];
+            $scope.not_seen_exos = [];
             $scope.loading=true;
 
             var retreiveExos = function(){
 
-                 $http.get('../web/app_dev.php/api/exercices')
+
+                //all exos
+                 $http.get('../web/app_dev.php/api/exercices/user/'+$scope.user.user.id+'/100')
                     .success(function(data, status, headers, config){
                         $scope.exos = data;
+        console.log("data : ");console.log(data);
+
+
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }
+                        
+                    });
+                    // seen exos
+                 $http.get('../web/app_dev.php/api/exercices/user/'+$scope.user.user.id+'/1')
+                    .success(function(data, status, headers, config){
+                        $scope.seen_exos = data;
+        console.log("data : ");console.log(data);
+
+
+                    })
+                    .error(function(data, status, headers, config){
+                        switch(status){
+                            case 401 : {
+                                $scope.message = "You must be Authenticated!";
+                                break;
+                            }
+                            case 500 : {
+                                $scope.message = "Something went wrong!";
+                                break;
+                            }
+                        }
+                        
+                    });
+
+
+                    // not seen exos
+                 $http.get('../web/app_dev.php/api/exercices/user/'+$scope.user.user.id+'/0')
+                    .success(function(data, status, headers, config){
+                        $scope.not_seen_exos = data;
+        console.log("data : ");console.log(data);
+
             $scope.loading=false;
 
                     })
@@ -79,10 +129,15 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
                         }
                         
                     });
+
+
+
+
             };
 
             retreiveExos();
 
+        console.log("exercices : ");//console.log($scope.exos);
 
 
         $scope.user.exo_views = new Array();
@@ -102,13 +157,13 @@ brains.controller("exercicesCtrl", function($scope, $rootScope, brainsService2, 
 
 var nb_seen=5;
 
-    $scope.has_seen = function(exo_id, user_id){
+    /*$scope.has_seen = function(exo_id, user_id){
         
         if($scope.first_show<$scope.exos.length){
             $scope.first_show++;
           $http.get('http://localhost/brainss/web/app_dev.php/api/exercices/'+exo_id+'/user/'+user_id+'/seen')
                     .success(function(data, status, headers, config){
-                        console.log ("has seen daata : " + data);
+                        //console.log ("has seen daata : " + data);
                        // nb_seen =  data;
                         $scope.user.exo_views[exo_id] = data;
                         
@@ -128,18 +183,10 @@ var nb_seen=5;
         
                     //return nb_seen;
 
-    };
-
-
-
-
+    };*/
 
 
  
-
-
-
-
              $scope.view = function(id){
 
                 $http.put('http://localhost/brainss/web/app_dev.php/api/exercices/'+id+'/view')
@@ -182,6 +229,8 @@ var nb_seen=5;
             };
 
     });
+
+
 
 
 

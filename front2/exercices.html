@@ -46,11 +46,28 @@
  
 <div ng-show="exos.length>0" ng-hide="loading">
 
+
+<div>My exos</div>
+<hr>
+
+
+ <div ng-repeat="exo_s in seen_exos | orderBy: 'nb_solves' : reverse"  >
+ 
+    {{exo_s.nom}} &nbsp
+    {{exo_s.nb_solves}}
+    
+</div>
+ 
+
+  <hr>
+
+
+
 <div>Top Solved</div>
 <hr>
 
 
- <div ng-repeat="exo_s in exos | orderBy: 'nb_solves' : reverse"  ng-if="user.exo_views[exo_s.id]==0&&user.exo_views[exo_s.id]!=''">
+ <div ng-repeat="exo_s in not_seen_exos | orderBy: 'nb_solves' : reverse"  >
  
     {{exo_s.nom}} &nbsp
     {{exo_s.nb_solves}}
@@ -64,7 +81,7 @@
 <div>New Exos</div>
 <hr>
 
-<div ng-repeat="exo in exos | orderBy: 'date_creation' : reverse=true" ng-if="user.exo_views[exo.id]==0&&user.exo_views[exo.id]!=''">
+<div ng-repeat="exo in not_seen_exos | orderBy: 'date_creation' : reverse=true" >
  
 
 
@@ -78,7 +95,7 @@
 <hr>
 
 
- <div ng-repeat="exo_v in exos | orderBy: 'nb_views' : reverse" ng-if="user.exo_views[exo_v.id]==0&&user.exo_views[exo_v.id]!=''">
+ <div ng-repeat="exo_v in not_seen_exos | orderBy: 'nb_views' : reverse" >
  
  
 
@@ -93,14 +110,12 @@
 <div>Top Rated
 
 <hr>
-  <div ng-repeat="exo_r in exos | orderBy: 'rating' : reverse" >
- {{has_seen(exo_r.id,user.user.id)}}
+  <div ng-repeat="exo_r in not_seen_exos | orderBy: 'rating' : reverse" >
 
-<div ng-if="user.exo_views[exo_r.id]==0&&user.exo_views[exo_r.id]!=''">
-
+ 
     {{exo_r.nom}} &nbsp
     {{exo_r.rating}}<br>
-  </div></div>
+  </div> 
 
 
 

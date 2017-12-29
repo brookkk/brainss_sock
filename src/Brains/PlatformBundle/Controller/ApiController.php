@@ -295,7 +295,14 @@ class ApiController extends Controller
     public function seenExercicesByUserAction($id_user,$seen)
     {
 
-        // values of $seen : 0, 1, 100
+
+        /*
+            Méthode qui retourne les exercices de point de vue User,
+            seen == 0 => on retourne tous les exos que l'user n'a pas vu
+            seen == 1 => on retourne tous les exos vus par le user
+            seen == 100 => on retourne tous les exos
+        */
+
 
         //get the exercices
         $exercices = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findAll();
