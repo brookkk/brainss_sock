@@ -286,6 +286,45 @@ class ApiController extends Controller
     }
 
 
+
+
+              /**
+     * @Rest\Get("/exercices/user/{id_user}/seen", name="exercices_list_by_user")
+     * @Rest\View()
+     */
+    public function seenExercicesByUserAction($id_user)
+    {
+        //get the exercices
+        $exercices = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Exercice')->findAll();
+
+
+        //get the seen exos
+        $viewed_exos = $this->getDoctrine()->getRepository('BrainsPlatformBundle:exo_views')->findBy([
+      'user' => $id_user
+    ]);
+        //only keep the seen exos (nb views >0)
+        foreach($viewed_exos as $key=> $value){
+            if(!$value->getNbViews()>0) unset($viewed_exos[$key]);
+        }
+
+        //the seen exos ids
+        $seen_exercices = array();
+
+       
+
+        foreach($exercices as $key=> $exo )
+        {
+            foreach($viewed_exos as $viewed){
+                if($exo->getId() == $viewed->getExercice() )
+                    {$seen_exercices[]=$exercices[$key];
+                    }
+            }
+
+        }
+        return $seen_exercices;
+    }
+
+
     /**
      * @Rest\Get(
      *     path = "/exercices/{id}/parties",

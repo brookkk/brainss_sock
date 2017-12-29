@@ -160,14 +160,14 @@ private $exo_parties;
 
      /**
      * @var \int
-     ** @ORM\Column(name="nbViews", type="integer")
+     ** @ORM\Column(name="nbViews", type="integer", nullable=true ,options={"default" : 0})
           */
     private $nbViews;
 
 
        /**
      * @var \int
-     ** @ORM\Column(name="nbSolves", type="integer")
+     ** @ORM\Column(name="nbSolves", type="integer", nullable=true, options={"default" : 0})
           */
     private $nbSolves;
 
