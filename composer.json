@@ -13,6 +13,7 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "bmatzner/jquery-ui-bundle": "*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
@@ -22,6 +23,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/serializer-bundle": "^2.0",
         "kms/froala-editor-bundle": "dev-master",
+        "lexik/jwt-authentication-bundle": "^2.4",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "symfony/finder": "^3.2",
@@ -29,7 +31,6 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.2.*",
-        "bmatzner/jquery-ui-bundle": "*",
         "twig/twig": "^1.0||^2.0"
     },
     "require-dev": {
@@ -58,6 +59,9 @@
         },
         "sort-packages": true
     },
+    "repositories": {
+        "packagist": { "url": "https://packagist.org", "type": "composer" }
+    },
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
@@ -68,6 +72,7 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
+        
         "branch-alias": {
             "dev-master": "3.2-dev"
         }

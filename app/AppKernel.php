@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Bmatzner\JQueryBundle\BmatznerJQueryBundle(),
             new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+
 
         ];
 

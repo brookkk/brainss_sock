@@ -40,3 +40,5 @@ fos_user_change_password:
 kms_froala_editor:
     resource: "@KMSFroalaEditorBundle/Resources/config/routing.yml"
     prefix:   /froalaeditor
+api_login_check:
+    path: /api/login_check
