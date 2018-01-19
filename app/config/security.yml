@@ -12,15 +12,20 @@ security:
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
+        
         main:
             id: fos_user.user_provider.username
-            
+                        
         in_memory:
             memory:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_AUTEUR' ] }
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
                     brook: { password: brook, roles: [ 'ROLE_ADMIN' ] }
+                    gary:
+                        password: pass
+                        roles: 'ROLE_USER'
+
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -34,6 +39,8 @@ security:
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
+                username_parameter: username
+                password_parameter: password
 
         api:
             pattern:   ^/api
