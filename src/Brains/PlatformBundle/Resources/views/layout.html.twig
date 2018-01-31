@@ -69,7 +69,7 @@
             
         </div>
 
-        <div id="content" class="col-md-9">
+        <div id="content" class="col-md-11">
             {% block body %}
             {% endblock %}
         </div>
@@ -99,9 +99,8 @@
 {% block javascripts %}
 
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-   <!-- until the froala jquery problem is solved
    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/dt-1.10.15/datatables.min.js"></script>
--->
+
  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script> 
  <!--  <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/jquery.min.js') }}"></script>-->
 <script type="text/javascript" src="{{ asset('bundles/bmatznerjqueryui/js/minified/jquery-ui.min.js') }}"></script>
@@ -110,7 +109,7 @@
 
 
 
-<!--
+
    <script >
 
         $(document).ready(function() {
@@ -119,7 +118,7 @@
 
 
     </script>
-  -->
+  
  
 {% endblock %}
 
