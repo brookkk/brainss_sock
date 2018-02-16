@@ -32,19 +32,15 @@ class CoursType extends AbstractType
 
         $builder
             ->add('nom',   TextType::class)
-            ->add('public',   TextType::class)
+            ->add('public')
             ->add('auteur',   TextType::class)
-            ->add('annee', EntityType::class, array(
-                'class'        => 'BrainsPlatformBundle:Annee',
-                'choice_label' => 'nome',
-                'multiple'     => false,
-                ))
+            
             ->add('filiere', EntityType::class, array(
                 'class'        => 'BrainsPlatformBundle:Filiere',
                 'choice_label' => 'nome',
                 'multiple'     => false,
                 ))
-            ->add( 'contenu', FroalaEditorType::class )
+            
             ->add('Sauvegarder',      SubmitType::class);
 
     }

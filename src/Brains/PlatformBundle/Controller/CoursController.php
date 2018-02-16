@@ -41,11 +41,11 @@ class CoursController extends Controller
 
       $form->handleRequest($request);
 
-      $fs = new Filesystem();
+      //$fs = new Filesystem();
 
-      if($form->isValid()   &&
+      if($form->isValid()   /*&&
         $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-         .$cours->getFiliere()->getShort().'/cours' )  
+         .$cours->getFiliere()->getShort().'/cours'*/   
         ){
         $em= $this->getDoctrine()->getManager();
       $em->persist($cours);
@@ -54,13 +54,13 @@ class CoursController extends Controller
       $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
 
-$file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-        .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html';
- $fs->touch($file);
+/*$file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
+        .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html';*/
+ //$fs->touch($file);
 
 
- $file = fopen($file, 'a+');
-          fputs($file, $cours->getContenu() );
+ /*$file = fopen($file, 'a+');
+          fputs($file, $cours->getContenu() );*/
 
 
 //fwrite($file, "heyy file");
@@ -109,10 +109,10 @@ $file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->
 
 
 
- $fs = new Filesystem();
-  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
+ //$fs = new Filesystem();
+  /*$first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
   .$cours->getFiliere()->getShort() .'/cours/';
-  $old=$cours->getNom().'.html';
+  $old=$cours->getNom().'.html';*/
 
     if (null === $cours) {
       throw new NotFoundHttpException("Votre cours na pas été trouvé");
@@ -134,9 +134,9 @@ $file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->
 
         $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
-        $new=$cours->getNom().'.html';
-if($old!=$new)
-      $fs->rename($first_part.$old, $first_part.$new);
+        //$new=$cours->getNom().'.html';
+/*if($old!=$new)
+      $fs->rename($first_part.$old, $first_part.$new);*/
 
 
         return $this->redirectToRoute('BP_show_cours');
@@ -174,10 +174,10 @@ if($old!=$new)
 
     $request->getSession()->getFlashBag()->add('notice', 'Cours a été supprimée');
 
-  $fs = new Filesystem();
+  //$fs = new Filesystem();
 
-  $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-    .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html');
+  /*$fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
+    .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html');*/
 
 
 
@@ -186,14 +186,14 @@ if($old!=$new)
 
   }
 
-  public function fileAction(Request $request)
+/*  public function fileAction(Request $request)
   {
 
 
 
-   $fs = new Filesystem();
+   //$fs = new Filesystem();
 
-   try {
+  /* try {
     $fs->mkdir('/test/file/'.mt_rand());
   } catch (IOExceptionInterface $e) {
     echo "An error occurred while creating your directory at ".$e->getPath();
@@ -203,7 +203,7 @@ if($old!=$new)
   return $this->redirectToRoute('BP_show_cours');
 
 
-}
+}*/
 
 }
 

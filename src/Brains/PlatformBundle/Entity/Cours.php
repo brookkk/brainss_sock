@@ -30,25 +30,16 @@ class Cours
      */
     private $nom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="contenu", type="string", length=700)
-     */
-    private $contenu;
+
 
     /**
      * @var string
      *
-     * @ORM\Column(name="public", type="string", length=255)
+     * @ORM\Column(name="public", type="boolean")
      */
     private $public;
 
-    /**
-   * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Annee")
-   * @ORM\JoinColumn(nullable=false)
-   */
-    private $annee;
+   
 
     /**
    * @ORM\ManyToOne(targetEntity="Brains\PlatformBundle\Entity\Filiere")
@@ -56,14 +47,7 @@ class Cours
    */
     private $filiere;
 
-/**
-* @Assert\IsTrue(message="Il faut choisir la bonne année/filière")
-*/
-public function is_good_annee_filiere(){
-    if($this->filiere->getAnnee()->getShort() == $this->annee->getShort())
-        return true;
-    else return false;    
-}
+
 
 
 
@@ -157,29 +141,9 @@ public function is_good_annee_filiere(){
         return $this->public;
     }
 
-    /**
-     * Set annee
-     *
-     * @param string $annee
-     *
-     * @return Cours
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
+   
 
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return string
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
+    
 
     /**
      * Set filiere
@@ -229,29 +193,7 @@ public function is_good_annee_filiere(){
         return $this->auteur;
     }
 
-    /**
-     * Set contenu
-     *
-     * @param string $contenu
-     *
-     * @return Cours
-     */
-    public function setContenu($contenu)
-    {
-        $this->contenu = $contenu;
 
-        return $this;
-    }
-
-    /**
-     * Get contenu
-     *
-     * @return string
-     */
-    public function getContenu()
-    {
-        return $this->contenu;
-    }
 
     /**
      * Set dateCreation
