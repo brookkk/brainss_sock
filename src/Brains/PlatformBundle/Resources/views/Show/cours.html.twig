@@ -52,7 +52,9 @@
   <td> {{ cours.filiere.short }} </td>
 
    <td> <a href="{{ path('BP_update_cours',{'id': cours.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
-        <a href="{{ path('BP_delete_cours', {'id': cours.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer le cours?')" ><span class="glyphicon glyphicon-trash"></span></a> </td>
+        <a href="{{ path('BP_delete_cours', {'id': cours.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer le cours?')" ><span class="glyphicon glyphicon-trash"></span></a> 
+        <a href="{{ path('BP_show_cours_partie',{'id': cours.id}) }}" title="parties"><span class="glyphicon glyphicon-plus"></span> </a>
+        </td>
 
     </tr>
   {% endfor %}

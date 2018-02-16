@@ -97,3 +97,8 @@ BP_update_exo_question:
 BP_delete_exo_question:
     path:     /delete_exo_question/{id}
     defaults: { _controller: BrainsPlatformBundle:Exo_Question:delete_exo_question }
+BP_show_cours_partie:
+    path:     /show_cours_partie/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours_Partie:show_cours_partie }
+    requirements:
+        id: \d{1,}
