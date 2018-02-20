@@ -105,3 +105,8 @@ BP_show_cours_partie:
 BP_n_cours_partie:
     path:     /n_cours_partie/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours_Partie:n_cours_partie }
+BP_update_cours_partie:
+    path:     /update_cours_partie/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours_Partie:update_cours_partie }
+    requirements:
+        id: \d{1,}

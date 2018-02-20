@@ -44,7 +44,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
       $form->handleRequest($request);
 
-            print_r($partie);
+            //print_r($partie);
             
           $partie->setCours($cours);
     
@@ -120,21 +120,21 @@ foreach($listParties as $part){
 
 
 
-public function update_exo_partieAction(Request $request, $id)
+public function update_cours_partieAction(Request $request, $id)
 {
 
-  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Cours_Partie');
 
   $partie = $repository->find($id);
 
     
  
   if (null === $partie) {
-    throw new NotFoundHttpException("Votre partie na pas été trouvé");
+    throw new NotFoundHttpException("Votre partie na pas été trouvée");
   }
 
 
-  $form = $this->createForm(Exo_PartieType::class, $partie);
+  $form = $this->createForm(Cours_PartieType::class, $partie);
 
 
 
@@ -153,7 +153,7 @@ public function update_exo_partieAction(Request $request, $id)
  
  
      // return $this->redirectToRoute('BP_show_all_exo_partie');
-          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+          return $this->redirectToRoute('BP_show_cours_partie', array('id'=>$partie->getCours()->getId()));
 
     }
 
@@ -162,8 +162,8 @@ public function update_exo_partieAction(Request $request, $id)
 
   }
 
-  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
-   'form'=>$form->createView(), 'exo_id' =>$partie->getExercice()->getId(),
+  return $this->render('BrainsPlatformBundle:New:cours_partie.html.twig', array(
+   'form'=>$form->createView(), 'cours_id' =>$partie->getCours()->getId(),
    ));
 
 
