@@ -171,11 +171,11 @@ public function update_cours_partieAction(Request $request, $id)
 
 
 
-public function delete_exo_partieAction(Request $request, $id)
+public function delete_cours_partieAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Partie');
 
   $partie = $repository->find($id);
 
@@ -187,13 +187,13 @@ public function delete_exo_partieAction(Request $request, $id)
   $em->remove($partie);
   $em->flush();
 
-  $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
+  $request->getSession()->getFlashBag()->add('notice', 'Cours Partie a été supprimée');
 
  
  
 
   //return $this->redirectToRoute('BP_show_all_exo_partie');
-  return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+  return $this->redirectToRoute('BP_show_cours_partie', array('id'=>$partie->getCours()->getId()));
 
 
 
