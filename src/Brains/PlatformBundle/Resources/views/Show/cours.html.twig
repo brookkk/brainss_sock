@@ -22,6 +22,7 @@
         <th>Creation</th>
         <th>Annee</th>
         <th>Filiere</th>
+        <th>Parties</th>
         <th>Action</th>
          
       </tr>
@@ -35,6 +36,7 @@
         <th>Creation</th>
         <th>Annee</th>
         <th>Filiere</th>
+        <th>Parties</th>
         <th>Action</th>
          
       </tr>
@@ -50,7 +52,7 @@
   <td> Le {{ cours.dateMaj|date("d/m/Y, à h:i a")   }} </td>
   <td> {{ cours.annee.short }} </td>
   <td> {{ cours.filiere.short }} </td>
-
+<td><a href="{{ path('BP_show_cours_partie',{'id': cours.id}) }}" title="parties">{{ nb_parties[cours.id] }} </a>  </td>
    <td> <a href="{{ path('BP_update_cours',{'id': cours.id}) }}"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
         <a href="{{ path('BP_delete_cours', {'id': cours.id}) }}" onclick="return confirm('Etes vous sûr de vouloir supprimer le cours?')" ><span class="glyphicon glyphicon-trash"></span></a> 
         <a href="{{ path('BP_show_cours_partie',{'id': cours.id}) }}" title="parties"><span class="glyphicon glyphicon-plus"></span> </a>

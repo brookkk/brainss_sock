@@ -54,16 +54,6 @@ class CoursController extends Controller
       $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
 
-/*$file=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-        .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html';*/
- //$fs->touch($file);
-
-
- /*$file = fopen($file, 'a+');
-          fputs($file, $cours->getContenu() );*/
-
-
-//fwrite($file, "heyy file");
 
 
         return $this->redirectToRoute('BP_show_cours');
@@ -93,9 +83,15 @@ class CoursController extends Controller
     }
 
 
+ $nb_parties=array();
+foreach($listCours as $cours){
+  $nb_parties[$cours->getid()] = $this->nb_partiesAction( $cours->getid());
+}
+
+
 
     return $this->render('BrainsPlatformBundle:Show:cours.html.twig', array(
-      'listCours' => $listCours  ) );
+      'listCours' => $listCours  , 'nb_parties'=>$nb_parties) );
   }
 
 
@@ -186,24 +182,35 @@ class CoursController extends Controller
 
   }
 
-/*  public function fileAction(Request $request)
-  {
 
 
+     //Action pour calculer le nb de parties d'un cours donné
+public function nb_partiesAction( $id)
+{
+  $em= $this  ->getDoctrine()  ->getManager();
 
-   //$fs = new Filesystem();
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Partie');
 
-  /* try {
-    $fs->mkdir('/test/file/'.mt_rand());
-  } catch (IOExceptionInterface $e) {
-    echo "An error occurred while creating your directory at ".$e->getPath();
+
+  $listParties = $repository->findBy([
+      'cours' => $id ,
+    ]);
+
+  if (null === $listParties) {
+    throw new NotFoundHttpException("Aucune partie na été trouvée");
   }
 
 
-  return $this->redirectToRoute('BP_show_cours');
+$count=0;
+
+foreach($listParties as $p){
+  $count++;
+}
+  return $count;
 
 
-}*/
+
+}
 
 }
 
