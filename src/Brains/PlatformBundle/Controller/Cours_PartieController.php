@@ -8,10 +8,10 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Brains\PlatformBundle\Form\ExerciceType;
-use Brains\PlatformBundle\Form\Exo_PartieType;
-use Brains\PlatformBundle\Entity\Exo_Partie;
-use Brains\PlatformBundle\Entity\Exercice;
+use Brains\PlatformBundle\Form\CoursType;
+use Brains\PlatformBundle\Form\Cours_PartieType;
+use Brains\PlatformBundle\Entity\Cours_Partie;
+use Brains\PlatformBundle\Entity\Cours;
  
  
 
@@ -23,18 +23,18 @@ class Cours_PartieController extends Controller
     return $this->render('BrainsPlatformBundle:Default:index.html.twig');
   }
 
-  public function n_exo_partieAction(Request $request, $id)
+  public function n_cours_partieAction(Request $request, $id)
   {
 //nouvelle instance de l'entité partie
-    $partie= new Exo_Partie();
+    $partie= new Cours_Partie();
 
 
-$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exercice');
+$repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Cours');
 
-  $exercice = $repository->find($id);
+  $cours = $repository->find($id);
 
 
-   $form = $this->createForm(Exo_PartieType::class, $partie);
+   $form = $this->createForm(Cours_PartieType::class, $partie);
 
 
 
@@ -46,14 +46,14 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
             print_r($partie);
             
-          $partie->setExercice($exercice);
+          $partie->setCours($cours);
     
 
 
 
        if($form->isValid()  )  
         { 
-          $partie->getExercice()->addExo_Partie($partie);
+          $partie->getCours()->addCours_Partie($partie);
           
 
          $em= $this->getDoctrine()->getManager();
@@ -63,13 +63,13 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
       $request->getSession()->getFlashBag()->add('notice', 'Partie Bien enregistrée.');
  
 
-          return $this->redirectToRoute('BP_show_exo_partie', array('id'=>$partie->getExercice()->getId()));
+          return $this->redirectToRoute('BP_show_cours_partie', array('id'=>$partie->getCours()->getId()));
     }
   }
 
 //sinon (ou bien premier landing sur le form), on affiche le formulaire
-  return $this->render('BrainsPlatformBundle:New:exo_partie.html.twig', array(
-   'form'=>$form->createView(), 'exo_id'=>$id
+  return $this->render('BrainsPlatformBundle:New:cours_partie.html.twig', array(
+   'form'=>$form->createView(), 'cours_id'=>$id
    ));
 
 }
@@ -90,11 +90,11 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
   //$listParties = $repository->findAll();
 
     $listParties = $repository->findBy([
-      'exercice' => $id ,
+      'cours' => $id ,
     ]);
 
   if (null === $listParties) {
-    throw new NotFoundHttpException("Aucun Exercice na été trouvé");
+    throw new NotFoundHttpException("Aucun Cours na été trouvé");
   }
 
   $nb_questions=array();
@@ -106,8 +106,8 @@ foreach($listParties as $part){
 
 
 
-  return $this->render('BrainsPlatformBundle:Show:exo_partie.html.twig', array(
-    'listParties' => $listParties , 'exo_id'=>$id, 'nb_questions'=>$nb_questions  ) );
+  return $this->render('BrainsPlatformBundle:Show:cours_partie.html.twig', array(
+    'listParties' => $listParties , 'cours_id'=>$id, 'nb_questions'=>$nb_questions  ) );
 }
 
 

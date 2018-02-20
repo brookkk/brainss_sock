@@ -51,6 +51,39 @@ class Cours
 
 
 
+
+/**
+    * 
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Cours_Partie", mappedBy="cours")
+   * 
+   */
+
+private $cours_parties;
+
+
+
+
+
+ public function addCours_Partie(Cours_Partie $cours_parties)
+  {
+    $this->cours_parties[] = $cours_parties;
+  }
+
+  public function removeCours_Partie(Cours_Partie $cours_parties)
+  {
+    $this->cours_parties->removeElement($cours_parties);
+  }
+
+
+    public function getCours_Partie()
+    {
+        return $this->cours_parties;
+    }
+
+
+
+
+
     /**
      * @var string
      *
