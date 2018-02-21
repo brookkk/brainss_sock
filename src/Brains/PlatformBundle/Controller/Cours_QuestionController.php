@@ -160,11 +160,11 @@ public function update_cours_questionAction(Request $request, $id)
 
 
 
-public function delete_exo_questionAction(Request $request, $id)
+public function delete_cours_questionAction(Request $request, $id)
 {
   $em= $this->getDoctrine()->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Question');
 
   $question = $repository->find($id);
 
@@ -182,7 +182,7 @@ public function delete_exo_questionAction(Request $request, $id)
  
 
   //return $this->redirectToRoute('BP_show_all_exo_partie');
-  return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
+  return $this->redirectToRoute('BP_show_cours_question', array('id'=>$question->getPartie()->getId()));
 
 
 

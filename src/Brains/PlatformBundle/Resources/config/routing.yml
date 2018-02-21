@@ -122,3 +122,6 @@ BP_show_cours_question:
 BP_update_cours_question:
     path:     /update_cours_question/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours_Question:update_cours_question }
+BP_delete_cours_question:
+    path:     /delete_cours_question/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours_Question:delete_cours_question }
