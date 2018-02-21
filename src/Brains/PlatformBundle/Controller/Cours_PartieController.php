@@ -205,7 +205,7 @@ public function nb_questionsAction( $id)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Question');
 
 
   $listQuestions = $repository->findBy([
@@ -236,7 +236,7 @@ public function get_questionsAction($id){
 
    $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Question');
 
 
   $listQuestions = $repository->findBy([

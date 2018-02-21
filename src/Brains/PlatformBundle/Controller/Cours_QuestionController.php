@@ -112,23 +112,22 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 
 
-public function update_exo_questionAction(Request $request, $id)
+public function update_cours_questionAction(Request $request, $id)
 {
 
-  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Question');
+  $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Cours_Question');
 
   $question = $repository->find($id);
 
     
  
   if (null === $question) {
-    throw new NotFoundHttpException("Votre question na pas été trouvé");
+    throw new NotFoundHttpException("Votre question na pas été trouvée");
   }
 
 
-  $form = $this->createForm(Exo_QuestionType::class, $question);
+  $form = $this->createForm(Cours_QuestionType::class, $question);
 
-//echo "hohohoho ". $question->getPartie()->getExercice()->getId();
 
 
   if($request->isMethod('POST')){
@@ -145,15 +144,15 @@ public function update_exo_questionAction(Request $request, $id)
   
  
  
-          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
+          return $this->redirectToRoute('BP_show_cours_question', array('id'=>$question->getPartie()->getId()));
 
     }
 
   }
 
-  return $this->render('BrainsPlatformBundle:New:exo_question.html.twig', array(
+  return $this->render('BrainsPlatformBundle:New:cours_question.html.twig', array(
    'form'=>$form->createView(), 'partie_id' =>$question->getPartie()->getId(),
-    'exo_id'=>$question->getPartie()->getExercice()->getId(),
+    'cours_id'=>$question->getPartie()->getCours()->getId(),
    ));
 
 

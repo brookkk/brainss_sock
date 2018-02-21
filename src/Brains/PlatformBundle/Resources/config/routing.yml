@@ -119,3 +119,6 @@ BP_n_cours_question:
 BP_show_cours_question:
     path:     /show_cours_question/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours_Question:show_cours_question}
+BP_update_cours_question:
+    path:     /update_cours_question/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours_Question:update_cours_question }
