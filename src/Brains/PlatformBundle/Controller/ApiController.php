@@ -537,6 +537,24 @@ class ApiController extends Controller
 
 
 
+/**
+     * @Rest\Get(
+     *     path = "/cours/{id}/parties",
+     *     name = "cours_parties_show",
+     *     requirements = {"id"="\d+"}
+     * )
+     * @Rest\View
+     */
+
+    public function cours_partiesShowAction( $id)
+    {
+
+     $parties = $this->getDoctrine()->getRepository('BrainsPlatformBundle:Cours')->find($id)->getCours_Partie();
+
+        
+      return $parties;
+    }
+
 
 
 
