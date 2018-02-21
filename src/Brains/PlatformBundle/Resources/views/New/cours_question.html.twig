@@ -1,0 +1,20 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_cours') }}">Cours</a></li>
+  <li><a href="{{ path('BP_show_cours_partie', {'id': cours_id}) }}">Parties</a></li>
+  <li><a href="{{ path('BP_show_exo_question', {'id': partie_id}) }}">Question</a></li>
+    <li>MAJ</li>
+ 
+</ul>
+
+<h3>Question</h3>
+
+<div class="well">
+  {{ form(form) }}
+</div>
+
+{% endblock %}

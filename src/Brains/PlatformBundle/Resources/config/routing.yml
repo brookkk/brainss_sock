@@ -113,3 +113,6 @@ BP_update_cours_partie:
 BP_delete_cours_partie:
     path:     /delete_cours_partie/{id}
     defaults: { _controller: BrainsPlatformBundle:Cours_Partie:delete_cours_partie }
+BP_n_cours_question:
+    path:     /n_cours_question/{id}
+    defaults: { _controller: BrainsPlatformBundle:Cours_Question:n_cours_question }

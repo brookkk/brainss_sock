@@ -1,7 +1,7 @@
 <?php
 
 namespace Brains\PlatformBundle\Entity;
-use Brains\PlatformBundle\Entity\Exo_Question;
+use Brains\PlatformBundle\Entity\Cours_Question;
 
 
 use Doctrine\ORM\Mapping as ORM;
@@ -42,32 +42,32 @@ class Cours_Partie
 
 /**
     * 
-   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Exo_Question", mappedBy="partie")
+   * @ORM\OneToMany(targetEntity="Brains\PlatformBundle\Entity\Cours_Question", mappedBy="partie")
    * 
    */
 
-private $exo_questions;
+private $cours_questions;
 
 
 
 
-/*
- public function addExo_Question(Exo_Question $exo_question)
+
+ public function addCours_Question(Cours_Question $cours_question)
   {
-    $this->exo_questions[] = $exo_question;
+    $this->cours_questions[] = $cours_question;
   }
 
-  public function removeExo_Question(Exo_Question $exo_question)
+  public function removeCours_Question(Cours_Question $cours_question)
   {
-    $this->exo_questions->removeElement($exo_question);
+    $this->cours_questions->removeElement($cours_question);
   }
 
 
-    public function getExo_Questions()
+    public function getCours_Questions()
     {
-        return $this->exo_questions;
+        return $this->cours_questions;
     }
-*/
+
 
 
     /**
@@ -101,7 +101,7 @@ private $exo_questions;
      *
      * @param string $contenu
      *
-     * @return Exo_Partie
+     * @return Cours_Partie
      */
     public function setContenu($contenu)
     {
@@ -126,7 +126,7 @@ private $exo_questions;
      *
      * @param string $titre
      *
-     * @return Exo_Partie
+     * @return Cours_Partie
      */
     public function setTitre($titre)
     {

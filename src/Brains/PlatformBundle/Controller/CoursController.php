@@ -170,11 +170,7 @@ foreach($listCours as $cours){
 
     $request->getSession()->getFlashBag()->add('notice', 'Cours a été supprimée');
 
-  //$fs = new Filesystem();
-
-  /*$fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-    .$cours->getFiliere()->getShort() .'/cours/'.$cours->getNom().'.html');*/
-
+  
 
 
     return $this->redirectToRoute('BP_show_cours');
