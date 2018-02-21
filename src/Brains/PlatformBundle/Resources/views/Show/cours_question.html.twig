@@ -1,0 +1,66 @@
+ 
+ {% extends "BrainsUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+<ul class="breadcrumb">
+  <li><a href="{{ path('BP_show_cours') }}">Cours</a></li>
+  <li><a href="{{ path('BP_show_cours_partie', {'id': cours_id}) }}">Parties</a></li>
+  <li><a href="{{ path('BP_show_cours_question', {'id': partie_id}) }}">Questions</a></li>
+  <li>Liste</li>
+ 
+</ul>
+
+<h3>Liste des Questions</h3>
+
+ 
+  
+   <table class="data" class="display" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Réponse</th>
+        <th>Partie</th>
+        <th>Cours</th>
+        <th>Action</th>
+         
+      </tr>
+    </thead>
+
+
+
+    <tfoot>
+      <tr>
+        <th>Question</th>
+        <th>Réponse</th>
+        <th>Partie</th>
+        <th>Exercice</th>
+        <th>Cours</th>
+         
+      </tr>
+    </tfoot>
+
+
+    <tbody>
+
+  {% for question in listQuestions %}
+
+  <tr>
+  <td>   {{ question.question }} </td> 
+  <td>   {{ question.reponse }} </td> 
+  <td>   {{ question.partie.titre }} </td> 
+  <td> <a href="{{ path('BP_show_cours_partie',{'id': question.partie.cours.id}) }}" title="cours">{{ question.partie.cours.nom }} </a>   </td> 
+ 
+   <td> <a href="{{ path('BP_update_exo_question',{'id': question.id}) }}" title="modifier la question"><span class="glyphicon glyphicon-pencil"></span> </a> &nbsp 
+        <a href="{{ path('BP_delete_exo_question', {'id': question.id}) }}" title="supprimer la question" onclick="return confirm('Etes vous sûr de vouloir supprimer la question?')" ><span class="glyphicon glyphicon-trash"></span></a> &nbsp 
+        
+
+    </tr>
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+  <a class="btn btn btn-success" href="{{ path('BP_n_cours_question', {'id': partie_id}) }}" role="button">Ajouter une Question</a>
+
+
+{% endblock %}

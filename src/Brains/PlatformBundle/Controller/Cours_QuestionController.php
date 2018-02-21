@@ -68,7 +68,7 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
       $request->getSession()->getFlashBag()->add('notice', 'Question Bien enregistrée.');
  
 
-          return $this->redirectToRoute('BP_show_exo_question', array('id'=>$question->getPartie()->getId()));
+          return $this->redirectToRoute('BP_show_cours_question', array('id'=>$question->getPartie()->getId()));
     }
   }
 
@@ -81,11 +81,11 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 
 
- public function show_exo_questionAction(Request $request, $id=1)
+ public function show_cours_questionAction(Request $request, $id=1)
 {
   $em= $this  ->getDoctrine()  ->getManager();
 
-  $repository = $em  ->getRepository('BrainsPlatformBundle:Exo_Question');
+  $repository = $em  ->getRepository('BrainsPlatformBundle:Cours_Question');
 
 
     $listQuestions = $repository->findBy([
@@ -94,19 +94,19 @@ $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPla
 
 
 
-    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Exo_Partie');
+    $repository = $this  ->getDoctrine()  ->getManager()  ->getRepository('BrainsPlatformBundle:Cours_Partie');
 
   $partie = $repository->find($id);
 
   if (null === $listQuestions) {
-    throw new NotFoundHttpException("Aucune partie na été trouvé");
+    throw new NotFoundHttpException("Aucune question na été trouvé");
   }
   $part_exp='';
   foreach($listQuestions as $lq)
   {$part_exp=$lq;}
 
-  return $this->render('BrainsPlatformBundle:Show:exo_question.html.twig', array(
-    'listQuestions' => $listQuestions , 'partie_id'=>$id, 'exo_id'=>$partie->getExercice()->getId() ) );
+  return $this->render('BrainsPlatformBundle:Show:cours_question.html.twig', array(
+    'listQuestions' => $listQuestions , 'partie_id'=>$id, 'cours_id'=>$partie->getCours()->getId() ) );
 }
 
 
