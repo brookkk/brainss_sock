@@ -1,0 +1,81 @@
+ 
+ {% extends "BrainsPlatformBundle::layout.html.twig" %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <table class="data" class="display" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>username</th>
+        <th>email</th>
+        <th>role</th>
+       
+         
+      </tr>
+    </thead>
+
+
+    <tfoot>
+      <tr>
+        <th>username</th>
+        <th>email</th>
+        <th>role</th>
+         
+      </tr>
+    </tfoot>
+
+    <tbody>
+
+  {% for user in users %}
+
+  <tr>
+  <td>   {{ user.username }} </td> 
+  <td>   {{ user.email }} </td> 
+  <td>    </td> 
+
+
+
+
+
+  
+  {% endfor %}
+ 
+ </tbody>
+ </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
