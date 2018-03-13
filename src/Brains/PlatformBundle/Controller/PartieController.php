@@ -53,19 +53,13 @@ class Exo_PartieController extends Controller
 
 
 
-      $fs = new Filesystem();
-      if($form->isValid()   &&     
-        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-         .$exercice->getFiliere()->getShort().'/exercices' )  
+      if($form->isValid()     
         ){
 
-        $new_file_path = $this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-      .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html';
-      $fs->touch($new_file_path);
+       
 
       //$link = explode("")
 
-        $exercice->setLink($new_file_path);
         $em= $this->getDoctrine()->getManager();
       $em->persist($exercice);
       $em->flush();
@@ -75,8 +69,7 @@ class Exo_PartieController extends Controller
   
 
 
-          $file = fopen($new_file_path, 'a+');
-          fputs($file, $exercice->getContenu() );
+          
 
 
 
@@ -123,10 +116,7 @@ public function update_exerciceAction(Request $request, $id)
 
   $exercice = $repository->find($id);
 
-  $fs = new Filesystem();
-  $first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-  .$exercice->getFiliere()->getShort() .'/exercices/';
-  $old=$exercice->getNom().'.html';
+  
 
   if (null === $exercice) {
     throw new NotFoundHttpException("Votre exercice na pas été trouvé");
@@ -148,13 +138,8 @@ public function update_exerciceAction(Request $request, $id)
 
       $request->getSession()->getFlashBag()->add('notice', 'Exercice Bien enregistré.');
 
-      $new=$exercice->getNom().'.html';
-if($old!=$new)
-      $fs->rename($first_part.$old, $first_part.$new);
-    $exercice->setLink($first_part.$new);
-    $file = fopen($first_part.$new, 'w');
 
-          fputs($file, $exercice->getContenu() );
+
 
       return $this->redirectToRoute('BP_show_exercice');
     }
@@ -191,10 +176,8 @@ public function delete_exerciceAction(Request $request, $id)
 
   $request->getSession()->getFlashBag()->add('notice', 'Exercice a été supprimée');
 
-  $fs = new Filesystem();
 
-  $fs->remove($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$exercice->getAnnee()->getShort().'/'
-    .$exercice->getFiliere()->getShort() .'/exercices/'.$exercice->getNom().'.html');
+ 
 
 
   return $this->redirectToRoute('BP_show_exercice');
@@ -202,27 +185,7 @@ public function delete_exerciceAction(Request $request, $id)
 
 }
 
-public function fileAction()
-{
-  $fs = new Filesystem();
 
-//try {
-    //$fs->mkdir('/hahahoho/');
-  $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/hello', 0700);
-    //$fs->touch('test_file.txt');
-  return $this->render('BrainsPlatformBundle:Default:index.html.twig');
-    /*
-} catch (IOExceptionInterface $e) {
-    echo "An error occurred while creating your directory at ".$e->getPath();
-}
-
-
-return $this->render('BrainsPlatformBundle:Default:index.html.twig');*/
-
-
-
-
-}
 
 
 

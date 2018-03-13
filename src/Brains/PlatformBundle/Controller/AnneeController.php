@@ -56,8 +56,6 @@ if($request->isMethod('POST')){
         $request->getSession()->getFlashBag()->add('notice', 'Année Bien enregistrée.');
 
 
-$fs = new Filesystem();
-   $fs->mkdir($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$annee->getShort(), 0700);
 
 
         return $this->redirectToRoute('BP_show_annee');

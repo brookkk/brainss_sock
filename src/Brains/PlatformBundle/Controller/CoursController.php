@@ -41,11 +41,8 @@ class CoursController extends Controller
 
       $form->handleRequest($request);
 
-      //$fs = new Filesystem();
-
-      if($form->isValid()   /*&&
-        $fs->exists($this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-         .$cours->getFiliere()->getShort().'/cours'*/   
+ 
+      if($form->isValid()   
         ){
         $em= $this->getDoctrine()->getManager();
       $em->persist($cours);
@@ -105,10 +102,7 @@ foreach($listCours as $cours){
 
 
 
- //$fs = new Filesystem();
-  /*$first_part=$this->container->getParameter('BrainsPlatformBundle.racine').'/'.$cours->getAnnee()->getShort().'/'
-  .$cours->getFiliere()->getShort() .'/cours/';
-  $old=$cours->getNom().'.html';*/
+ 
 
     if (null === $cours) {
       throw new NotFoundHttpException("Votre cours na pas été trouvé");
@@ -130,9 +124,7 @@ foreach($listCours as $cours){
 
         $request->getSession()->getFlashBag()->add('notice', 'Cours Bien enregistré.');
 
-        //$new=$cours->getNom().'.html';
-/*if($old!=$new)
-      $fs->rename($first_part.$old, $first_part.$new);*/
+       
 
 
         return $this->redirectToRoute('BP_show_cours');
