@@ -48,7 +48,7 @@ class DefaultController extends Controller
 
      public function chatAction()
     {
-         return $this->render('BrainsPlatformBundle:Chat:chat.html.twig');
+         return $this->render('BrainsPlatformBundle:Chat:index.html.twig');
      }
 
 
